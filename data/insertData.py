@@ -38,8 +38,9 @@ for data in data_list:
     files = data["file"].split("http")
     files.pop(0)
     images = ""
+
     for image in files:
-        if image[-3:].lower=="jpg" or "png":
+        if image[-3:].lower()=="jpg" or image[-3:].lower()=="png":
             images+="http"+image+","
 
     insert = "INSERT INTO taipei_attractions (name,category,description,address,transport,mrt,latitude,longitude,images) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
