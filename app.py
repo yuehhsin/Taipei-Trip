@@ -67,24 +67,38 @@ def getAttBYPageKeyword():
 			data_list = []
 			nextpage = []
 			if keyword==None:	
-				print(lengthData)
 				if page==lengthData//12: # 處理最後一頁的資料
 					end = lengthData
 				else:
 					end = (page+1)*12
-				for i in range(page*12,end):
-					cursor.execute(f"SELECT * FROM taipei_attractions WHERE id={i}+1")
-					resultData = cursor.fetchone()
 
-					result(resultData)
-					nextPage(page)
-			# 使用keyword查詢!
-			else:
-				cursor.execute(f'SELECT * FROM taipei_attractions WHERE name LIKE "%{keyword}%" OR category LIKE "%{keyword}%" OR description LIKE "%{keyword}%" OR address LIKE "%{keyword}%" OR mrt LIKE "%{keyword}%"')
+				start = page*12
+				cursor.execute(f"SELECT * FROM taipei_attractions LIMIT {start},12")
 				resultall = cursor.fetchall()
 				for resultData in resultall:
-					if resultData[0]>=page*12 and resultData[0]<=(page+1)*12:
-						result(resultData)
+					result(resultData)
+				nextPage(page)
+			# 使用keyword查詢!
+			else:
+				cursor.execute(f'SELECT COUNT(*) FROM taipei_attractions WHERE name LIKE "%{keyword}%" OR category LIKE "%{keyword}%" OR description LIKE "%{keyword}%" OR address LIKE "%{keyword}%" OR mrt LIKE "%{keyword}%"')
+				search_length = cursor.fetchone()
+				searches = search_length[0]
+				search_page = searches//12-1
+				begin = page*12
+				if searches%12!=0 and page==search_page+1 : #最後一頁
+					end = searches%12
+				elif searches%12!=0 and page>search_page+1 or searches%12==0 and page>search_page: #處理超過搜尋的頁數
+					error = {
+						"error": True,
+						"message": "超過搜尋結果"
+					}
+					return jsonify(error),400
+				else:
+					end = 12
+				cursor.execute(f'SELECT * FROM taipei_attractions WHERE name LIKE "%{keyword}%" OR category LIKE "%{keyword}%" OR description LIKE "%{keyword}%" OR address LIKE "%{keyword}%" OR mrt LIKE "%{keyword}%" LIMIT {begin},{end}')
+				resultall = cursor.fetchall()
+				for resultData in resultall:
+					result(resultData)
 				nextPage(page)
 			result = {
 				"nextPage": nextpage[0],

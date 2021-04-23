@@ -47,4 +47,3 @@ for data in data_list:
     cursor.execute(insert, value)
     mydb.commit()
 
-
