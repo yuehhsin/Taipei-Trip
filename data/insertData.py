@@ -28,10 +28,10 @@ with open("taipei-attractions.json",mode="r",encoding="utf-8") as file:
 
 for data in data_list:
     name = data["stitle"]
-    category = data["CAT2"].replace(" ","")
-    description = data["xbody"].replace(" ","")
-    address = data["address"].replace(" ","")
-    transport = data["info"].replace(" ","")
+    category = data["CAT2"]
+    description = data["xbody"]
+    address = data["address"]
+    transport = data["info"]
     mrt = data["MRT"]
     latitude = data["latitude"]
     longitude = data["longitude"]
