@@ -9,7 +9,7 @@ app.config['JSON_SORT_KEYS'] = False
 mydb=mysql.connector.connect(
 	host="localhost",
 	user="root",
-	password="KElly_7991",
+	password="KElly_1234",
 	database="gov_data",
 	charset="utf8",
 )
