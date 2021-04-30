@@ -10,7 +10,11 @@ app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 mydb=mysql.connector.connect(
 	host="localhost",
 	user="root",
+<<<<<<< HEAD
 	password="kelly7991",
+=======
+	password="KElly_1234",
+>>>>>>> 81caf6cb58b6d3566c7fa5c43ba5e666d51dbc32
 	database="gov_data",
 	charset="utf8",
 )
