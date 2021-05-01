@@ -105,7 +105,7 @@
 .KV .KV-image {
   position: absolute;
   right: 232px;
-  background-image: url("static/image/welcome 1 .png");
+  background-image: url("static/image/welcome_1.png");
   background-size: cover;
   width: 650px;
   height: 320px;
@@ -291,7 +291,7 @@
         grid-template-rows: 54px 280px auto 55px 104px;
   }
   .KV-image {
-    background-image: url("static/image/welcome 2.png") !important;
+    background-image: url("static/image/welcome_2.png") !important;
     width: 212px !important;
     height: 148px !important;
   }
