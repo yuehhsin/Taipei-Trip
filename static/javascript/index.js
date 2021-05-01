@@ -1,9 +1,14 @@
 let content = document.getElementById("content");
+let Page = 0;
 let nextPage = 1;
 let fetching = false;
+let keyword_form = document.getElementById("keyword_form");
+let getKeyword = document.getElementsByName("keyword");
+let keyword = getKeyword[0].value;
+let argsKeyword = decodeURIComponent(location.search).split("=")[1];
+
 ////// function: 連線取得資料並顯示在畫面 //////
 function Fetch(url){
-    console.log(fetching)
     if (fetching===false){
         fetching=true;
 
@@ -38,74 +43,55 @@ function Fetch(url){
                 attImage.style.backgroundSize="cover";
 
                 nextPage=jsonData["nextPage"]   //nextPage
-                // console.log(jsonData["nextPage"])
                 
                 newAtt.appendChild(attName);
                 newAtt.appendChild(attMrt);
                 newAtt.appendChild(attCategory);
                 newAtt.appendChild(attImage);
                 content.appendChild(newAtt);
+                
                 fetching=false;
+                Page=nextPage;
             }
         })
     }
 }
 
-let keyword_form = document.getElementById("keyword_form");
-let getKeyword = document.getElementsByName("keyword");
-let keyword = getKeyword[0].value;
-
-let argsKeyword = decodeURIComponent(location.search).split("=")[1]
-const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: [1]
-}
-
-let Page = 0;
-let fetchInfo = (entries,observer)=>{
-    entries.forEach(element => {
-        const { isIntersecting } = element
-        console.log(isIntersecting)
-        if(isIntersecting){
-            if (Page==null){
-                    console.log("已經沒有資料了喔")
-                }
-            else {
-                Fetch("/api/attractions?page="+Page)
-                Page=nextPage   
-                console.log(Page)
-            }
-        }
-    });   
-}
-let observer = new IntersectionObserver(fetchInfo, options);
-let target = document.getElementById("target");
-observer.observe(target);
 
 if (argsKeyword==undefined){
-    //載入畫面
-}
-else{
-    //關鍵字搜尋
-    document.addEventListener("DOMContentLoaded",()=>{
-        Page=0
-        Fetch("/api/attractions?page="+Page+"&keyword="+argsKeyword)
-    })
-    // 自動載入後續頁面
+    //一般載入畫面
     const options = {
         root: null,
         rootMargin: "0px 0px 0px 0px",
         threshold: [1]
     }
-    Page = 1;
     let fetchInfo = ()=>{
-        Fetch("/api/attractions?page="+Page+"&keyword="+argsKeyword)
-        if (nextPage==null){
-            observer.disconnect();
+        if (Page==null){
+                observer.unobserve(target)
+                alert("已經沒有資料了喔")
+            }
+        else {
+            Fetch("/api/attractions?page="+Page)
+        }
+    }
+    let observer = new IntersectionObserver(fetchInfo, options);
+    let target = document.getElementById("target");
+    observer.observe(target);    
+}
+else{
+    //關鍵字搜尋
+    const options = {
+        root: null,
+        rootMargin: "0px 0px 0px 0px",
+        threshold: [1]
+    }
+    let fetchInfo = ()=>{
+        if (Page==null){
+            observer.unobserve(target)
+            alert("已經沒有資料了喔")
         }
         else{
-            Page=nextPage;
+            Fetch("/api/attractions?page="+Page+"&keyword="+argsKeyword)
         }
     }
     let observer = new IntersectionObserver(fetchInfo, options);

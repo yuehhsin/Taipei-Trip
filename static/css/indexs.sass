@@ -72,16 +72,29 @@ $gray50: #F8F8F8
 
 .container
   display: grid
+  positon: relative
   grid-template-rows: 54px 320px auto 55px 104px
   grid-template-columns: auto minmax(auto,1200px) auto 
   grid-template-areas:  ". B1 ." "B2 B2 B2" ". B3 ."  "B4 B4 B4" "B5 B5 B5"
 
 .header
   grid-area: B1
-  display: flex
-  justify-content: space-between
-  align-items: center
+  width: 100%
+  height: 54px
+  position: fixed
+  background-color: #FFFFFF
+  top: 0px
+  right: 0px 
+  +getcenter
+  z-index: 100
+
+  & .box1200
+    width: 1200px
+    display: flex
+    justify-content: space-between
+    align-items: center
   & .title
+    // position: fixed
     @extend %header
     color: $cycan800
   & .menu
@@ -96,10 +109,11 @@ $gray50: #F8F8F8
 .KV
   grid-area: B2
   background: linear-gradient(135deg,$cycan100 0%,$cycan700 100%)
+  position: relative
   & .KV-image
     position: absolute
     right: 232px
-    background-image: url("/static/image/welcome 1.png")
+    background-image: url("static/image/welcome 1 .png")
     background-size: cover
     +size(650px,320px)
 
@@ -176,7 +190,6 @@ $gray50: #F8F8F8
 #target
   grid-area: B4
   height: 55px
-  background-color: red
 
 .footer
   grid-area: B5
@@ -187,6 +200,49 @@ $gray50: #F8F8F8
   & .copyright
     @extend %body_B
     color: #FFFFFF
+
+
+@media (max-width: 360px)
+  .title
+    margin-left: 10px
+  .menu
+    margin-right: 10px
+  .slogan1
+    margin-left: 20px
+  .slogan2
+    margin-left: 20px
+  .input
+    margin-left: 20px
+    width: 230px !important
+    background-color: black
+  #content
+    grid-gap: 15px
+    padding-left: 20px
+    padding-right: 18px
+  .container
+    grid-template-rows: 54px 280px auto 55px 104px
+  .KV-image
+    background-image: url("static/image/welcome 2.png") !important
+    width: 212px !important
+    height: 148px !important
+
+@media (max-width: 1200px)
+  #content
+    padding-left: 30px
+    padding-right: 30px
+  .slogan1
+    margin-left: 30px
+  .slogan2
+    margin-left: 30px
+  .title
+    margin-left: 30px
+  .menu
+    margin-right: 30px
+  .input
+    margin-left: 30px
+  .KV-image
+    right: 0px !important
+    bottom: 0px !important  
 
 
 

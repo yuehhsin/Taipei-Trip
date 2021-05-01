@@ -32,6 +32,7 @@
 .container {
   display: -ms-grid;
   display: grid;
+  positon: relative;
   -ms-grid-rows: 54px 320px auto 55px 104px;
       grid-template-rows: 54px 320px auto 55px 104px;
   -ms-grid-columns: auto minmax(auto, 1200px) auto;
@@ -43,6 +44,26 @@
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: B1;
+  width: 100%;
+  height: 54px;
+  position: fixed;
+  background-color: #FFFFFF;
+  top: 0px;
+  right: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 100;
+}
+
+.header .box1200 {
+  width: 1200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,12 +99,13 @@
   -ms-grid-column-span: 3;
   grid-area: B2;
   background: linear-gradient(135deg, #AADDEE 0%, #66AABB 100%);
+  position: relative;
 }
 
 .KV .KV-image {
   position: absolute;
   right: 232px;
-  background-image: url("/static/image/welcome 1.png");
+  background-image: url("static/image/welcome 1 .png");
   background-size: cover;
   width: 650px;
   height: 320px;
@@ -218,7 +240,6 @@
   -ms-grid-column-span: 3;
   grid-area: B4;
   height: 55px;
-  background-color: red;
 }
 
 .footer {
@@ -240,5 +261,65 @@
 
 .footer .copyright {
   color: #FFFFFF;
+}
+
+@media (max-width: 360px) {
+  .title {
+    margin-left: 10px;
+  }
+  .menu {
+    margin-right: 10px;
+  }
+  .slogan1 {
+    margin-left: 20px;
+  }
+  .slogan2 {
+    margin-left: 20px;
+  }
+  .input {
+    margin-left: 20px;
+    width: 230px !important;
+    background-color: black;
+  }
+  #content {
+    grid-gap: 15px;
+    padding-left: 20px;
+    padding-right: 18px;
+  }
+  .container {
+    -ms-grid-rows: 54px 280px auto 55px 104px;
+        grid-template-rows: 54px 280px auto 55px 104px;
+  }
+  .KV-image {
+    background-image: url("static/image/welcome 2.png") !important;
+    width: 212px !important;
+    height: 148px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  #content {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .slogan1 {
+    margin-left: 30px;
+  }
+  .slogan2 {
+    margin-left: 30px;
+  }
+  .title {
+    margin-left: 30px;
+  }
+  .menu {
+    margin-right: 30px;
+  }
+  .input {
+    margin-left: 30px;
+  }
+  .KV-image {
+    right: 0px !important;
+    bottom: 0px !important;
+  }
 }
 /*# sourceMappingURL=indexs.css.map */
