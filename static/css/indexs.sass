@@ -164,6 +164,7 @@ $gray50: #F8F8F8
     & .attImage
       grid-area: 1/1/2/3
       background-color: $gray800
+      border-radius: 5px 5px 0px 0px
     & .attName
       @extend %body_B
       grid-area: 2/1/3/3
@@ -201,8 +202,33 @@ $gray50: #F8F8F8
     @extend %body_B
     color: #FFFFFF
 
+@media (max-width: 1200px)
+  #content
+    padding-left: 30px
+    padding-right: 30px
+  .slogan1
+    margin-left: 30px
+  .slogan2
+    margin-left: 30px
+  .title
+    margin-left: 30px
+  .menu
+    margin-right: 30px
+  .input
+    margin-left: 30px
+    width: 300px !important
+  .KV-image
+    right: 0px !important
+    bottom: 0px !important  
 
-@media (max-width: 360px)
+@media (max-width: 770px)
+  .KV-image
+    background-image: url("/static/image/welcome_2.png") !important
+    width: 424px !important
+    height: 296px !important
+
+ 
+@media (max-width: 430px)
   .title
     margin-left: 10px
   .menu
@@ -222,27 +248,12 @@ $gray50: #F8F8F8
   .container
     grid-template-rows: 54px 280px auto 55px 104px
   .KV-image
-    background-image: url("/static/image/welcome_2.png") !important
+    background-image: url("/static/image/welcome_3.png") !important
     width: 212px !important
     height: 148px !important
 
-@media (max-width: 1200px)
-  #content
-    padding-left: 30px
-    padding-right: 30px
-  .slogan1
-    margin-left: 30px
-  .slogan2
-    margin-left: 30px
-  .title
-    margin-left: 30px
-  .menu
-    margin-right: 30px
-  .input
-    margin-left: 30px
-  .KV-image
-    right: 0px !important
-    bottom: 0px !important  
+
+
 
 
 

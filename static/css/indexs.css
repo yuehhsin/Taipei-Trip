@@ -197,6 +197,7 @@
   -ms-grid-column-span: 2;
   grid-area: 1/1/2/3;
   background-color: #666666;
+  border-radius: 5px 5px 0px 0px;
 }
 
 #content .attraction .attName {
@@ -263,7 +264,42 @@
   color: #FFFFFF;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 1200px) {
+  #content {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .slogan1 {
+    margin-left: 30px;
+  }
+  .slogan2 {
+    margin-left: 30px;
+  }
+  .title {
+    margin-left: 30px;
+  }
+  .menu {
+    margin-right: 30px;
+  }
+  .input {
+    margin-left: 30px;
+    width: 300px !important;
+  }
+  .KV-image {
+    right: 0px !important;
+    bottom: 0px !important;
+  }
+}
+
+@media (max-width: 770px) {
+  .KV-image {
+    background-image: url("/static/image/welcome_2.png") !important;
+    width: 424px !important;
+    height: 296px !important;
+  }
+}
+
+@media (max-width: 430px) {
   .title {
     margin-left: 10px;
   }
@@ -291,35 +327,9 @@
         grid-template-rows: 54px 280px auto 55px 104px;
   }
   .KV-image {
-    background-image: url("/static/image/welcome_2.png") !important;
+    background-image: url("/static/image/welcome_3.png") !important;
     width: 212px !important;
     height: 148px !important;
-  }
-}
-
-@media (max-width: 1200px) {
-  #content {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  .slogan1 {
-    margin-left: 30px;
-  }
-  .slogan2 {
-    margin-left: 30px;
-  }
-  .title {
-    margin-left: 30px;
-  }
-  .menu {
-    margin-right: 30px;
-  }
-  .input {
-    margin-left: 30px;
-  }
-  .KV-image {
-    right: 0px !important;
-    bottom: 0px !important;
   }
 }
 /*# sourceMappingURL=indexs.css.map */
