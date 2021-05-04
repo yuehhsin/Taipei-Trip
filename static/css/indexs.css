@@ -23,21 +23,10 @@
   line-height: 13.3px;
 }
 
-#content .attraction .attName, .footer .copyright {
+.footer .copyright, #content .attraction .attName {
   font-size: 16px;
   font-weight: 700;
   line-height: 23.17px;
-}
-
-.container {
-  display: -ms-grid;
-  display: grid;
-  positon: relative;
-  -ms-grid-rows: 54px 320px auto 55px 104px;
-      grid-template-rows: 54px 320px auto 55px 104px;
-  -ms-grid-columns: auto minmax(auto, 1200px) auto;
-      grid-template-columns: auto minmax(auto, 1200px) auto;
-      grid-template-areas: ". B1 ." "B2 B2 B2" ". B3 ."  "B4 B4 B4" "B5 B5 B5";
 }
 
 .header {
@@ -91,6 +80,38 @@
   display: -ms-flexbox;
   display: flex;
   margin-left: 20px;
+}
+
+.footer {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: B5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #757575;
+}
+
+.footer .copyright {
+  color: #FFFFFF;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  positon: relative;
+  -ms-grid-rows: 54px 320px auto 55px 104px;
+      grid-template-rows: 54px 320px auto 55px 104px;
+  -ms-grid-columns: auto minmax(auto, 1200px) auto;
+      grid-template-columns: auto minmax(auto, 1200px) auto;
+      grid-template-areas: ". B1 ." "B2 B2 B2" ". B3 ."  "B4 B4 B4" "B5 B5 B5";
 }
 
 .KV {
@@ -243,27 +264,6 @@
   height: 55px;
 }
 
-.footer {
-  -ms-grid-row: 5;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: B5;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #757575;
-}
-
-.footer .copyright {
-  color: #FFFFFF;
-}
-
 @media (max-width: 1200px) {
   #content {
     padding-left: 30px;
@@ -322,7 +322,7 @@
     padding-left: 20px;
     padding-right: 18px;
   }
-  .container {
+  body {
     -ms-grid-rows: 54px 280px auto 55px 104px;
         grid-template-rows: 54px 280px auto 55px 104px;
   }

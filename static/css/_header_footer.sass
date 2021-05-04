@@ -1,0 +1,36 @@
+////// header bar //////
+.header
+  grid-area: B1
+  width: 100%
+  height: 54px
+  position: fixed
+  background-color: #FFFFFF
+  top: 0px
+  right: 0px 
+  +getcenter
+  z-index: 100
+  & .box1200
+    width: 1200px
+    display: flex
+    justify-content: space-between
+    align-items: center
+  & .title
+    // position: fixed
+    @extend %header
+    color: $cyan800
+  & .menu
+    @extend %body
+    color: $gray800
+    display: flex
+    & .menuBTN
+      display: flex
+      margin-left: 20px
+
+////// footer bar //////
+.footer
+  grid-area: B5
+  +getcenter
+  background: $gray700
+  & .copyright
+    @extend %body_B
+    color: #FFFFFF

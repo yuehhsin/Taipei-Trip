@@ -1,0 +1,96 @@
+@import "general"
+@import "header_footer"
+
+
+////// container grid //////
+.container
+  display: grid
+  positon: relative
+  grid-template-rows: 54px 37px minmax(auto,406px) auto auto 224px
+  grid-template-columns: auto minmax(auto,540px) minmax(auto,600px) auto 
+  grid-template-areas:  ". B1 B1." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "B5 B5 B5 B5"
+
+.attImage
+    grid-area: B2
+    height: 100%
+    width: 100%
+    background-color: black
+    border-radius: 5px
+
+.title
+    @extend %body_B
+    margin-left: 20px
+
+.attInfo
+    grid-area: B3
+    color: $gray800
+    & #attName
+        @extend %header
+        margin-left: 30px
+        margin-bottom: 20px
+    & #attType
+        @extend %body
+        margin-left: 30px
+        margin-bottom: 20px
+    & .tourBox
+        background-color: $gray300
+        margin-left: 30px
+        padding-top: 15px
+        padding-bottom: 41px
+        border-radius: 5px
+        & .tourTitle
+            margin-top: 15px
+            margin-bottom: 15px
+        & .tourContent
+            margin-left: 20px
+        & .selTitle
+            margin-right: 5px
+        & .date
+            height: 35px
+        & .flexBox
+            display: flex
+            align-items: center
+            margin-top: 15px
+            margin-bottom: 15px
+            & .am ,.pm
+                display: flex
+                align-items: center
+            & .selBTN
+                +size(22px,22px)
+                +getcenter
+                background-color: #FFFFFF
+                border-radius: 100%
+ 
+        & .tourCTA
+            +CTA(154px,36px)
+            margin-left: 20px
+            margin-top: 25px
+            & .CTAtext
+                @extend %button
+        & #selctedBTN
+            // margin-left: 18px
+            // margin-right: 4px
+            +size(18px,18px)
+            border-radius: 100%
+            background-color: $cyan800
+hr
+    grid-area: hr
+    margin-top: 41px
+    margin-bottom: 50px
+    border: 1px solid $gray300
+
+
+.contents
+    grid-area: B4
+    & .item
+        @extend %body_B
+        color: $gray800
+        padding-top: 6px
+        padding-bottom: 6px
+    & .content
+        color: $gray800
+        @extend %content
+        margin-bottom: 20px
+
+.footer
+  margin-top: 120px
