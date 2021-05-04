@@ -118,14 +118,32 @@
       grid-template-areas: ". B1 B1." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "B5 B5 B5 B5";
 }
 
-.attImage {
+#attImage {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: B2;
+  position: relative;
   height: 100%;
   width: 100%;
-  background-color: black;
   border-radius: 5px;
+}
+
+#attImage #backImageBTN {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 185px;
+  left: 10px;
+  background-image: url("/static/icon/btn_leftArrow.png");
+}
+
+#attImage #nextImageBTN {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 185px;
+  right: 10px;
+  background-image: url("/static/icon/btn_rightArrow.png");
 }
 
 .title {

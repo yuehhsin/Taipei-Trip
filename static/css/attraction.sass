@@ -10,13 +10,24 @@
   grid-template-columns: auto minmax(auto,540px) minmax(auto,600px) auto 
   grid-template-areas:  ". B1 B1." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "B5 B5 B5 B5"
 
-.attImage
+#attImage
     grid-area: B2
+    position: relative
     height: 100%
     width: 100%
-    background-color: black
     border-radius: 5px
-
+    & #backImageBTN
+        +size(36px,36px)
+        position: absolute
+        top: 185px
+        left: 10px
+        background-image: url("/static/icon/btn_leftArrow.png")
+    & #nextImageBTN
+        +size(36px,36px)
+        position: absolute
+        top: 185px
+        right: 10px
+        background-image: url("/static/icon/btn_rightArrow.png")
 .title
     @extend %body_B
     margin-left: 20px
