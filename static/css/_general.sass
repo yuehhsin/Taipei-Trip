@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap')
+
+*
+  padding: 0px
+  margin: 0px
+  // border: 1px solid black
+  font-family: 'Noto Sans', sans-serif
+  font-size: 16px
+
+////// guide: typography //////
+%sloganTitle
+  font-size: 30px
+  font-weight: 700
+  line-height: 34px
+
+%header
+  font-size: 24px
+  font-weight: 700
+  line-height: 24px 
+
+%dialogTitle
+  font-size: 30px
+  line-height: 34px
+%dialogTitle_B
+  font-size: 30px
+  font-weight: 700
+  line-height: 34px
+
+%button
+  font-size: 19px
+  line-height: 16px
+
+%button_B
+  font-size: 19px
+  font-weight: 700
+  line-height: 16px
+
+%content
+  font-size: 16px
+  line-height: 23.17px
+%content_B
+  font-size: 16px
+  font-weight: 700
+  line-height: 23.17px
+
+%body
+  font-size: 16px
+  line-height: 13.3px
+%body_B
+  font-size: 16px
+  font-weight: 700
+  line-height: 23.17px
+
+////// guide: colors //////
+$cyan800: #448899
+$cyan700: #66AABB
+$cyan100: #AADDEE
+
+$gray800: #666666
+$gray700: #757575
+$gray300: #E8E8E8
+$gray50: #F8F8F8
+
+////// mixin: size //////
+@mixin size($width,$height)
+	width: $width
+	height: $height
+////// mixin: center //////
+@mixin getcenter()
+  display: flex
+  justify-content: center
+  align-items: center
+
+////// mixin: CTA //////
+@mixin CTA($W,$H)
+  +size($W,$H)
+  +getcenter
+  color: #FFFFFF
+  background-color: $cyan800
+  border-radius: 5px
+
+
+

@@ -3,7 +3,8 @@ from flask import *
 app=Flask(__name__)
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
-app.config['JSON_SORT_KEYS'] = False
+app.config["JSON_SORT_KEYS"] = False
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
 #### connect MySQL ###
 mydb=mysql.connector.connect(
@@ -15,6 +16,7 @@ mydb=mysql.connector.connect(
 )
 cursor = mydb.cursor()
 cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
+
 lengthData = int(cursor.fetchone()[0]) #資料總長度:lengthData
 
 ### Pages ###
@@ -36,7 +38,7 @@ def thankyou():
 def getAttBYPageKeyword():
 	page_args = request.args.get("page") #取得前端參數:page
 	keyword = request.args.get("keyword") #取得前端參數:keyword
-	# 定義函式:處理資料查詢
+	### function:處理資料查詢 ###
 	def result(resultData):
 		image_list = resultData[9].split(",")
 		image_list.pop(-1) #刪掉多餘的物件
@@ -83,6 +85,7 @@ def getAttBYPageKeyword():
 				cursor.execute(f'SELECT COUNT(*) FROM taipei_attractions WHERE name LIKE "%{keyword}%" OR category LIKE "%{keyword}%" OR description LIKE "%{keyword}%" OR address LIKE "%{keyword}%" OR mrt LIKE "%{keyword}%"')
 				search_length = cursor.fetchone()
 				searches = search_length[0]
+				# lengthData = int(cursor.fetchone()[0]) #資料總長度:lengthData
 				search_page = searches//12-1
 				begin = page*12
 				if searches%12!=0 and page==search_page+1 : #最後一頁
@@ -99,7 +102,12 @@ def getAttBYPageKeyword():
 				resultall = cursor.fetchall()
 				for resultData in resultall:
 					result(resultData)
-				nextPage(page)
+				# nextPage(page)
+				if page==searches//12:
+					nextpage.append(None) 
+				else:
+					nextpage.append(page+1)
+				
 			result = {
 				"nextPage": nextpage[0],
 				"data": data_list
