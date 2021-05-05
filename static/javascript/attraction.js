@@ -4,10 +4,9 @@ let selPM = document.getElementById("selPM")
 let tourPrice = document.getElementById("tourPrice")
 let selectedAM = false;
 let selectedPM = false;
+let imageId = 0;
 
 function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport){
-    document.getElementsByClassName("attImage");
-
     let ATTname = document.getElementById("attName"); //name
     let name = document.createTextNode(attName);
     ATTname.appendChild(name);
@@ -34,7 +33,7 @@ function getData(){
         return response.json()
     }))
     .then((data)=>{
-        let attImage = data["data"]["images"]
+        attImage = data["data"]["images"]
         let attName = data["data"]["name"]
         let attCategory = data["data"]["category"]
         let attMrt = data["data"]["mrt"]
@@ -42,9 +41,16 @@ function getData(){
         let attAddress = data["data"]["address"]
         let attTransport = data["data"]["transport"]
         randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport)
+        renderImage(attImage)
     })
 }
 
+function renderImage(attImage){
+    let ATTimage = document.getElementById("attImage");
+    let image = attImage[imageId];
+    ATTimage.style.backgroundImage="url"+"("+image+")";
+    ATTimage.style.backgroundSize="cover";
+}
 function selBTN(selBTN){
     let selcted = document.createElement("div")
     selcted.id="selctedBTN"
@@ -54,13 +60,28 @@ function cancelBTN(selBTN){
     let selected = document.getElementById("selctedBTN")
     selBTN.removeChild(selected)
 }
-//EVENT: LOAD
+
+function backImageBTN(){
+    if (imageId-1>=0){
+        imageId+=-1;
+    }
+    renderImage(attImage)
+}
+function nextImageBTN(){
+    console.log(imageId)
+    if (imageId+1<attImage.length){
+        imageId+=1;
+    }
+    renderImage(attImage)
+}
+
+
+//EVENT: 初始載入畫面
 addEventListener("load",(e)=>{
     getData()
 })
 
-//EVENT: CLICK(selBTN)
-
+//EVENT: 點擊早上/下午BTN
 function AMprice(){
     let amPrice = document.createTextNode("新台幣2000元")
     tourPrice.innerHTML=""
@@ -71,7 +92,6 @@ function PMprice(){
     tourPrice.innerHTML=""
     tourPrice.appendChild(pmPrice)
 }
-
 selAM.addEventListener("click",(e)=>{  //sel AM
     if (selectedAM===false & selectedPM===false){
         selBTN(selAM);
@@ -102,4 +122,5 @@ selPM.addEventListener("click",(e)=>{   //sel PM
         PMprice()
     }
 })
+
 

@@ -1,50 +1,61 @@
 @import "general"
 @import "header_footer"
 
-
 ////// container grid //////
 .container
   display: grid
   positon: relative
   grid-template-rows: 54px 37px minmax(auto,406px) auto auto 224px
-  grid-template-columns: auto minmax(auto,540px) minmax(auto,600px) auto 
-  grid-template-areas:  ". B1 B1." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "B5 B5 B5 B5"
+  grid-template-columns: minmax(20px,auto) minmax(auto,540px) minmax(auto,600px) minmax(20px,auto)
+  grid-template-areas:  ". B1 B1 ." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "B5 B5 B5 B5"
 
-.attImage
+#attImage
     grid-area: B2
+    position: relative
     height: 100%
     width: 100%
-    background-color: black
     border-radius: 5px
-
-.title
-    @extend %body_B
-    margin-left: 20px
+    & #backImageBTN
+        +size(36px,36px)
+        position: absolute
+        top: 185px
+        left: 10px
+        background-image: url("/static/icon/btn_leftArrow.png")
+    & #nextImageBTN
+        +size(36px,36px)
+        position: absolute
+        top: 185px
+        right: 10px
+        background-image: url("/static/icon/btn_rightArrow.png")
 
 .attInfo
     grid-area: B3
     color: $gray800
+    & .infoBox
+        position: relative
+        padding-left: 30px
     & #attName
         @extend %header
-        margin-left: 30px
+        margin-left: 20px
         margin-bottom: 20px
     & #attType
         @extend %body
-        margin-left: 30px
+        margin-left: 20px
         margin-bottom: 20px
     & .tourBox
         background-color: $gray300
-        margin-left: 30px
         padding-top: 15px
         padding-bottom: 41px
         border-radius: 5px
         & .tourTitle
-            margin-top: 15px
-            margin-bottom: 15px
+            margin: 15px auto 15px 20px 
+            @extend %body_B
         & .tourContent
-            margin-left: 20px
+            margin: 0px auto 15px 20px
         & .selTitle
-            margin-right: 5px
+            margin-right: 3px
+            margin-left: 20px
+            @extend %body_B
         & .date
             height: 35px
         & .flexBox
@@ -60,7 +71,8 @@
                 +getcenter
                 background-color: #FFFFFF
                 border-radius: 100%
- 
+                margin-right: 5px
+                margin-left: 10px
         & .tourCTA
             +CTA(154px,36px)
             margin-left: 20px
@@ -79,7 +91,6 @@ hr
     margin-bottom: 50px
     border: 1px solid $gray300
 
-
 .contents
     grid-area: B4
     & .item
@@ -92,5 +103,21 @@ hr
         @extend %content
         margin-bottom: 20px
 
-.footer
-  margin-top: 120px
+////// RWD //////
+@media (max-width: 720px)
+    .header
+        padding-left: 10px
+        padding-right: 10px
+    #attImage
+        border-radius: 0px
+    .container
+        grid-template-rows: 54px 37px minmax(auto,350px) auto 90px auto 224px
+        grid-template-columns: 15px auto 15px
+        grid-template-areas:  "B1 B1 B1" ". . ." "B2 B2 B2" ". B3 ." ". hr ." ". B4 ." "B5 B5 B5"
+    .infoBox
+        padding: 0px !important
+        margin-top: 20px
+
+@media (max-width: 360px)
+    .container
+        grid-template-columns: 5px auto 5px

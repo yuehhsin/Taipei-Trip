@@ -20,6 +20,9 @@ function Fetch(url){
             for (let i=0;i<12;i++){
                 let newAtt = document.createElement("div"); //new div(attraction)
                 newAtt.className="attraction";
+                newAtt.onclick=()=>{
+                    window.location.href="/attraction/"+jsonData["data"][i]["id"];
+                }
 
                 let attName = document.createElement("div"); //name
                 attName.className="attName";
@@ -77,6 +80,10 @@ if (argsKeyword==undefined){
     let observer = new IntersectionObserver(fetchInfo, options);
     let target = document.getElementById("target");
     observer.observe(target);    
+
+    let test = document.getElementById("1")
+    console.log(test)
+
 }
 else{
     //關鍵字搜尋
