@@ -6,13 +6,12 @@
 </head>
 <body>
     <div class="container">
+        <div class="line"></div>
         <div class="header">
-            <div class="box1200">
-                <div class="title">台北一日遊</div>
-                <div class="menu">
-                    <div class="menuBTN">預定行程</div>
-                    <div class="menuBTN">登入/註冊</div>
-                </div>
+            <div class="title">台北一日遊</div>
+            <div class="menu">
+                <div class="menuBTN">預定行程</div>
+                <div class="menuBTN">登入/註冊</div>
             </div>
         </div>
         <div id="attImage">
@@ -20,32 +19,34 @@
             <div id="nextImageBTN" onclick=nextImageBTN()></div>
         </div>
         <div class="attInfo">
-            <div id="attName"></div>
-            <div id="attType"></div>
-            <div class="tourBox">
-                <div class="title tourTitle">訂購導覽行程</div>
-                <div class="content tourContent">以此景點為中心的一日行程，帶您探索城市角落故事</div>
-                <div class="flexBox">
-                    <div class="title selTitle">選擇日期：</div>
-                    <input type="date" class="date">
-                </div>
-                <div class="flexBox">
-                    <div class="title selTitle">選擇時間：</div>
-                    <div class="am">
-                        <div class="selBTN" id="selAM"></div>
-                        <div class="content">上半天</div>
+            <div class="infoBox">
+                <div id="attName"></div>
+                <div id="attType"></div>
+                <div class="tourBox">
+                    <div class="tourTitle">訂購導覽行程</div>
+                    <div class="tourContent">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+                    <div class="flexBox">
+                        <div class="selTitle">選擇日期：</div>
+                        <input type="date" class="date">
                     </div>
-                    <div class="pm">
-                        <div class="selBTN" id="selPM"></div>
-                        <div class="content">下半天</div>
+                    <div class="flexBox">
+                        <div class="selTitle">選擇時間：</div>
+                        <div class="am">
+                            <div class="selBTN" id="selAM"></div>
+                            <div class="content">上半天</div>
+                        </div>
+                        <div class="pm">
+                            <div class="selBTN" id="selPM"></div>
+                            <div class="content">下半天</div>
+                        </div>
                     </div>
-                </div>
-                <div class="flexBox">
-                    <div class="title selTitle">導覽費用：</div>
-                    <div class="content" id="tourPrice">新台幣2000元</div>
-                </div>
-                <div class="tourCTA">
-                    <div class="CATtext">開始預定行程</div>
+                    <div class="flexBox">
+                        <div class="selTitle">導覽費用：</div>
+                        <div class="content" id="tourPrice">新台幣2000元</div>
+                    </div>
+                    <div class="tourCTA">
+                        <div class="CATtext">開始預定行程</div>
+                    </div>
                 </div>
             </div>
         </div>

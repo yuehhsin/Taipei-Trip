@@ -6,45 +6,56 @@
   font-size: 16px;
 }
 
-.header .title, .attInfo #attName {
+.header .title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 1px;
+}
+
+.attInfo #attName {
   font-size: 24px;
   font-weight: 700;
   line-height: 24px;
+  letter-spacing: 1px;
 }
 
 .attInfo .tourBox .tourCTA .CTAtext {
   font-size: 19px;
   line-height: 16px;
+  letter-spacing: 1px;
 }
 
 .contents .content {
   font-size: 16px;
   line-height: 23.17px;
+  letter-spacing: 1px;
 }
 
 .header .menu, .attInfo #attType {
   font-size: 16px;
   line-height: 13.3px;
+  letter-spacing: 1px;
 }
 
-.footer .copyright, .title, .contents .item {
+.footer .copyright, .attInfo .tourBox .tourTitle, .attInfo .tourBox .selTitle, .contents .item {
   font-size: 16px;
   font-weight: 700;
   line-height: 23.17px;
+  letter-spacing: 1px;
 }
 
 .header {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
   grid-area: B1;
-  width: 100%;
-  height: 54px;
-  position: fixed;
-  background-color: #FFFFFF;
-  top: 0px;
-  right: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: flex;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -52,20 +63,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 100;
-}
-
-.header .box1200 {
-  width: 1200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  background-color: #FFFFFF;
+  z-index: 9999;
 }
 
 .header .title {
@@ -73,17 +75,21 @@
 }
 
 .header .menu {
-  color: #666666;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  color: #666666;
 }
 
 .header .menu .menuBTN {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   margin-left: 20px;
+}
+
+.line {
+  position: fixed;
+  width: 100%;
+  height: 54px;
+  border-bottom: 1px solid #E8E8E8;
 }
 
 .footer {
@@ -101,6 +107,7 @@
       -ms-flex-align: center;
           align-items: center;
   background: #757575;
+  margin-top: 120px;
 }
 
 .footer .copyright {
@@ -113,9 +120,9 @@
   positon: relative;
   -ms-grid-rows: 54px 37px minmax(auto, 406px) auto auto 224px;
       grid-template-rows: 54px 37px minmax(auto, 406px) auto auto 224px;
-  -ms-grid-columns: auto minmax(auto, 540px) minmax(auto, 600px) auto;
-      grid-template-columns: auto minmax(auto, 540px) minmax(auto, 600px) auto;
-      grid-template-areas: ". B1 B1." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "B5 B5 B5 B5";
+  -ms-grid-columns: minmax(20px, auto) minmax(auto, 540px) minmax(auto, 600px) minmax(20px, auto);
+      grid-template-columns: minmax(20px, auto) minmax(auto, 540px) minmax(auto, 600px) minmax(20px, auto);
+      grid-template-areas: ". B1 B1 ." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "B5 B5 B5 B5";
 }
 
 #attImage {
@@ -146,10 +153,6 @@
   background-image: url("/static/icon/btn_rightArrow.png");
 }
 
-.title {
-  margin-left: 20px;
-}
-
 .attInfo {
   -ms-grid-row: 3;
   -ms-grid-column: 3;
@@ -157,35 +160,39 @@
   color: #666666;
 }
 
+.attInfo .infoBox {
+  position: relative;
+  padding-left: 30px;
+}
+
 .attInfo #attName {
-  margin-left: 30px;
+  margin-left: 20px;
   margin-bottom: 20px;
 }
 
 .attInfo #attType {
-  margin-left: 30px;
+  margin-left: 20px;
   margin-bottom: 20px;
 }
 
 .attInfo .tourBox {
   background-color: #E8E8E8;
-  margin-left: 30px;
   padding-top: 15px;
   padding-bottom: 41px;
   border-radius: 5px;
 }
 
 .attInfo .tourBox .tourTitle {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin: 15px auto 15px 20px;
 }
 
 .attInfo .tourBox .tourContent {
-  margin-left: 20px;
+  margin: 0px auto 15px 20px;
 }
 
 .attInfo .tourBox .selTitle {
-  margin-right: 5px;
+  margin-right: 3px;
+  margin-left: 20px;
 }
 
 .attInfo .tourBox .date {
@@ -226,6 +233,8 @@
           align-items: center;
   background-color: #FFFFFF;
   border-radius: 100%;
+  margin-right: 5px;
+  margin-left: 10px;
 }
 
 .attInfo .tourBox .tourCTA {
@@ -282,7 +291,31 @@ hr {
   margin-bottom: 20px;
 }
 
-.footer {
-  margin-top: 120px;
+@media (max-width: 720px) {
+  .header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #attImage {
+    border-radius: 0px;
+  }
+  .container {
+    -ms-grid-rows: 54px 37px minmax(auto, 350px) auto 90px auto 224px;
+        grid-template-rows: 54px 37px minmax(auto, 350px) auto 90px auto 224px;
+    -ms-grid-columns: 15px auto 15px;
+        grid-template-columns: 15px auto 15px;
+        grid-template-areas: "B1 B1 B1" ". . ." "B2 B2 B2" ". B3 ." ". hr ." ". B4 ." "B5 B5 B5";
+  }
+  .infoBox {
+    padding: 0px !important;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    -ms-grid-columns: 5px auto 5px;
+        grid-template-columns: 5px auto 5px;
+  }
 }
 /*# sourceMappingURL=attraction.css.map */

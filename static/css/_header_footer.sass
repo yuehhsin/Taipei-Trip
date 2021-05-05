@@ -1,36 +1,33 @@
 ////// header bar //////
 .header
-  grid-area: B1
-  width: 100%
-  height: 54px
-  position: fixed
-  background-color: #FFFFFF
-  top: 0px
-  right: 0px 
-  +getcenter
-  z-index: 100
-  & .box1200
-    width: 1200px
+    grid-area: B1
+    position: sticky
+    top: 0
     display: flex
+    +getcenter()
     justify-content: space-between
-    align-items: center
-  & .title
-    // position: fixed
-    @extend %header
-    color: $cyan800
-  & .menu
-    @extend %body
-    color: $gray800
-    display: flex
-    & .menuBTN
-      display: flex
-      margin-left: 20px
+    background-color: #FFFFFF
+    z-index: 9999
+    & .title
+        @extend %sloganTitle
+        color: $cyan800
+    & .menu
+        display: flex
+        @extend %body
+        color: $gray800
+        & .menuBTN
+            margin-left: 20px
+.line
+  position: fixed
+  +size(100%,54px)
+  border-bottom: 1px solid $gray300
 
 ////// footer bar //////
 .footer
   grid-area: B5
   +getcenter
   background: $gray700
+  margin-top: 120px
   & .copyright
     @extend %body_B
     color: #FFFFFF
