@@ -21,12 +21,30 @@
         top: 185px
         left: 10px
         background-image: url("/static/icon/btn_leftArrow.png")
+        &:hover
+            cursor: pointer
     & #nextImageBTN
         +size(36px,36px)
         position: absolute
         top: 185px
         right: 10px
         background-image: url("/static/icon/btn_rightArrow.png")
+        &:hover
+            cursor: pointer
+    & .imageDot
+        +getcenter
+        position: absolute
+        width: 100%
+        bottom: 8px
+        // border: 1px solid red
+        & .dot
+            background-color: $gray300
+            border-radius: 10px
+            +size(8px,8px)
+            margin-left: 4px
+            margin-right: 4px
+            &:hover
+                cursor: pointer
 
 .attInfo
     grid-area: B3

@@ -72,6 +72,11 @@
 
 .header .title {
   color: #448899;
+  text-decoration: none;
+}
+
+.header .title:hover {
+  color: #2B798C;
 }
 
 .header .menu {
@@ -146,6 +151,10 @@
   background-image: url("/static/icon/btn_leftArrow.png");
 }
 
+#attImage #backImageBTN:hover {
+  cursor: pointer;
+}
+
 #attImage #nextImageBTN {
   width: 36px;
   height: 36px;
@@ -153,6 +162,38 @@
   top: 185px;
   right: 10px;
   background-image: url("/static/icon/btn_rightArrow.png");
+}
+
+#attImage #nextImageBTN:hover {
+  cursor: pointer;
+}
+
+#attImage .imageDot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  bottom: 8px;
+}
+
+#attImage .imageDot .dot {
+  background-color: #E8E8E8;
+  border-radius: 10px;
+  width: 8px;
+  height: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+#attImage .imageDot .dot:hover {
+  cursor: pointer;
 }
 
 .attInfo {

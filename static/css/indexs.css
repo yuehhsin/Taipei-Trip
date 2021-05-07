@@ -52,6 +52,11 @@
 
 .header .title {
   color: #448899;
+  text-decoration: none;
+}
+
+.header .title:hover {
+  color: #2B798C;
 }
 
 .header .menu {
@@ -180,6 +185,11 @@
   border-radius: 0px 5px 5px 0px;
 }
 
+.KV-info #keyword_form .searchBTN:hover {
+  background-color: #2B798C;
+  cursor: pointer;
+}
+
 #content {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
@@ -202,6 +212,13 @@
       grid-template-columns: 50% 50%;
   -ms-grid-rows: 160px 41px 41px;
       grid-template-rows: 160px 41px 41px;
+  overflow: hidden;
+  opacity: 0.8;
+}
+
+#content .attraction:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 #content .attraction .attImage {

@@ -10,7 +10,7 @@ app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 mydb=mysql.connector.connect(
 	host="localhost",
 	user="root",
-	password="KElly_7991",
+	password="KElly7991",
 	database="gov_data",
 	charset="utf8",
 )
@@ -172,4 +172,4 @@ def handle_500(e):
 	}
 	return jsonify(error),500
 
-app.run(host="0.0.0.0",port=3000)
+app.run(host="0.0.0.0",port=3000,debug=True)
