@@ -4,15 +4,15 @@ import json,mysql.connector
 
 # 建立會員資訊(table:members)
 # CREATE table members(
-    # id BIGINT NOT NULL auto_increment,
-    # name VARCHAR(255) NOT NULL,
-    # email VARCHAR(255) NOT NULL,
-    # password VARCHAR(255) NOT NULL,
-    # time DATETIME NOT NULL DEFAULT NOW(),
-    # PRIMARY KEY ( id )
-    # )
+#     id BIGINT NOT NULL auto_increment,
+#     name VARCHAR(255) NOT NULL,
+#     email VARCHAR(255) NOT NULL,
+#     password VARCHAR(255) NOT NULL,
+#     time DATETIME NOT NULL DEFAULT NOW(),
+#     PRIMARY KEY ( id )
+#     )
 
-#建立風景資訊(table:taipei_attractions)
+# #建立風景資訊(table:taipei_attractions)
 # CREATE table taipei_attractions( 
 #     id INT AUTO_INCREMENT PRIMARY KEY,
 #     name VARCHAR(255),

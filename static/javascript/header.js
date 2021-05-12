@@ -165,7 +165,7 @@ signupForm.addEventListener("submit",(e)=>{
             signupDialog.appendChild(SUCCESS)
             signupDialog.style.height="345px"
             function newLogin(){
-                location.reload()
+                signinPage()
             }
             window.setTimeout(newLogin,1000)
         }
