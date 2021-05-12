@@ -86,7 +86,7 @@ signinForm.addEventListener("submit",(event)=>{
             if(jsonData["ok"]===true && signupError===false){
                 let OK = document.createElement("div")
                 OK.className="signOK"
-                let ok = document.createTextNode("登入成功:)")
+                let ok = document.createTextNode("登入成功~")
                 OK.appendChild(ok)
                 signinDialog.appendChild(OK)
                 signinDialog.style.height="285px"
@@ -117,6 +117,10 @@ signupForm.addEventListener("submit",(e)=>{
     let Email = document.forms["signupForm"]["email"].value;
     let Password = document.forms["signupForm"]["password"].value;
     let emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+    if (signError.length!=0){ 
+        signupDialog.removeChild(signError[0])
+        signupDialog.style.height="317px"
+    }
     function signupCheck(){    //確定資料是否都符合格式
         if(Name===""){
             let NAMEERROR = document.createElement("div")  //姓名不可為空
@@ -142,7 +146,7 @@ signupForm.addEventListener("submit",(e)=>{
             signupDialog.appendChild(PASSWORDERROR)
             signupDialog.style.height="345px"
         }
-        else{
+        else{  //註冊成功
             fetch("/api/user",{
                 method: "POST",
                 headers: new Headers({
@@ -154,6 +158,16 @@ signupForm.addEventListener("submit",(e)=>{
                     "password": Password,
                 })
             })
+            let SUCCESS = document.createElement("div")
+            SUCCESS.className="signupOK"
+            let successs = document.createTextNode("註冊成功~")
+            SUCCESS.appendChild(successs)
+            signupDialog.appendChild(SUCCESS)
+            signupDialog.style.height="345px"
+            function newLogin(){
+                location.reload()
+            }
+            window.setTimeout(newLogin,1000)
         }
     }
     signupCheck()

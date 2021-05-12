@@ -343,6 +343,13 @@
   color: #EB5757;
 }
 
+.signupOK {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  color: #27AE60;
+}
+
 .signinError {
   width: 100%;
   text-align: center;
@@ -421,19 +428,6 @@
   position: absolute;
   width: 100%;
   bottom: 8px;
-}
-
-#attImage .imageDot .dot {
-  background-color: #E8E8E8;
-  border-radius: 10px;
-  width: 8px;
-  height: 8px;
-  margin-left: 4px;
-  margin-right: 4px;
-}
-
-#attImage .imageDot .dot:hover {
-  cursor: pointer;
 }
 
 .attInfo {
