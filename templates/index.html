@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <head>
     <link href="/static/css/indexs.css" rel="stylesheet">
-    <title>Taipei Trip台北一日遊</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Taipei Trip台北一日遊</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="/static/icon/web_icon.png" />
 </head>
 <body>
+    <div id="signPOPUP">
+        <div id="grayBG" onclick=closeSignPOP()></div>
+        <div id="signinDialog">
+            <div class="dec"></div>
+            <div class="closeBTN" onclick=closeSignPOP()></div>
+            <div class="signTitle">登入會員帳號</div>
+            <form action="/" id="signinForm">
+                <input type="text" class="invisible" name="name" >
+                <input type="text" placeholder="輸入電子信箱" class="signInput" name="email">
+                <input type="text" placeholder="輸入密碼" class="signInput" name="password">
+                <button class="signinCTA">
+                    <div class="CTAcontent">登入帳戶</div>
+                </button>
+            </form>
+            <div class="note">還沒有帳戶？<span class="signupBTN" onclick=signupPage()>點此註冊</span></div>
+        </div>
+        <div id="signupDialog">
+            <div class="dec"></div>
+            <div class="closeBTN" onclick=closeSignPOP()></div>
+            <div class="signupTitle">註冊會員帳號</div>
+            <form action="/api/user" method="POST" id="signupForm">
+                <input type="text" placeholder="輸入姓名" class="signupInput" name="name" >
+                <input type="text" placeholder="輸入電子郵件" class="signupInput" name="email">
+                <input type="text" placeholder="輸入密碼" class="signupInput" name="password">
+                <button class="signupCTA">
+                    <div class="CTAcontent">登入帳戶</div>
+                </button>
+            </form>
+            <div class="signupNote">已經有帳戶了？<span class="signinBTN" onclick=signinPage()>點此登入</span></div>
+        </div>
+    </div>
     <div class="container">
         <div class="line"></div>
         <div class="header">
             <a href="/" class="title">台北一日遊</a>
             <div class="menu">
-                <div class="menuBTN">預定行程</div>
-                <div class="menuBTN">登入/註冊</div>
+                <div class="tourBTN">預定行程</div>
+                <div id="signBTN" onclick=signPage()>登入/註冊</div>
+                <div id="logoutBTN" onclick=logout()>登出</div>
             </div>
         </div>
         <div class="KV">
@@ -35,4 +68,5 @@
     </div>
 </body>
 <script src="static/javascript/index.js"></script>
+<script src="static/javascript/header.js"></script>
 

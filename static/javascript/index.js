@@ -60,7 +60,6 @@ function Fetch(url){
     }
 }
 
-
 if (argsKeyword==undefined){
     //一般載入畫面
     const options = {
@@ -80,10 +79,6 @@ if (argsKeyword==undefined){
     let observer = new IntersectionObserver(fetchInfo, options);
     let target = document.getElementById("target");
     observer.observe(target);    
-
-    let test = document.getElementById("1")
-    console.log(test)
-
 }
 else{
     //關鍵字搜尋
@@ -105,16 +100,6 @@ else{
     let target = document.getElementById("target");
     observer.observe(target);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

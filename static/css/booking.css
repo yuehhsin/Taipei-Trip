@@ -13,7 +13,7 @@
   letter-spacing: 1px;
 }
 
-#signinDialog .signTitle, #signupDialog .signupTitle, .attInfo #attName {
+#signinDialog .signTitle, #signupDialog .signupTitle {
   font-size: 24px;
   font-weight: 700;
   line-height: 24px;
@@ -21,26 +21,28 @@
   color: #666666;
 }
 
-#signinDialog .signinCTA .CTAcontent, #signupDialog .signupCTA .CTAcontent, .attInfo .tourBox .tourCTA .CTAtext {
+#signinDialog .signinCTA .CTAcontent, #signupDialog .signupCTA .CTAcontent, .confirm .confirmCAT .CTAcontent {
   font-size: 19px;
   line-height: 16px;
   letter-spacing: 1px;
 }
 
-.contents .content {
-  font-size: 16px;
-  line-height: 23.17px;
+.tour .tourHL, .contact .contactHL, .card .cardHL {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 16px;
   letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu, #signinDialog .note, #signupDialog .signupNote, .attInfo #attType {
+.header .menu, #signinDialog .note, #signupDialog .signupNote, input, .tour .tourContent, .contact .contactTitle, .card .cardTitle {
   font-size: 16px;
   line-height: 13.3px;
   letter-spacing: 1px;
   color: #666666;
 }
 
-.footer .copyright, .attInfo .tourBox .tourTitle, .attInfo .tourBox .selTitle, .contents .item {
+.footer .copyright, .tour .tourName, .tour .tourTitle, .contact .contactPS, .confirm .confirmTitle {
   font-size: 16px;
   font-weight: 700;
   line-height: 23.17px;
@@ -51,7 +53,6 @@
 .header {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
   grid-area: H;
   position: -webkit-sticky;
   position: sticky;
@@ -94,7 +95,6 @@
 }
 
 .header .menu #signBTN {
-  display: none;
   margin-left: 20px;
 }
 
@@ -104,7 +104,6 @@
 }
 
 .header .menu #logoutBTN {
-  display: none;
   margin-left: 20px;
 }
 
@@ -125,7 +124,7 @@
 .footer {
   -ms-grid-row: 6;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
+  -ms-grid-column-span: 3;
   grid-area: F;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -357,248 +356,134 @@
   color: #27AE60;
 }
 
-#signPOPUP {
-  display: none;
+.flexBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flexBox_L {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+input {
+  width: 200px;
+  height: 38px;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+}
+
+.BOX {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
 }
 
 .container {
   display: -ms-grid;
   display: grid;
-  positon: relative;
-  -ms-grid-rows: 54px 37px minmax(auto, 406px) auto auto 224px;
-      grid-template-rows: 54px 37px minmax(auto, 406px) auto auto 224px;
-  -ms-grid-columns: minmax(20px, auto) minmax(auto, 540px) minmax(auto, 600px) minmax(20px, auto);
-      grid-template-columns: minmax(20px, auto) minmax(auto, 540px) minmax(auto, 600px) minmax(20px, auto);
-      grid-template-areas: ". H H ." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "F F F F";
+  -ms-grid-rows: 54px auto auto auto auto 104px;
+      grid-template-rows: 54px auto auto auto auto 104px;
+  -ms-grid-columns: auto minmax(auto, 1200px) auto;
+      grid-template-columns: auto minmax(auto, 1200px) auto;
+      grid-template-areas: ". H ." ". B1 ." ". B2 ." ". B3 ."  ". B4 ." "F F F";
 }
 
-#attImage {
+.tour {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: B1;
+  border-bottom: 1px solid #E8E8E8;
+  padding: 40px 110px 40px 110px;
+}
+
+.tour .tourHL {
+  margin-bottom: 30px;
+  margin-left: -10px;
+}
+
+.tour .tourImage {
+  width: 250px;
+  height: 200px;
+  background-color: #666666;
+  margin-right: 30px;
+}
+
+.tour .tourName {
+  color: #448899;
+  margin-bottom: 20px;
+}
+
+.tour .tourTitle {
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+
+.tour .tourContent {
+  margin-bottom: 10px;
+}
+
+.contact {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: B2;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
+  padding: 40px 110px 40px 110px;
+  border-bottom: 1px solid #E8E8E8;
 }
 
-#attImage #backImageBTN {
-  width: 36px;
-  height: 36px;
-  position: absolute;
-  top: 185px;
-  left: 10px;
-  background-image: url("/static/icon/btn_leftArrow.png");
-}
-
-#attImage #backImageBTN:hover {
-  cursor: pointer;
-}
-
-#attImage #nextImageBTN {
-  width: 36px;
-  height: 36px;
-  position: absolute;
-  top: 185px;
-  right: 10px;
-  background-image: url("/static/icon/btn_rightArrow.png");
-}
-
-#attImage #nextImageBTN:hover {
-  cursor: pointer;
-}
-
-#attImage .imageDot {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: absolute;
-  width: 100%;
-  bottom: 8px;
-}
-
-#attImage .imageDot .dot {
-  background-color: #E8E8E8;
-  border-radius: 10px;
-  width: 8px;
-  height: 8px;
-  margin-left: 4px;
-  margin-right: 4px;
-}
-
-#attImage .imageDot .dot:hover {
-  cursor: pointer;
-}
-
-.attInfo {
-  -ms-grid-row: 3;
-  -ms-grid-column: 3;
-  grid-area: B3;
-  color: #666666;
-}
-
-.attInfo .infoBox {
-  position: relative;
-  padding-left: 30px;
-}
-
-.attInfo #attName {
-  margin-left: 20px;
+.contact .contactHL {
   margin-bottom: 20px;
 }
 
-.attInfo #attType {
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
-.attInfo .tourBox {
-  background-color: #E8E8E8;
-  padding-top: 15px;
-  padding-bottom: 41px;
-  border-radius: 5px;
-}
-
-.attInfo .tourBox .tourTitle {
-  margin: 15px auto 15px 20px;
-}
-
-.attInfo .tourBox .tourContent {
-  margin: 0px auto 15px 20px;
-}
-
-.attInfo .tourBox .selTitle {
-  margin-right: 3px;
-  margin-left: 20px;
-}
-
-.attInfo .tourBox .date {
-  height: 35px;
-}
-
-.attInfo .tourBox .flexBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-.attInfo .tourBox .flexBox .am, .attInfo .tourBox .flexBox .pm {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.attInfo .tourBox .flexBox .selBTN {
-  width: 22px;
-  height: 22px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 100%;
-  margin-right: 5px;
-  margin-left: 10px;
-}
-
-.attInfo .tourBox .tourCTA {
-  width: 154px;
-  height: 36px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #FFFFFF;
-  background-color: #448899;
-  border-radius: 5px;
-  margin-left: 20px;
-  margin-top: 25px;
-}
-
-.attInfo .tourBox #selctedBTN {
-  width: 18px;
-  height: 18px;
-  border-radius: 100%;
-  background-color: #448899;
-}
-
-hr {
+.card {
   -ms-grid-row: 4;
   -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-area: hr;
-  margin-top: 41px;
-  margin-bottom: 50px;
-  border: 1px solid #E8E8E8;
+  grid-area: B3;
+  padding: 40px 110px 40px 110px;
+  border-bottom: 1px solid #E8E8E8;
 }
 
-.contents {
-  -ms-grid-row: 5;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-area: B4;
-}
-
-.contents .item {
-  color: #666666;
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
-.contents .content {
-  color: #666666;
+.card .cardHL {
   margin-bottom: 20px;
 }
 
-@media (max-width: 720px) {
-  .header {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  #attImage {
-    border-radius: 0px;
-  }
-  .container {
-    -ms-grid-rows: 54px 37px minmax(auto, 350px) auto 90px auto 224px;
-        grid-template-rows: 54px 37px minmax(auto, 350px) auto 90px auto 224px;
-    -ms-grid-columns: 15px auto 15px;
-        grid-template-columns: 15px auto 15px;
-        grid-template-areas: "H H H" ". . ." "B2 B2 B2" ". B3 ." ". hr ." ". B4 ." "F F F";
-  }
-  .infoBox {
-    padding: 0px !important;
-    margin-top: 20px;
-  }
+.confirm {
+  -ms-grid-row: 5;
+  -ms-grid-column: 2;
+  grid-area: B4;
+  padding: 40px 110px 40px 110px;
 }
 
-@media (max-width: 360px) {
-  .container {
-    -ms-grid-columns: 5px auto 5px;
-        grid-template-columns: 5px auto 5px;
-  }
+.confirm .confirmTitle {
+  text-align: right;
 }
-/*# sourceMappingURL=attraction.css.map */
+
+.confirm .confirmCAT {
+  width: 173px;
+  height: 36px;
+  border-radius: 5px;
+  background-color: #448899;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.confirm .confirmCAT .CTAcontent {
+  color: #FFFFFF;
+}
+/*# sourceMappingURL=booking.css.map */
