@@ -108,7 +108,7 @@ signinForm.addEventListener("submit",(event)=>{
     }).then((response)=>{
         return response.json()
     }).then((jsonData)=>{
-        if(jsonData["ok"]===true){
+        if(jsonData["ok"]===true && signinSUCCESS===false){
             let OK = document.createElement("div")
             OK.className="signOK"
             let ok = document.createTextNode("登入成功~")  //登入成功
