@@ -29,7 +29,6 @@ let signPOPUP_view = {
         if (signinError.length!=0){ 
             document.getElementsByClassName("signInput")[0].value=""
             document.getElementsByClassName("signInput")[1].value=""
-            console.log(document.getElementById("signInput"))
             signinDialog.removeChild(signinError[0])
             signinDialog.style.height="260px"
         }
@@ -54,12 +53,6 @@ let signPOPUP_view = {
     },
     closeSignPOPUP:()=>{   //關掉signPOPUP
         signPOPUP.style.display="none"
-    },
-    logout:()=>{  //登出
-        fetch("http://0.0.0.0:3000/api/user",{
-            method: "DELETE"
-        })
-        location.reload()
     }
 }
 
@@ -96,7 +89,6 @@ signinForm.addEventListener("submit",(event)=>{
     }
     let Email = document.forms["signinForm"]["email"].value;
     let Password = document.forms["signinForm"]["password"].value;
-    console.log(Email,Password)
     fetch("/api/user",{
         method:"PATCH",
         headers: new Headers({ 
@@ -182,7 +174,6 @@ signupForm.addEventListener("submit",(e)=>{
         }).then((response)=>{
             return response.json()
         }).then((jsonData)=>{
-            console.log(jsonData)
             if(jsonData["ok"]){  //註冊成功!!!!!!
                 let SUCCESS = document.createElement("div")
                 SUCCESS.className="signupOK"
@@ -206,4 +197,12 @@ signupForm.addEventListener("submit",(e)=>{
             }
         })
     }
+})
+
+////// signout //////
+logoutBTN.addEventListener("click",()=>{
+    fetch("/api/user",{
+        method: "DELETE"
+    })
+    location.reload()
 })

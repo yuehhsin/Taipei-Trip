@@ -50,7 +50,6 @@ def userSignin():
 	cursor.execute("SELECT COUNT(*) FROM members WHERE email=%s AND password=%s",(email,password))
 	checkSQL = cursor.fetchone()[0]
 	try:
-		print(checkSQL)
 		if checkSQL==1:
 			#在memberList紀錄會員資訊
 			cursor.execute("SELECT id,name FROM members WHERE email=%s AND password=%s",(email,password))
@@ -58,9 +57,6 @@ def userSignin():
 			session["id"]=memberData[0]
 			session["name"]=memberData[1]
 			session["email"]=email
-			print(session["id"])
-			print(session["name"])
-			print(session["email"])
 			return jsonify({
 				"ok": True
 			}),200
@@ -97,9 +93,6 @@ def userStatus():
 
 @user.route("/user",methods=["DELETE"])  # 登出
 def userLogout():
-	print(session["id"])
-	print(session["name"])
-	print(session["email"])
 	session.pop("id",None)
 	session.pop("name",None)
 	session.pop("email",None)
