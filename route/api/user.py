@@ -1,6 +1,7 @@
 ###### /api/user ######
 import json,ssl,mysql.connector
 from flask import Blueprint,jsonify,request
+from flask import session
 user = Blueprint("user", __name__)
 
 mydb=mysql.connector.connect(
@@ -10,10 +11,9 @@ mydb=mysql.connector.connect(
 	database="gov_data",
 	charset="utf8",
 )
-cursor = mydb.cursor()
 
-memberList=[]
-@user.route("/user",methods=["POST"])
+cursor = mydb.cursor()
+@user.route("/user",methods=["POST"])  # 註冊
 def userSignup():
 	data = request.get_json()
 	name = data["name"]
@@ -42,22 +42,25 @@ def userSignup():
 				"message": "伺服器內部錯誤"
 				}), 500
 
-@user.route("/user",methods=["PATCH"])
+@user.route("/user",methods=["PATCH"])  # 登入
 def userSignin():
 	data = request.get_json()
 	email = data["email"]
 	password = data["password"]
 	cursor.execute("SELECT COUNT(*) FROM members WHERE email=%s AND password=%s",(email,password))
 	checkSQL = cursor.fetchone()[0]
-
 	try:
+		print(checkSQL)
 		if checkSQL==1:
 			#在memberList紀錄會員資訊
 			cursor.execute("SELECT id,name FROM members WHERE email=%s AND password=%s",(email,password))
 			memberData = cursor.fetchone()
-			memberList.append(memberData[0])
-			memberList.append(memberData[1])
-			memberList.append(email)
+			session["id"]=memberData[0]
+			session["name"]=memberData[1]
+			session["email"]=email
+			print(session["id"])
+			print(session["name"])
+			print(session["email"])
 			return jsonify({
 				"ok": True
 			}),200
@@ -72,9 +75,18 @@ def userSignin():
 			"message": "伺服器內部錯誤"
 			}), 500		
 
-@user.route("/user",methods=["GET"])
+
+@user.route("/user",methods=["GET"])  # 會員狀態
 def userStatus():
-	if (memberList==[]):
+	if "id" in session:
+		return jsonify({
+			"data":{
+				"id": session["id"],
+				"name": session["name"],
+				"email": session["email"]
+			}
+		}),200		
+	else:
 		return jsonify({
 			"data":{
 				"id": None,
@@ -82,18 +94,15 @@ def userStatus():
 				"email": None
 			}
 		}),200
-	else:
-		return jsonify({
-			"data":{
-				"id": memberList[0],
-				"name": memberList[1],
-				"email": memberList[2]
-			}
-		}),200		
 
-@user.route("/user",methods=["DELETE"])
+@user.route("/user",methods=["DELETE"])  # 登出
 def userLogout():
-	memberList.clear()
+	print(session["id"])
+	print(session["name"])
+	print(session["email"])
+	session.pop("id",None)
+	session.pop("name",None)
+	session.pop("email",None)
 	return jsonify({
 		"ok": True
 	}),200

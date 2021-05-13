@@ -365,8 +365,8 @@
   display: -ms-grid;
   display: grid;
   positon: relative;
-  -ms-grid-rows: 54px 320px auto 55px 104px;
-      grid-template-rows: 54px 320px auto 55px 104px;
+  -ms-grid-rows: 54px 320px auto 55px 224px;
+      grid-template-rows: 54px 320px auto 55px 224px;
   -ms-grid-columns: auto minmax(auto, 1200px) auto;
       grid-template-columns: auto minmax(auto, 1200px) auto;
       grid-template-areas: ". H ." "B2 B2 B2" ". B3 ."  "B4 B4 B4" "F F F";
