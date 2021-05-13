@@ -32,6 +32,7 @@ let signPOPUP_view = {
             signinDialog.removeChild(signinError[0])
             signinDialog.style.height="260px"
             signinERROR=false
+            signinSUCCESS=false
         }
     },
     signPage:()=>{  //開啟sign pop-up
@@ -78,6 +79,8 @@ window.addEventListener("load",()=>{
 
 ////// signin //////
 let signinERROR = false
+let signinSUCCESS = false
+
 signinForm.addEventListener("submit",(event)=>{
     event.preventDefault();
     if (signinError.length!=0){ 
@@ -88,6 +91,8 @@ signinForm.addEventListener("submit",(event)=>{
     else if(signOK.length!=0){
         signinDialog.removeChild(signOK[0])
         signinDialog.style.height="260px"
+        signinSUCCESS=false
+
     }
     let Email = document.forms["signinForm"]["email"].value;
     let Password = document.forms["signinForm"]["password"].value;
@@ -110,6 +115,7 @@ signinForm.addEventListener("submit",(event)=>{
             OK.appendChild(ok)
             signinDialog.appendChild(OK)
             signinDialog.style.height="285px"
+            signinSUCCESS=true
             function reload(){
                 location.reload()
             }
