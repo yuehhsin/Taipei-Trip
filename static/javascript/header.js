@@ -31,6 +31,7 @@ let signPOPUP_view = {
             document.getElementsByClassName("signInput")[1].value=""
             signinDialog.removeChild(signinError[0])
             signinDialog.style.height="260px"
+            signinERROR=false
         }
     },
     signPage:()=>{  //開啟sign pop-up
@@ -76,12 +77,13 @@ window.addEventListener("load",()=>{
 })
 
 ////// signin //////
+let signinERROR = false
 signinForm.addEventListener("submit",(event)=>{
-    // signPOPUP_view.signinInit()
     event.preventDefault();
     if (signinError.length!=0){ 
         signinDialog.removeChild(signinError[0])
         signinDialog.style.height="260px"
+        signinERROR=false
     }
     else if(signOK.length!=0){
         signinDialog.removeChild(signOK[0])
@@ -113,13 +115,14 @@ signinForm.addEventListener("submit",(event)=>{
             }
             window.setTimeout(reload,1000)
         }
-        else if(jsonData["error"]===true){
+        else if(jsonData["error"]===true && signinERROR===false){
             let ERROR = document.createElement("div")
             ERROR.className="signinError"
             let error = document.createTextNode(jsonData["message"])
             ERROR.appendChild(error)
             signinDialog.appendChild(ERROR)
             signinDialog.style.height="285px"
+            signinERROR=true
         }
     })
 })
