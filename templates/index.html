@@ -12,7 +12,7 @@
             <div class="dec"></div>
             <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
             <div class="signTitle">登入會員帳號</div>
-            <form action="/" id="signinForm">
+            <form id="signinForm">
                 <input type="text" class="invisible" name="name" >
                 <input type="text" placeholder="輸入電子信箱" class="signInput" name="email">
                 <input type="password" placeholder="輸入密碼" class="signInput" name="password">
@@ -26,7 +26,7 @@
             <div class="dec"></div>
             <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
             <div class="signupTitle">註冊會員帳號</div>
-            <form action="/api/user" method="POST" id="signupForm">
+            <form id="signupForm">
                 <input type="text" placeholder="輸入姓名" class="signupInput" name="name" >
                 <input type="text" placeholder="輸入電子郵件" class="signupInput" name="email">
                 <input type="password" placeholder="輸入密碼" class="signupInput" name="password">
@@ -44,7 +44,7 @@
             <div class="menu">
                 <div class="tourBTN">預定行程</div>
                 <div id="signBTN" onclick=signPOPUP_view.signPage()>登入/註冊</div>
-                <div id="logoutBTN" onclick=signPOPUP_view.logout()>登出</div>
+                <div id="logoutBTN">登出</div>
             </div>
         </div>
         <div class="KV">

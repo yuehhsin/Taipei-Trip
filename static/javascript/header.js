@@ -83,7 +83,7 @@ let signinSUCCESS = false
 
 signinForm.addEventListener("submit",(event)=>{
     event.preventDefault();
-    if (signinError.length!=0){ 
+    if (signinError.length!=0){  //清空form
         signinDialog.removeChild(signinError[0])
         signinDialog.style.height="260px"
         signinERROR=false
@@ -92,10 +92,18 @@ signinForm.addEventListener("submit",(event)=>{
         signinDialog.removeChild(signOK[0])
         signinDialog.style.height="260px"
         signinSUCCESS=false
-
     }
     let Email = document.forms["signinForm"]["email"].value;
     let Password = document.forms["signinForm"]["password"].value;
+    if (Email===""||Password===""){
+        let ERROR = document.createElement("div")
+        ERROR.className="signinError"
+        let error = document.createTextNode("帳號密碼不可空白")
+        ERROR.appendChild(error)
+        signinDialog.appendChild(ERROR)
+        signinDialog.style.height="285px"
+        signinERROR=true
+    }
     fetch("/api/user",{
         method:"PATCH",
         headers: new Headers({ 
@@ -134,6 +142,9 @@ signinForm.addEventListener("submit",(event)=>{
 })
 
 ////// signup //////
+let signupERROR = false
+let signupSUCCESS = false
+
 signupForm.addEventListener("submit",(e)=>{
     e.preventDefault();
     let Name = document.forms["signupForm"]["name"].value;
@@ -143,7 +154,14 @@ signupForm.addEventListener("submit",(e)=>{
     if (signError.length!=0){ 
         signupDialog.removeChild(signError[0])
         signupDialog.style.height="317px"
+        signupERROR=false
     }
+    else if(signupOK.length!=0){
+        signupDialog.removeChild(signupOK[0])
+        signupDialog.style.height="317px"
+        signupSUCCESS=false       
+    }
+
     //確定資料是否都符合格式:
     if(Name===""){
         let NAMEERROR = document.createElement("div")  //姓名不可為空
@@ -183,7 +201,7 @@ signupForm.addEventListener("submit",(e)=>{
         }).then((response)=>{
             return response.json()
         }).then((jsonData)=>{
-            if(jsonData["ok"]){  //註冊成功!!!!!!
+            if(jsonData["ok"]){  //註冊成功!!!!!!(慢)
                 let SUCCESS = document.createElement("div")
                 SUCCESS.className="signupOK"
                 let successs = document.createTextNode("註冊成功~")
@@ -194,8 +212,10 @@ signupForm.addEventListener("submit",(e)=>{
                     signPOPUP_view.signupInit()
                     signPOPUP_view.signinPage()
                 },1000)
+                signupSUCCESS=true
+                
             }
-            else if(jsonData["error"]){  //信箱已被註冊
+            else if(jsonData["error"] && signupERROR===false){  //信箱已被註冊(慢)
                 let errormessage = jsonData["message"]
                 let ERROR = document.createElement("div")
                 ERROR.className="signupError"
@@ -203,6 +223,7 @@ signupForm.addEventListener("submit",(e)=>{
                 ERROR.appendChild(error)
                 signupDialog.appendChild(ERROR)
                 signupDialog.style.height="345px"
+                signupERROR=true
             }
         })
     }
@@ -212,6 +233,12 @@ signupForm.addEventListener("submit",(e)=>{
 logoutBTN.addEventListener("click",()=>{
     fetch("/api/user",{
         method: "DELETE"
+    }).then((response)=>{
+        return response.json()
+    }).then((jsonData)=>{
+        console.log(jsonData)
+        if(jsonData["ok"]){
+            location.reload()
+        }
     })
-    location.reload()
 })
