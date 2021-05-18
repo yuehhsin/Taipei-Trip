@@ -5,18 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+    <div id="signPOPUP">
+        <div id="grayBG" onclick=signPOPUP_view.closeSignPOPUP()></div>
+        <div id="signinDialog">
+            <div class="dec"></div>
+            <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
+            <div class="signTitle">登入會員帳號</div>
+            <form action="/" id="signinForm">
+                <input type="text" class="invisible" name="name" >
+                <input type="text" placeholder="輸入電子信箱" class="signInput" name="email">
+                <input type="password" placeholder="輸入密碼" class="signInput" name="password">
+                <button class="signinCTA">
+                    <div class="CTAcontent">登入帳戶</div>
+                </button>
+            </form>
+            <div class="note">還沒有帳戶？<span class="signupBTN" onclick=signPOPUP_view.signupPage()>點此註冊</span></div>
+        </div>
+        <div id="signupDialog">
+            <div class="dec"></div>
+            <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
+            <div class="signupTitle">註冊會員帳號</div>
+            <form action="/api/user" method="POST" id="signupForm">
+                <input type="text" placeholder="輸入姓名" class="signupInput" name="name" >
+                <input type="text" placeholder="輸入電子郵件" class="signupInput" name="email">
+                <input type="password" placeholder="輸入密碼" class="signupInput" name="password">
+                <button class="signupCTA">
+                    <div class="CTAcontent">註冊帳戶</div>
+                </button>
+            </form>
+            <div class="signupNote">已經有帳戶了？<span class="signinBTN" onclick=signPOPUP_view.signinPage()>點此登入</span></div>
+        </div>
+    </div>
     <div class="container">
         <div class="line"></div>
         <div class="header">
-            <div class="title">台北一日遊</div>
+            <a href="/" class="title">台北一日遊</a>
             <div class="menu">
-                <div class="menuBTN">預定行程</div>
-                <div class="menuBTN">登入/註冊</div>
+                <div class="tourBTN">預定行程</div>
+                <div id="signBTN" onclick=signPOPUP_view.signPage()>登入/註冊</div>
+                <div id="logoutBTN" onclick=signPOPUP_view.logout()>登出</div>
             </div>
         </div>
         <div id="attImage">
             <div id="backImageBTN" onclick=backImageBTN()></div>
             <div id="nextImageBTN" onclick=nextImageBTN()></div>
+            <div class="imageDot">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
         </div>
         <div class="attInfo">
             <div class="infoBox">
@@ -63,4 +100,5 @@
         </div>       
     </div>
 </body>
+<script src="/static/javascript/header.js"></script>
 <script src="/static/javascript/attraction.js"></script>

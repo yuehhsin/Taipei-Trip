@@ -1,13 +1,15 @@
 @import "general"
-@import "header_footer"
+@import "shareElement"
 
 ////// container grid //////
+#signPOPUP
+    display: none
 .container
   display: grid
   positon: relative
   grid-template-rows: 54px 37px minmax(auto,406px) auto auto 224px
   grid-template-columns: minmax(20px,auto) minmax(auto,540px) minmax(auto,600px) minmax(20px,auto)
-  grid-template-areas:  ". B1 B1 ." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "B5 B5 B5 B5"
+  grid-template-areas:  ". H H ." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "F F F F"
 
 #attImage
     grid-area: B2
@@ -21,12 +23,29 @@
         top: 185px
         left: 10px
         background-image: url("/static/icon/btn_leftArrow.png")
+        &:hover
+            cursor: pointer
     & #nextImageBTN
         +size(36px,36px)
         position: absolute
         top: 185px
         right: 10px
         background-image: url("/static/icon/btn_rightArrow.png")
+        &:hover
+            cursor: pointer
+    & .imageDot
+        +getcenter
+        position: absolute
+        width: 100%
+        bottom: 8px
+        // & .dot
+        //     background-color: $gray300
+        //     border-radius: 10px
+        //     +size(8px,8px)
+        //     margin-left: 4px
+        //     margin-right: 4px
+        //     &:hover
+        //         cursor: pointer
 
 .attInfo
     grid-area: B3
@@ -113,7 +132,7 @@ hr
     .container
         grid-template-rows: 54px 37px minmax(auto,350px) auto 90px auto 224px
         grid-template-columns: 15px auto 15px
-        grid-template-areas:  "B1 B1 B1" ". . ." "B2 B2 B2" ". B3 ." ". hr ." ". B4 ." "B5 B5 B5"
+        grid-template-areas:  "H H H" ". . ." "B2 B2 B2" ". B3 ." ". hr ." ". B4 ." "F F F"
     .infoBox
         padding: 0px !important
         margin-top: 20px
