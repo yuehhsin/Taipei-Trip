@@ -1,3 +1,4 @@
+
 let signPOPUP = document.getElementById("signPOPUP")
 let signinDialog = document.getElementById("signinDialog")
 let signupDialog = document.getElementById("signupDialog")
@@ -73,6 +74,7 @@ window.addEventListener("load",()=>{
         else if(dataID!=null){ //已登入=>顯示:登出
             logoutBTN.style.display="block"
             signBTN.style.display="none"
+            document.cookie = "memberName="+data["data"]["name"]
         }
     })
 })
@@ -236,9 +238,24 @@ logoutBTN.addEventListener("click",()=>{
     }).then((response)=>{
         return response.json()
     }).then((jsonData)=>{
+        document.cookie = 'memberName=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
         console.log(jsonData)
         if(jsonData["ok"]){
             location.reload()
         }
     })
 })
+
+
+
+
+//點擊"預約行程"
+document.querySelector(".tourBTN").addEventListener("click",()=>{
+    if(document.cookie){ //已登入->/booking
+        window.location.href="/booking"
+    }
+    else{ //未登入->登入畫面
+        signPOPUP_view.signPage()
+    }
+})
+

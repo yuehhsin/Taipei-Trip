@@ -1,42 +1,65 @@
 <!DOCTYPE html>
+<script src="/static/javascript/header.js" defer></script>
+<script src="/static/javascript/booking.js" defer></script>
 <head>
     <link href="/static/css/booking.css" rel="stylesheet">
     <title>Taipei Trip台北一日遊</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+    <div id="signPOPUP">
+        <div id="grayBG" onclick=signPOPUP_view.closeSignPOPUP()></div>
+        <div id="signinDialog">
+            <div class="dec"></div>
+            <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
+            <div class="signTitle">登入會員帳號</div>
+            <form action="/" id="signinForm">
+                <input type="text" class="invisible" name="name" >
+                <input type="text" placeholder="輸入電子信箱" class="signInput" name="email">
+                <input type="password" placeholder="輸入密碼" class="signInput" name="password">
+                <button class="signinCTA">
+                    <div class="CTAcontent">登入帳戶</div>
+                </button>
+            </form>
+            <div class="note">還沒有帳戶？<span class="signupBTN" onclick=signPOPUP_view.signupPage()>點此註冊</span></div>
+        </div>
+        <div id="signupDialog">
+            <div class="dec"></div>
+            <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
+            <div class="signupTitle">註冊會員帳號</div>
+            <form action="/api/user" method="POST" id="signupForm">
+                <input type="text" placeholder="輸入姓名" class="signupInput" name="name" >
+                <input type="text" placeholder="輸入電子郵件" class="signupInput" name="email">
+                <input type="password" placeholder="輸入密碼" class="signupInput" name="password">
+                <button class="signupCTA">
+                    <div class="CTAcontent">註冊帳戶</div>
+                </button>
+            </form>
+            <div class="signupNote">已經有帳戶了？<span class="signinBTN" onclick=signPOPUP_view.signinPage()>點此登入</span></div>
+        </div>
+    </div>
     <div class="container">
         <div class="line"></div>
         <div class="header">
             <a href="/" class="title">台北一日遊</a>
             <div class="menu">
-                <div class="menuBTN">預定行程</div>
-                <div class="menuBTN">登入/註冊</div>
+                <div class="tourBTN">預定行程</div>
+                <div id="signBTN" onclick=signPOPUP_view.signPage()>登入/註冊</div>
+                <div id="logoutBTN">登出</div>
             </div>
         </div>
         <div class="tour">
-            <div class="tourHL">您好，Yakko,待預定的行程如下:</div>
+            <div class="tourHL">您好，<span class="memberName">Yakko</span>，待預定的行程如下:</div>
             <div class="flexBox">
                 <div class="tourImage"></div>
                 <div class="info">
-                    <div class="tourName">台北一日遊：平安鐘</div>
-                    <div class="flexBox_L">
-                        <div class="tourTitle">日期：</div>
-                        <div class="tourContent">2021-04-23</div>
-                    </div>
-                    <div class="flexBox_L">
-                        <div class="tourTitle">時間：</div>
-                        <div class="tourContent">早上 9 點到下午 4 點</div>
-                    </div>
-                    <div class="flexBox_L">
-                        <div class="tourTitle">費用：</div>
-                        <div class="tourContent">新台幣 2000 元</div>
-                    </div>
-                    <div class="flexBox_L">
-                        <div class="tourTitle">地點：</div>
-                        <div class="tourContent">臺北市 大安區忠孝東路4段</div>
-                    </div>
+                    <div class="tourName">台北一日遊：<span class="tourtitle">平安鐘</span></div>
+                    <div class="tourTitle">日期：<span class="tourContent">2021-04-23</span></div>
+                    <div class="tourTitle">時間：<span class="tourContent">早上 9 點到下午 4 點</span></div>
+                    <div class="tourTitle">費用：<span class="tourContent">新台幣 2000 元</span></div>
+                    <div class="tourTitle">地點：<span class="tourContent">臺北市 大安區忠孝東路4段</span></div>
                 </div>
+                <div class="tourDel"></div>
             </div>
         </div>
         <div class="contact">
@@ -71,10 +94,8 @@
             </div>
         </div>
         <div class="confirm">
-            <div class="confirmTitle">總價：新台幣 2000 元</div>
-            <div class="confirmCAT">
-                <div class="CTAcontent">確認訂購並付款</div>
-            </div>
+            <div class="confirmTitle">總價：新台幣 <span class="totalPrice">2000</span> 元</div>
+            <div class="confirmCAT">確認訂購並付款</div>
         </div>
     </div>
     <div class="footer">
@@ -82,3 +103,4 @@
     </div>
 </body>
 <script src=""></script>
+

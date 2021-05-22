@@ -57,34 +57,35 @@
         </div>
         <div class="attInfo">
             <div class="infoBox">
-                <div id="attName"></div>
-                <div id="attType"></div>
-                <div class="tourBox">
+                <form class="tourForm" id="tourForm">
+                    <div id="attName"></div>
+                    <div id="attType"></div>
                     <div class="tourTitle">訂購導覽行程</div>
                     <div class="tourContent">以此景點為中心的一日行程，帶您探索城市角落故事</div>
                     <div class="flexBox">
                         <div class="selTitle">選擇日期：</div>
-                        <input type="date" class="date">
+                        <input type="date" class="dateInput" name="date" min=2021-05-20>
                     </div>
                     <div class="flexBox">
                         <div class="selTitle">選擇時間：</div>
-                        <div class="am">
-                            <div class="selBTN" id="selAM"></div>
-                            <div class="content">上半天</div>
-                        </div>
-                        <div class="pm">
-                            <div class="selBTN" id="selPM"></div>
-                            <div class="content">下半天</div>
-                        </div>
+                        <input id="amRadio" type="radio" name="time" value="morning" checked="checked" hidden></input>
+                        <label for="amRadio" class="timeLabel">上半天</label>
+                        <input id="pmRadio" type="radio" name="time" value="afternoon" hidden></input>
+                        <label for="pmRadio" class="timeLabel">下半天</label>
+
                     </div>
                     <div class="flexBox">
-                        <div class="selTitle">導覽費用：</div>
-                        <div class="content" id="tourPrice">新台幣2000元</div>
+                        <div class="selTitle" name=value>導覽費用：</div>
+                        <div class="content" id="tourPrice">新台幣<span class="price">2000</span>元</div>
                     </div>
-                    <div class="tourCTA">
-                        <div class="CATtext">開始預定行程</div>
+                    <div class="V-Center">
+                        <button class="tourCTA">開始預定行程</button> 
+                        <div class="dateError">
+                            <img class="dateErrorImage" src="/static/icon/icon_dateError.png" width="20px" height="20px">
+                            <div class="dateErrorText">請選擇日期</div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <hr>

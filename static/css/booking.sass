@@ -1,11 +1,11 @@
 @import "general"
-@import "header_footer"
+@import "shareElement.sass"
 
 *
     // border: 1px solid black
-//共用的class
 .flexBox
     display: flex
+    position: relative
 .flexBox_L
     display: flex
     align-items: center
@@ -19,15 +19,29 @@ input
     align-items: center
     margin-bottom: 15px
 
+
 .container
     display: grid
     grid-template-rows: 54px auto auto auto auto 104px
     grid-template-columns: auto minmax(auto,1200px) auto
     grid-template-areas: ". H ." ". B1 ." ". B2 ." ". B3 ."  ". B4 ." "F F F"
+
+////// tour //////
 .tour
     grid-area: B1
     border-bottom: 1px solid $gray300
     padding: 40px 110px 40px 110px
+    & .tourDel
+        +size(30px,30px)
+        background-image: url("/static/icon/icon_delete.png")
+        background-size: cover
+        position: absolute
+        right: 0px
+        top: 0px
+        opacity: 0.8
+        &:hover
+            opacity: 1
+            cursor: pointer
     & .tourHL
         @extend %button_B
         margin-bottom: 30px
@@ -36,6 +50,8 @@ input
         +size(250px,200px)
         background-color: $gray800
         margin-right: 30px
+        background-size: cover
+        border-radius: 5px
     & .tourName
         @extend %body_B
         color: $cyan800
@@ -47,9 +63,12 @@ input
     & .tourContent
         @extend %body
         margin-bottom: 10px
+    
+
+////// contact //////
 .contact
     grid-area: B2
-    padding: 40px 110px 40px 110px
+    padding: 44px 110px 45px 110px
     border-bottom: 1px solid $gray300
     & .contactHL
         @extend %button_B
@@ -58,29 +77,36 @@ input
          @extend %body
     & .contactPS
         @extend %body_B
+
+////// card //////
 .card
     grid-area: B3
-    padding: 40px 110px 40px 110px
+    padding: 44px 110px 40px 110px
     border-bottom: 1px solid $gray300
     & .cardHL
         @extend %button_B
         margin-bottom: 20px
     & .cardTitle
         @extend %body
+
+////// confirm //////
 .confirm
     grid-area: B4
-    padding: 40px 110px 40px 110px
+    padding: 43px 110px 40px 110px
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    // justify-content: center
     & .confirmTitle
-        text-align: right
         @extend %body_B
     & .confirmCAT
         +size(173px,36px)
         border-radius: 5px
         background-color: $cyan800
         +getcenter
-        & .CTAcontent
-             @extend %button
-             color: #FFFFFF
+        margin-top: 22px
+        @extend %button
+        color: #FFFFFF
 
 
 
