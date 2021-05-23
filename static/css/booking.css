@@ -1,19 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 * {
   padding: 0px;
   margin: 0px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
   font-size: 16px;
 }
 
-.header .title {
+h1 {
   font-size: 30px;
   font-weight: 700;
   line-height: 34px;
   letter-spacing: 1px;
+  color: #666666;
 }
 
-#signinDialog .signTitle, #signupDialog .signupTitle {
+h2 {
   font-size: 24px;
   font-weight: 700;
   line-height: 24px;
@@ -21,22 +22,31 @@
   color: #666666;
 }
 
-#signinDialog .signinCTA .CTAcontent, #signupDialog .signupCTA .CTAcontent, .confirm .confirmCAT {
-  font-size: 19px;
+h3 {
+  font-size: 30px;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 34px;
   letter-spacing: 1px;
+  color: #666666;
 }
 
-.tour .tourHL, .contact .contactHL, .card .cardHL {
+h4 {
   font-size: 19px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 16px;
   letter-spacing: 1px;
   color: #666666;
 }
 
-.header .menu, #signinDialog .note, #signupDialog .signupNote, input, .tour .tourContent, .contact .contactTitle, .card .cardTitle {
+h5 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.17px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+h6 {
   font-size: 16px;
   font-weight: 400;
   line-height: 13.3px;
@@ -44,381 +54,76 @@
   color: #666666;
 }
 
-.footer .copyright, .tour .tourName, .tour .tourTitle, .contact .contactPS, .confirm .confirmTitle {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 23.17px;
-  letter-spacing: 1px;
-  color: #666666;
-}
-
-.header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: H;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background-color: #FFFFFF;
-  z-index: 100;
-}
-
-.header .title {
-  color: #448899;
+a {
   text-decoration: none;
 }
 
-.header .title:hover {
-  color: #2B798C;
+button {
+  outline: none;
+  border: none;
+  background-color: #448899;
 }
 
-.header .menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: #666666;
-}
-
-.header .menu .tourBTN {
-  margin-left: 20px;
-}
-
-.header .menu #signBTN {
-  display: none;
-  margin-left: 20px;
-}
-
-.header .menu #signBTN:hover {
-  color: #66AABB;
+button:hover {
+  background-color: #2B798C;
   cursor: pointer;
 }
 
-.header .menu #logoutBTN {
-  display: none;
-  margin-left: 20px;
+input {
+  outline: none;
+  border: none;
+  color: #757575;
 }
 
-.header .menu #logoutBTN:hover {
-  color: #66AABB;
-  cursor: pointer;
-}
-
-.line {
-  position: fixed;
-  width: 100%;
-  height: 54px;
+.tour {
+  padding: 40px 110px 45px 110px;
   border-bottom: 1px solid #E8E8E8;
-  background-color: #FFFFFF;
-  z-index: 99;
 }
 
-.footer {
-  -ms-grid-row: 6;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: F;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #757575;
-  margin-top: 120px;
+.tourHL {
+  font-weight: 700;
+  margin-bottom: 30px;
 }
 
-.footer .copyright {
-  color: #FFFFFF;
-}
-
-#grayBG {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0.25;
-  position: fixed;
-  z-index: 200;
-}
-
-.closeBTN {
-  width: 16px;
-  height: 16px;
-  background-image: url("/static/icon/icon_close.png");
-  background-size: cover;
-  position: absolute;
-  top: 27px;
-  right: 17px;
-  z-index: 202;
-}
-
-.closeBTN:hover {
-  cursor: pointer;
-}
-
-#signinDialog {
-  width: 310px;
-  height: 260px;
-  padding: 0px 15px 15px 15px;
-  background-color: #fff;
-  opacity: 1;
-  z-index: 201;
-  position: absolute;
-  top: 105px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  border-radius: 6px;
-}
-
-#signinDialog .dec {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  background: -webkit-gradient(linear, right top, left top, from(#337788), to(#66AABB));
-  background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
-  border-radius: 6px 6px 0px 0px;
-}
-
-#signinDialog .signTitle {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 15px;
-  margin-top: 25px;
-}
-
-#signinDialog .invisible {
-  display: none;
-}
-
-#signinDialog .signInput {
-  width: 310px;
-  height: 47px;
-  border: 1px solid #CCCCCC;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  text-indent: 15px;
-}
-
-#signinDialog .signinCTA {
-  width: 310px;
-  height: 47px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: none;
-  background-color: #448899;
-  border-radius: 5px;
-}
-
-#signinDialog .signinCTA:hover {
-  cursor: pointer;
-}
-
-#signinDialog .signinCTA:active {
-  background-color: #2B798C;
-}
-
-#signinDialog .signinCTA .CTAcontent {
-  color: #FFFFFF;
-}
-
-#signinDialog .note {
-  margin-top: 15px;
-  width: 100%;
-  text-align: center;
-}
-
-#signinDialog .note .signupBTN:hover {
-  color: #66AABB;
-  cursor: pointer;
-}
-
-#signupDialog {
-  width: 310px;
-  height: 317px;
-  padding: 0px 15px 15px 15px;
-  background-color: #fff;
-  opacity: 1;
-  z-index: 201;
-  position: absolute;
-  top: 105px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  border-radius: 6px;
-}
-
-#signupDialog .dec {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  background: -webkit-gradient(linear, right top, left top, from(#337788), to(#66AABB));
-  background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
-  border-radius: 6px 6px 0px 0px;
-}
-
-#signupDialog .signupTitle {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 15px;
-  margin-top: 25px;
-}
-
-#signupDialog .signupInput {
-  width: 310px;
-  height: 47px;
-  border: 1px solid #CCCCCC;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  text-indent: 15px;
-}
-
-#signupDialog .signupCTA {
-  width: 310px;
-  height: 47px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: none;
-  background-color: #448899;
-  border-radius: 5px;
-}
-
-#signupDialog .signupCTA:hover {
-  cursor: pointer;
-}
-
-#signupDialog .signupCTA:active {
-  background-color: #2B798C;
-}
-
-#signupDialog .signupCTA .CTAcontent {
-  color: #FFFFFF;
-}
-
-#signupDialog .signupNote {
-  margin-top: 15px;
-  width: 100%;
-  text-align: center;
-}
-
-#signupDialog .signupNote .signinBTN:hover {
-  color: #66AABB;
-  cursor: pointer;
-}
-
-.signupError {
-  width: 100%;
-  text-align: center;
-  margin-top: 10px;
-  color: #EB5757;
-}
-
-.signupOK {
-  width: 100%;
-  text-align: center;
-  margin-top: 10px;
-  color: #27AE60;
-}
-
-.signinError {
-  width: 100%;
-  text-align: center;
-  margin-top: 10px;
-  color: #EB5757;
-}
-
-.signOK {
-  width: 100%;
-  text-align: center;
-  margin-top: 10px;
-  color: #27AE60;
-}
-
-.flexBox {
+.tourInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: relative;
 }
 
-.flexBox_L {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.tourInfo h6 {
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-input {
-  width: 200px;
-  height: 38px;
-  border: 1px solid #E8E8E8;
+.tourInfo h6 span {
+  font-weight: 400;
+}
+
+.tourInfo .tourName {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: #448899;
+}
+
+.tourInfo .tourName span {
+  font-weight: 700;
+}
+
+.noTour {
+  display: none;
+}
+
+.tourImage {
+  width: 250px;
+  height: 200px;
+  margin-right: 30px;
+  background-size: cover;
   border-radius: 5px;
 }
 
-.BOX {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 15px;
-}
-
-.container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: 54px auto auto auto auto 104px;
-      grid-template-rows: 54px auto auto auto auto 104px;
-  -ms-grid-columns: auto minmax(auto, 1200px) auto;
-      grid-template-columns: auto minmax(auto, 1200px) auto;
-      grid-template-areas: ". H ." ". B1 ." ". B2 ." ". B3 ."  ". B4 ." "F F F";
-}
-
-.tour {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: B1;
-  border-bottom: 1px solid #E8E8E8;
-  padding: 40px 110px 40px 110px;
-}
-
-.tour .tourDel {
+.tourDel {
   width: 30px;
   height: 30px;
   background-image: url("/static/icon/icon_delete.png");
@@ -429,68 +134,70 @@ input {
   opacity: 0.8;
 }
 
-.tour .tourDel:hover {
+.tourDel:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-.tour .tourHL {
-  margin-bottom: 30px;
-  margin-left: -10px;
-}
-
-.tour .tourImage {
-  width: 250px;
-  height: 200px;
-  background-color: #666666;
-  margin-right: 30px;
-  background-size: cover;
-  border-radius: 5px;
-}
-
-.tour .tourName {
-  color: #448899;
-  margin-bottom: 20px;
-}
-
-.tour .tourTitle {
-  margin-bottom: 10px;
-  margin-right: 5px;
-}
-
-.tour .tourContent {
-  margin-bottom: 10px;
-}
-
 .contact {
-  -ms-grid-row: 3;
-  -ms-grid-column: 2;
-  grid-area: B2;
-  padding: 44px 110px 45px 110px;
-  border-bottom: 1px solid #E8E8E8;
-}
-
-.contact .contactHL {
-  margin-bottom: 20px;
-}
-
-.card {
-  -ms-grid-row: 4;
-  -ms-grid-column: 2;
-  grid-area: B3;
   padding: 44px 110px 40px 110px;
   border-bottom: 1px solid #E8E8E8;
 }
 
-.card .cardHL {
-  margin-bottom: 20px;
+.contact h4 {
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.contact h6 {
+  margin-bottom: 15px;
+}
+
+.contact h6 span {
+  font-weight: 400;
+}
+
+.contact h6 input {
+  width: 200px;
+  height: 38px;
+  text-indent: 10px;
+  border-radius: 5px;
+  border: 1px solid #E8E8E8;
+}
+
+.ps {
+  margin-top: 30px;
+  font-weight: 700;
+}
+
+.card {
+  padding: 44px 110px 40px 110px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.card h4 {
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.card h6 {
+  margin-bottom: 15px;
+}
+
+.card h6 span {
+  font-weight: 400;
+}
+
+.card h6 input {
+  width: 200px;
+  height: 38px;
+  text-indent: 10px;
+  border-radius: 5px;
+  border: 1px solid #E8E8E8;
 }
 
 .confirm {
-  -ms-grid-row: 5;
-  -ms-grid-column: 2;
-  grid-area: B4;
-  padding: 43px 110px 40px 110px;
+  padding: 44px 110px 40px 110px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -503,21 +210,17 @@ input {
           align-items: flex-end;
 }
 
-.confirm .confirmCAT {
-  width: 173px;
-  height: 36px;
+.confirm h6 {
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.confirm button {
+  padding: 10px 20px 10px 20px;
   border-radius: 5px;
-  background-color: #448899;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 22px;
-  color: #FFFFFF;
+}
+
+.confirm h4 {
+  color: #fff;
 }
 /*# sourceMappingURL=booking.css.map */

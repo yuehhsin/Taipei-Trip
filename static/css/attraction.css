@@ -1,16 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 * {
   padding: 0px;
   margin: 0px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
   font-size: 16px;
-}
-
-.header .title {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 34px;
-  letter-spacing: 1px;
 }
 
 #signinDialog .signTitle, #signupDialog .signupTitle, .attInfo #attName {
@@ -35,7 +28,7 @@
   letter-spacing: 1px;
 }
 
-.header .menu, #signinDialog .note, #signupDialog .signupNote, .attInfo #attType {
+#signinDialog .note, #signupDialog .signupNote, .attInfo #attType {
   font-size: 16px;
   font-weight: 400;
   line-height: 13.3px;
@@ -43,7 +36,7 @@
   color: #666666;
 }
 
-.footer .copyright, .attInfo .tourForm .tourTitle, .attInfo .tourForm .selTitle, .contents .item {
+.attInfo .tourForm .tourTitle, .attInfo .tourForm .selTitle, .contents .item {
   font-size: 16px;
   font-weight: 700;
   line-height: 23.17px;
@@ -51,100 +44,56 @@
   color: #666666;
 }
 
-.header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-area: H;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background-color: #FFFFFF;
-  z-index: 100;
-}
-
-.header .title {
-  color: #448899;
-  text-decoration: none;
-}
-
-.header .title:hover {
-  color: #2B798C;
-}
-
-.header .menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 1px;
   color: #666666;
 }
 
-.header .menu .tourBTN {
-  margin-left: 20px;
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu #signBTN {
-  display: none;
-  margin-left: 20px;
+h3 {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 34px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu #signBTN:hover {
-  color: #66AABB;
-  cursor: pointer;
+h4 {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu #logoutBTN {
-  display: none;
-  margin-left: 20px;
+h5 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.17px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu #logoutBTN:hover {
-  color: #66AABB;
-  cursor: pointer;
+h6 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 13.3px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.line {
-  position: fixed;
-  width: 100%;
-  height: 54px;
-  border-bottom: 1px solid #E8E8E8;
-  background-color: #FFFFFF;
-  z-index: 99;
-}
-
-.footer {
-  -ms-grid-row: 6;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
-  grid-area: F;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #757575;
-  margin-top: 120px;
-}
-
-.footer .copyright {
-  color: #FFFFFF;
+a {
+  text-decoration: none;
 }
 
 #grayBG {
@@ -457,7 +406,7 @@ input[type="radio"]:checked + label:before {
   display: -ms-grid;
   display: grid;
   positon: relative;
-  -ms-grid-rows: 54px 37px minmax(auto, 406px) auto auto 224px;
+  -ms-grid-rows: 0px 0px minmax(auto, 406px) auto auto 224px;
       grid-template-rows: 54px 37px minmax(auto, 406px) auto auto 224px;
   -ms-grid-columns: minmax(20px, auto) minmax(auto, 540px) minmax(auto, 600px) minmax(20px, auto);
       grid-template-columns: minmax(20px, auto) minmax(auto, 540px) minmax(auto, 600px) minmax(20px, auto);

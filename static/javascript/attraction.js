@@ -7,8 +7,6 @@ let selectedPM = false;
 let imageId = 0;
   
 function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport){
-    // document.getElementById("ID").value=pathId; //id
-
     let ATTname = document.getElementById("attName"); //name
     let name = document.createTextNode(attName);
     ATTname.appendChild(name);
@@ -94,6 +92,7 @@ timeRadio[1].addEventListener("change",(e)=>{
 //EVENT: 初始載入畫面
 addEventListener("load",(e)=>{
     getData()
+    console.log(document.cookie)
 })
 
 
@@ -122,7 +121,8 @@ document.forms["tourForm"].addEventListener("submit",(event)=>{
                 if (data["message"]==="未登入系統，拒絕存取"){
                     document.querySelector(".dateError").style.display= "flex"
                     document.querySelector(".dateErrorText").textContent= data["message"]
-                    signPOPUP_view.signPage()
+                    document.querySelector(".sign-popup").style.display="block"
+                    popup.signinPage()
                 }
                 else{
                     document.querySelector(".dateError").style.display= "flex"

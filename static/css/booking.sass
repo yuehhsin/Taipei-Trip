@@ -1,112 +1,94 @@
 @import "general"
-@import "shareElement.sass"
 
-*
-    // border: 1px solid black
-.flexBox
+//tour
+.tour
+    padding: 40px 110px 45px 110px
+    border-bottom: 1px solid $gray300
+.tourHL
+    font-weight: 700
+    margin-bottom: 30px
+.tourInfo
     display: flex
     position: relative
-.flexBox_L
-    display: flex
-    align-items: center
-input
-    +size(200px,38px)
-    border: 1px solid $gray300
-    border-radius: 5px
-    @extend %body
-.BOX
-    display: flex
-    align-items: center
-    margin-bottom: 15px
-
-
-.container
-    display: grid
-    grid-template-rows: 54px auto auto auto auto 104px
-    grid-template-columns: auto minmax(auto,1200px) auto
-    grid-template-areas: ". H ." ". B1 ." ". B2 ." ". B3 ."  ". B4 ." "F F F"
-
-////// tour //////
-.tour
-    grid-area: B1
-    border-bottom: 1px solid $gray300
-    padding: 40px 110px 40px 110px
-    & .tourDel
-        +size(30px,30px)
-        background-image: url("/static/icon/icon_delete.png")
-        background-size: cover
-        position: absolute
-        right: 0px
-        top: 0px
-        opacity: 0.8
-        &:hover
-            opacity: 1
-            cursor: pointer
-    & .tourHL
-        @extend %button_B
-        margin-bottom: 30px
-        margin-left: -10px
-    & .tourImage
-        +size(250px,200px)
-        background-color: $gray800
-        margin-right: 30px
-        background-size: cover
-        border-radius: 5px
+    & h6
+        font-weight: 700
+        margin-bottom: 20px
+        & span
+            font-weight: 400
     & .tourName
-        @extend %body_B
+        margin-top: 10px
+        margin-bottom: 30px
         color: $cyan800
-        margin-bottom: 20px
-    & .tourTitle
-        @extend %body_B
-        margin-bottom: 10px
-        margin-right: 5px
-    & .tourContent
-        @extend %body
-        margin-bottom: 10px
-    
+        & span
+            font-weight: 700
+.noTour
+    display: none
+.tourImage
+    +size(250px,200px)
+    margin-right: 30px
+    background-size: cover
+    border-radius: 5px
+.tourDel
+    +size(30px,30px)
+    background-image: url("/static/icon/icon_delete.png")
+    background-size: cover
+    position: absolute
+    right: 0px
+    top: 0px
+    opacity: 0.8
+    &:hover
+        opacity: 1
+        cursor: pointer
 
-////// contact //////
+// contact
 .contact
-    grid-area: B2
-    padding: 44px 110px 45px 110px
-    border-bottom: 1px solid $gray300
-    & .contactHL
-        @extend %button_B
-        margin-bottom: 20px
-    & .contactTitle
-         @extend %body
-    & .contactPS
-        @extend %body_B
-
-////// card //////
-.card
-    grid-area: B3
     padding: 44px 110px 40px 110px
     border-bottom: 1px solid $gray300
-    & .cardHL
-        @extend %button_B
-        margin-bottom: 20px
-    & .cardTitle
-        @extend %body
+    & h4
+        font-weight: 700
+        margin-bottom: 24px
+    & h6
+        margin-bottom: 15px
+        & span
+            font-weight: 400
+        & input
+            +size(200px,38px)
+            text-indent: 10px
+            border-radius: 5px
+            border: 1px solid $gray300
+.ps
+    margin-top: 30px
+    font-weight: 700
 
-////// confirm //////
+// card
+.card
+    padding: 44px 110px 40px 110px
+    border-bottom: 1px solid $gray300
+    & h4
+        font-weight: 700
+        margin-bottom: 24px
+    & h6
+        margin-bottom: 15px
+        & span
+            font-weight: 400
+        & input
+            +size(200px,38px)
+            text-indent: 10px
+            border-radius: 5px
+            border: 1px solid $gray300
+
+// confirm
 .confirm
-    grid-area: B4
-    padding: 43px 110px 40px 110px
+    padding: 44px 110px 40px 110px
     display: flex
     flex-direction: column
     align-items: flex-end
-    // justify-content: center
-    & .confirmTitle
-        @extend %body_B
-    & .confirmCAT
-        +size(173px,36px)
+    & h6
+        font-weight: 700
+        margin-bottom: 25px
+    & button
+        padding: 10px 20px 10px 20px
         border-radius: 5px
-        background-color: $cyan800
-        +getcenter
-        margin-top: 22px
-        @extend %button
-        color: #FFFFFF
-
-
+    & h4
+        color: #fff
 

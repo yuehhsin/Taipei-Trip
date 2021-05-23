@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap')
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 *
   padding: 0px
   margin: 0px
   // border: 1px solid black
-  font-family: 'Noto Sans', sans-serif
+  font-family: 'Noto Sans TC', sans-serif
   font-size: 16px
 
 ////// guide: colors //////
@@ -19,71 +18,7 @@ $gray300: #E8E8E8
 $gray50: #F8F8F8
 
 $red: #EB5757
-
-////// guide: typography //////
-%sloganTitle
-  font-size: 30px
-  font-weight: 700
-  line-height: 34px
-  letter-spacing: 1px
-
-%header
-  font-size: 24px
-  font-weight: 700
-  line-height: 24px 
-  letter-spacing: 1px
-  color: $gray800
-
-%dialogTitle
-  font-size: 30px
-  font-weight: 400
-  line-height: 34px
-  letter-spacing: 1px
-%dialogTitle_B
-  font-size: 30px
-  font-weight: 700
-  line-height: 34px
-  letter-spacing: 1px
-
-%button
-  font-size: 19px
-  font-weight: 400
-  line-height: 16px
-  letter-spacing: 1px
-
-%button_B
-  font-size: 19px
-  font-weight: 700
-  line-height: 16px
-  letter-spacing: 1px
-  color: $gray800
-
-%content
-  font-size: 16px
-  font-weight: 400
-  line-height: 23.17px
-  letter-spacing: 1px
-
-%content_B
-  font-size: 16px
-  font-weight: 700
-  line-height: 23.17px
-  letter-spacing: 1px
-
-%body
-  font-size: 16px
-  font-weight: 400
-  line-height: 13.3px
-  letter-spacing: 1px
-  color: $gray800
-
-%body_B
-  font-size: 16px
-  font-weight: 700
-  line-height: 23.17px
-  letter-spacing: 1px
-  color: $gray800
-
+$green: #27AE60
 
 ////// mixin: size //////
 @mixin size($width,$height)
@@ -106,5 +41,67 @@ $red: #EB5757
     background-color: $cyan900
     cursor: pointer
 
+////// tags //////
+h1
+  //Header
+  font-size: 30px
+  font-weight: 700
+  line-height: 34px 
+  letter-spacing: 1px
+  color: $gray800
 
+h2
+  //Slogan Title
+  font-size: 24px
+  font-weight: 700
+  line-height: 24px
+  letter-spacing: 1px
+  color: $gray800
 
+h3
+  //Dialog Title
+  font-size: 30px
+  font-weight: 400
+  line-height: 34px
+  letter-spacing: 1px
+  color: $gray800
+
+h4
+  //Button
+  font-size: 19px
+  font-weight: 400
+  line-height: 16px
+  letter-spacing: 1px
+  color: $gray800
+
+h5
+  //Content
+  font-size: 16px
+  font-weight: 400
+  line-height: 23.17px
+  letter-spacing: 1px
+  color: $gray800
+
+h6
+  //Body
+  font-size: 16px
+  font-weight: 400
+  line-height: 13.3px
+  letter-spacing: 1px
+  color: $gray800
+
+a
+  text-decoration: none
+
+button
+  outline: none
+  border: none
+  background-color: $cyan800
+  &:hover
+    background-color: $cyan900
+    cursor: pointer
+
+input
+  outline: none
+  border: none
+  color: $gray700
