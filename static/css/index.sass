@@ -34,9 +34,8 @@
             position: absolute
             background-image: url("/static/image/welcome_1.png")
             background-size: cover
-            right: -80px    
-            bottom: 0px 
             overflow: hidden
+            right: 0px
 
 //content
 #content
@@ -45,12 +44,13 @@
     grid-template-columns: repeat(auto-fill,minmax(270px,1fr))
     grid-gap: 30px 
     & .attraction
+        width: 100%
+        aspect-ratio: 270/242
         border: 1px solid $gray300
         border-radius: 5px
-        height: 242px
         display: grid
         grid-template-columns: 50% 50%
-        grid-template-rows: 160px 41px 41px
+        grid-template-rows: 4fr 1fr 1fr
         overflow: hidden
         &:hover
             cursor: pointer
@@ -65,14 +65,15 @@
         margin-left: 10px
         margin-right: 10px
         padding-top: 16px
-        overflow: hidden
         white-space: nowrap
+        // overflow: hidden
         text-overflow: ellipsis
         font-weight: 700
     & .attMrt
         grid-area: 3/1/4/2
         margin-left: 10px
         margin-top: 16px
+        padding-bottom: 16px
     & .attCategory
         grid-area: 3/-1/4/-2
         text-align: right
@@ -82,3 +83,34 @@
 
 .target
     grid-area: T
+
+
+//RWD
+@media screen and ( max-width: 1240px )
+    .KV-info
+        padding-right: 20px
+        padding-left: 20px
+
+@media screen and ( max-width: 906px )
+    .attraction
+        grid-template-rows: 6fr 1fr 1fr !important
+    .attName
+        overflow: display !important
+
+@media screen and ( max-width: 806px )
+    input
+        width: 250px !important
+    .attraction
+        grid-template-rows: 8fr 1fr 1fr !important
+    .KV-image
+        width: 424px !important
+        height: 296px !important
+        background-image: url("/static/image/welcome_2.png") !important
+        bottom: 0px
+
+@media screen and ( max-width: 500px )
+    .KV-image
+        width: 212px !important
+        height: 148px !important
+        background-image: url("/static/image/welcome_3.png") !important
+        bottom: 0px

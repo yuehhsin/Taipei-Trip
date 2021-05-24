@@ -49,7 +49,7 @@ h5 {
 h6 {
   font-size: 16px;
   font-weight: 400;
-  line-height: 13.3px;
+  line-height: 25px;
   letter-spacing: 1px;
   color: #666666;
 }
@@ -147,9 +147,8 @@ input {
   position: absolute;
   background-image: url("/static/image/welcome_1.png");
   background-size: cover;
-  right: -80px;
-  bottom: 0px;
   overflow: hidden;
+  right: 0px;
 }
 
 #content {
@@ -162,15 +161,16 @@ input {
 }
 
 #content .attraction {
+  width: 100%;
+  aspect-ratio: 270/242;
   border: 1px solid #E8E8E8;
   border-radius: 5px;
-  height: 242px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 50% 50%;
       grid-template-columns: 50% 50%;
-  -ms-grid-rows: 160px 41px 41px;
-      grid-template-rows: 160px 41px 41px;
+  -ms-grid-rows: 4fr 1fr 1fr;
+      grid-template-rows: 4fr 1fr 1fr;
   overflow: hidden;
 }
 
@@ -201,7 +201,6 @@ input {
   margin-left: 10px;
   margin-right: 10px;
   padding-top: 16px;
-  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: 700;
@@ -215,6 +214,7 @@ input {
   grid-area: 3/1/4/2;
   margin-left: 10px;
   margin-top: 16px;
+  padding-bottom: 16px;
 }
 
 #content .attCategory {
@@ -228,5 +228,47 @@ input {
 
 .target {
   grid-area: T;
+}
+
+@media screen and (max-width: 1240px) {
+  .KV-info {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 906px) {
+  .attraction {
+    -ms-grid-rows: 6fr 1fr 1fr !important;
+        grid-template-rows: 6fr 1fr 1fr !important;
+  }
+  .attName {
+    overflow: display !important;
+  }
+}
+
+@media screen and (max-width: 806px) {
+  input {
+    width: 250px !important;
+  }
+  .attraction {
+    -ms-grid-rows: 8fr 1fr 1fr !important;
+        grid-template-rows: 8fr 1fr 1fr !important;
+  }
+  .KV-image {
+    width: 424px !important;
+    height: 296px !important;
+    background-image: url("/static/image/welcome_2.png") !important;
+    bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .KV-image {
+    width: 212px !important;
+    height: 148px !important;
+    background-image: url("/static/image/welcome_3.png") !important;
+    bottom: 0px;
+  }
 }
 /*# sourceMappingURL=index.css.map */

@@ -8,8 +8,10 @@
     font-weight: 700
     margin-bottom: 30px
 .tourInfo
+    width: 100%
     display: flex
     position: relative
+    flex-wrap: wrap
     & h6
         font-weight: 700
         margin-bottom: 20px
@@ -24,7 +26,10 @@
 .noTour
     display: none
 .tourImage
-    +size(250px,200px)
+    width: 30%
+    aspect-ratio: 266/200
+    // +size(266px,200px)
+
     margin-right: 30px
     background-size: cover
     border-radius: 5px
@@ -32,7 +37,7 @@
     +size(30px,30px)
     background-image: url("/static/icon/icon_delete.png")
     background-size: cover
-    position: absolute
+    position: relative
     right: 0px
     top: 0px
     opacity: 0.8
@@ -92,3 +97,69 @@
     & h4
         color: #fff
 
+//RWD
+@media screen and ( max-width: 1200px )
+    .tour
+        padding: 40px 60px 40px 60px
+    .tourImage
+        width: 50% !important
+        margin: 0px
+        margin-right: 20px
+    .contact
+        padding: 40px 60px 40px 60px
+    .card
+        padding: 40px 60px 40px 60px
+    .confirm
+        padding: 40px 60px 40px 60px
+
+@media screen and ( max-width: 844px )
+    .tour
+        padding: 40px 40px 40px 40px
+    .tourImage
+        width: 50% !important
+        margin: 0px
+        margin-right: 20px
+    .contact
+        padding: 40px 40px 40px 40px
+    .card
+        padding: 40px 40px 40px 40px
+    .confirm
+        padding: 40px 40px 40px 40px
+    
+@media screen and ( max-width: 810px )
+    .tour
+        padding: 40px 30px 40px 30px
+    .tourImage
+        width: 100% !important
+        margin: 0px
+    .info
+        margin-top: 30px
+    .contact
+        padding: 40px 30px 40px 30px
+    .card
+        padding: 40px 30px 40px 30px
+    .confirm
+        padding: 40px 30px 40px 30px
+    .tourDel
+        position: absolute
+        bottom: 0px
+        top: auto
+
+@media screen and ( max-width: 500px )
+    .tour
+        padding: 40px 0px 40px 0px
+    .tourImage
+        width: 100% !important
+        margin: 0px
+    .info
+        margin-top: 30px
+    .contact
+        padding: 40px 0px 40px 0px
+    .card
+        padding: 40px 0px 40px 0px
+    .confirm
+        padding: 40px 0px 40px 0px
+    .tourDel
+        position: absolute
+        bottom: 0px
+        top: auto

@@ -105,7 +105,13 @@ signinForm.addEventListener("submit",(e)=>{
             if (data["ok"]){
                 document.querySelector(".signinOk").style.display="flex"
                 window.setTimeout(()=>{
-                    location.reload()
+                    if(window.location.href.includes("/attraction")){
+                        location.href="/booking"
+                    }
+                    else{
+                        location.reload()
+                    }
+                    
                 },1000)
             }
             else if(data["error"]){
