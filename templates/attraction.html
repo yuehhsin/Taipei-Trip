@@ -1,104 +1,66 @@
-<!DOCTYPE html>
-<head>
-    <link href="/static/css/attraction.css" rel="stylesheet">
-    <title>Taipei Trip台北一日遊</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body>
-    <div id="signPOPUP">
-        <div id="grayBG" onclick=signPOPUP_view.closeSignPOPUP()></div>
-        <div id="signinDialog">
-            <div class="dec"></div>
-            <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
-            <div class="signTitle">登入會員帳號</div>
-            <form action="/" id="signinForm">
-                <input type="text" class="invisible" name="name" >
-                <input type="text" placeholder="輸入電子信箱" class="signInput" name="email">
-                <input type="password" placeholder="輸入密碼" class="signInput" name="password">
-                <button class="signinCTA">
-                    <div class="CTAcontent">登入帳戶</div>
-                </button>
-            </form>
-            <div class="note">還沒有帳戶？<span class="signupBTN" onclick=signPOPUP_view.signupPage()>點此註冊</span></div>
-        </div>
-        <div id="signupDialog">
-            <div class="dec"></div>
-            <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
-            <div class="signupTitle">註冊會員帳號</div>
-            <form action="/api/user" method="POST" id="signupForm">
-                <input type="text" placeholder="輸入姓名" class="signupInput" name="name" >
-                <input type="text" placeholder="輸入電子郵件" class="signupInput" name="email">
-                <input type="password" placeholder="輸入密碼" class="signupInput" name="password">
-                <button class="signupCTA">
-                    <div class="CTAcontent">註冊帳戶</div>
-                </button>
-            </form>
-            <div class="signupNote">已經有帳戶了？<span class="signinBTN" onclick=signPOPUP_view.signinPage()>點此登入</span></div>
-        </div>
+{% extends "base.html" %}
+{% block js %}
+<script src="/static/javascript/attraction.js" defer></script>
+{% endblock %}
+
+{% block css %}
+<link href="/static/css/attraction.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+Taipei Trip 台北一日遊：旅遊景點
+{% endblock %}
+
+{% block content %}
+<div id="attImage">
+    <div id="backImageBTN" onclick=backImageBTN()></div>
+    <div id="nextImageBTN" onclick=nextImageBTN()></div>
+    <div class="imageDot">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
     </div>
-    <div class="container">
-        <div class="line"></div>
-        <div class="header">
-            <a href="/" class="title">台北一日遊</a>
-            <div class="menu">
-                <div class="tourBTN">預定行程</div>
-                <div id="signBTN" onclick=signPOPUP_view.signPage()>登入/註冊</div>
-                <div id="logoutBTN" onclick=signPOPUP_view.logout()>登出</div>
+</div>
+<div class="attInfo">
+    <div class="infoBox">
+        <form class="tourForm" id="tourForm">
+            <div id="attName"></div>
+            <div id="attType"></div>
+            <div class="tourTitle">訂購導覽行程</div>
+            <div class="tourContent">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+            <div class="flexBox">
+                <div class="selTitle">選擇日期：</div>
+                <input type="date" class="dateInput" name="date" min=2021-05-20>
             </div>
-        </div>
-        <div id="attImage">
-            <div id="backImageBTN" onclick=backImageBTN()></div>
-            <div id="nextImageBTN" onclick=nextImageBTN()></div>
-            <div class="imageDot">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+            <div class="flexBox">
+                <div class="selTitle">選擇時間：</div>
+                <input id="amRadio" type="radio" name="time" value="morning" checked="checked" hidden></input>
+                <label for="amRadio" class="timeLabel">上半天</label>
+                <input id="pmRadio" type="radio" name="time" value="afternoon" hidden></input>
+                <label for="pmRadio" class="timeLabel">下半天</label>
             </div>
-        </div>
-        <div class="attInfo">
-            <div class="infoBox">
-                <div id="attName"></div>
-                <div id="attType"></div>
-                <div class="tourBox">
-                    <div class="tourTitle">訂購導覽行程</div>
-                    <div class="tourContent">以此景點為中心的一日行程，帶您探索城市角落故事</div>
-                    <div class="flexBox">
-                        <div class="selTitle">選擇日期：</div>
-                        <input type="date" class="date">
-                    </div>
-                    <div class="flexBox">
-                        <div class="selTitle">選擇時間：</div>
-                        <div class="am">
-                            <div class="selBTN" id="selAM"></div>
-                            <div class="content">上半天</div>
-                        </div>
-                        <div class="pm">
-                            <div class="selBTN" id="selPM"></div>
-                            <div class="content">下半天</div>
-                        </div>
-                    </div>
-                    <div class="flexBox">
-                        <div class="selTitle">導覽費用：</div>
-                        <div class="content" id="tourPrice">新台幣2000元</div>
-                    </div>
-                    <div class="tourCTA">
-                        <div class="CATtext">開始預定行程</div>
-                    </div>
+            <div class="flexBox">
+                <div class="selTitle" name=value>導覽費用：</div>
+                <div class="content" id="tourPrice">新台幣<span class="price">2000</span>元</div>
+            </div>
+            <div class="V-Center">
+                <button class="tourCTA">開始預定行程</button> 
+                <div class="dateError">
+                    <img class="dateErrorImage" src="/static/icon/icon_dateError.png" width="20px" height="20px">
+                    <div class="dateErrorText">請選擇日期</div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div class="contents">
-            <div class="content" id="attDes"></div>
-            <div class="item">景點地址：</div>
-            <div class="content" id="attAddress"></div>
-            <div class="item">交通方式：</div>
-            <div class="content" id="attTransport"></div>
-        </div>
-        <div class="footer">
-            <div class="copyright">COPYRIGHT © 2021 台北一日遊</div>
-        </div>       
+        </form>
     </div>
-</body>
-<script src="/static/javascript/header.js"></script>
-<script src="/static/javascript/attraction.js"></script>
+</div>
+<hr>
+<div class="contents">
+    <div class="content" id="attDes"></div>
+    <div class="item">景點地址：</div>
+    <div class="content" id="attAddress"></div>
+    <div class="item">交通方式：</div>
+    <div class="content" id="attTransport"></div>
+</div>
+{% endblock %}
+   
+

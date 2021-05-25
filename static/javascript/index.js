@@ -1,10 +1,7 @@
-let content = document.getElementById("content");
 let Page = 0;
 let nextPage = 1;
 let fetching = false;
-let keyword_form = document.getElementById("keyword_form");
-let getKeyword = document.getElementsByName("keyword");
-let keyword = getKeyword[0].value;
+let keyword = document.getElementsByName("keyword")[0].value;
 let argsKeyword = decodeURIComponent(location.search).split("=")[1];
 
 ////// function: 連線取得資料並顯示在畫面 //////
@@ -24,17 +21,17 @@ function Fetch(url){
                     window.location.href="/attraction/"+jsonData["data"][i]["id"];
                 }
 
-                let attName = document.createElement("div"); //name
+                let attName = document.createElement("h6"); //name
                 attName.className="attName";
                 let name = document.createTextNode(jsonData["data"][i]["name"]);
                 attName.appendChild(name);
 
-                let attMrt = document.createElement("div");  //mrt
+                let attMrt = document.createElement("h6");  //mrt
                 attMrt.className="attMrt";   
                 let mrt = document.createTextNode(jsonData["data"][i]["mrt"]);
                 attMrt.appendChild(mrt);  
 
-                let attCategory = document.createElement("div");  //category
+                let attCategory = document.createElement("h6");  //category
                 attCategory.className="attCategory";      
                 let category = document.createTextNode(jsonData["data"][i]["category"]);
                 attCategory.appendChild(category);
@@ -51,7 +48,7 @@ function Fetch(url){
                 newAtt.appendChild(attMrt);
                 newAtt.appendChild(attCategory);
                 newAtt.appendChild(attImage);
-                content.appendChild(newAtt);
+                document.getElementById("content").appendChild(newAtt);
                 
                 fetching=false;
                 Page=nextPage;
@@ -100,9 +97,3 @@ else{
     let target = document.getElementById("target");
     observer.observe(target);
 }
-
-
-
-
-
-

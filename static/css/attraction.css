@@ -1,16 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 * {
   padding: 0px;
   margin: 0px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
   font-size: 16px;
-}
-
-.header .title {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 34px;
-  letter-spacing: 1px;
 }
 
 #signinDialog .signTitle, #signupDialog .signupTitle, .attInfo #attName {
@@ -21,26 +14,29 @@
   color: #666666;
 }
 
-#signinDialog .signinCTA .CTAcontent, #signupDialog .signupCTA .CTAcontent, .attInfo .tourBox .tourCTA .CTAtext {
+#signinDialog .signinCTA .CTAcontent, #signupDialog .signupCTA .CTAcontent, .attInfo .tourForm .tourCTA .CTAtext {
   font-size: 19px;
+  font-weight: 400;
   line-height: 16px;
   letter-spacing: 1px;
 }
 
 .contents .content {
   font-size: 16px;
+  font-weight: 400;
   line-height: 23.17px;
   letter-spacing: 1px;
 }
 
-.header .menu, #signinDialog .note, #signupDialog .signupNote, .attInfo #attType {
+#signinDialog .note, #signupDialog .signupNote, .attInfo #attType {
   font-size: 16px;
+  font-weight: 400;
   line-height: 13.3px;
   letter-spacing: 1px;
   color: #666666;
 }
 
-.footer .copyright, .attInfo .tourBox .tourTitle, .attInfo .tourBox .selTitle, .contents .item {
+.attInfo .tourForm .tourTitle, .attInfo .tourForm .selTitle, .contents .item {
   font-size: 16px;
   font-weight: 700;
   line-height: 23.17px;
@@ -48,100 +44,56 @@
   color: #666666;
 }
 
-.header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-area: H;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background-color: #FFFFFF;
-  z-index: 100;
-}
-
-.header .title {
-  color: #448899;
-  text-decoration: none;
-}
-
-.header .title:hover {
-  color: #2B798C;
-}
-
-.header .menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 1px;
   color: #666666;
 }
 
-.header .menu .tourBTN {
-  margin-left: 20px;
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu #signBTN {
-  display: none;
-  margin-left: 20px;
+h3 {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 34px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu #signBTN:hover {
-  color: #66AABB;
-  cursor: pointer;
+h4 {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu #logoutBTN {
-  display: none;
-  margin-left: 20px;
+h5 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.17px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.header .menu #logoutBTN:hover {
-  color: #66AABB;
-  cursor: pointer;
+h6 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 13.3px;
+  letter-spacing: 1px;
+  color: #666666;
 }
 
-.line {
-  position: fixed;
-  width: 100%;
-  height: 54px;
-  border-bottom: 1px solid #E8E8E8;
-  background-color: #FFFFFF;
-  z-index: 99;
-}
-
-.footer {
-  -ms-grid-row: 6;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
-  grid-area: F;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #757575;
-  margin-top: 120px;
-}
-
-.footer .copyright {
-  color: #FFFFFF;
+a {
+  text-decoration: none;
 }
 
 #grayBG {
@@ -364,6 +316,88 @@
   color: #27AE60;
 }
 
+.V-Center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ALL-Center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+button {
+  border: none;
+}
+
+input[type="date"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid #E8E8E8;
+  color: #757575;
+  padding: 5px 10px;
+}
+
+input[type="date"]:focus {
+  outline-color: #66AABB;
+}
+
+input[type="date"]:required {
+  color: #666666;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url("/static/icon/icon_calendar.png") center/80% no-repeat;
+  opacity: 0.6;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+label {
+  margin-left: 10px;
+}
+
+input[type="radio"] + label {
+  vertical-align: middle;
+}
+
+input[type="radio"] + label:hover {
+  cursor: pointer;
+}
+
+input[type="radio"] + label::before {
+  width: 20px;
+  height: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  border: 2px solid #fff;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+input[type="radio"]:checked + label:before {
+  background-color: #448899;
+}
+
 #signPOPUP {
   display: none;
 }
@@ -372,7 +406,7 @@
   display: -ms-grid;
   display: grid;
   positon: relative;
-  -ms-grid-rows: 54px 37px minmax(auto, 406px) auto auto 224px;
+  -ms-grid-rows: 0px 0px minmax(auto, 406px) auto auto 224px;
       grid-template-rows: 54px 37px minmax(auto, 406px) auto auto 224px;
   -ms-grid-columns: minmax(20px, auto) minmax(auto, 540px) minmax(auto, 600px) minmax(20px, auto);
       grid-template-columns: minmax(20px, auto) minmax(auto, 540px) minmax(auto, 600px) minmax(20px, auto);
@@ -452,31 +486,31 @@
   margin-bottom: 20px;
 }
 
-.attInfo .tourBox {
+.attInfo .tourForm {
   background-color: #E8E8E8;
   padding-top: 15px;
   padding-bottom: 41px;
   border-radius: 5px;
 }
 
-.attInfo .tourBox .tourTitle {
+.attInfo .tourForm .tourTitle {
   margin: 15px auto 15px 20px;
 }
 
-.attInfo .tourBox .tourContent {
+.attInfo .tourForm .tourContent {
   margin: 0px auto 15px 20px;
 }
 
-.attInfo .tourBox .selTitle {
+.attInfo .tourForm .selTitle {
   margin-right: 3px;
   margin-left: 20px;
 }
 
-.attInfo .tourBox .date {
+.attInfo .tourForm .date {
   height: 35px;
 }
 
-.attInfo .tourBox .flexBox {
+.attInfo .tourForm .flexBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -487,7 +521,7 @@
   margin-bottom: 15px;
 }
 
-.attInfo .tourBox .flexBox .am, .attInfo .tourBox .flexBox .pm {
+.attInfo .tourForm .flexBox .am, .attInfo .tourForm .flexBox .pm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -496,7 +530,7 @@
           align-items: center;
 }
 
-.attInfo .tourBox .flexBox .selBTN {
+.attInfo .tourForm .flexBox .selBTN {
   width: 22px;
   height: 22px;
   display: -webkit-box;
@@ -514,7 +548,7 @@
   margin-left: 10px;
 }
 
-.attInfo .tourBox .tourCTA {
+.attInfo .tourForm .tourCTA {
   width: 154px;
   height: 36px;
   display: -webkit-box;
@@ -530,10 +564,14 @@
   background-color: #448899;
   border-radius: 5px;
   margin-left: 20px;
-  margin-top: 25px;
 }
 
-.attInfo .tourBox #selctedBTN {
+.attInfo .tourForm .tourCTA:hover {
+  background-color: #2B798C;
+  cursor: pointer;
+}
+
+.attInfo .tourForm #selctedBTN {
   width: 18px;
   height: 18px;
   border-radius: 100%;
@@ -566,6 +604,28 @@ hr {
 .contents .content {
   color: #666666;
   margin-bottom: 20px;
+}
+
+.dateError {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+}
+
+.dateError .dateErrorImage {
+  margin-left: 15px;
+}
+
+.dateError .dateErrorText {
+  margin-left: 5px;
+  color: #EB5757;
 }
 
 @media (max-width: 720px) {

@@ -1,15 +1,66 @@
 @import "general"
 @import "shareElement"
 
+//共用class
+.V-Center
+    display: flex
+    align-items: center
+
+.ALL-Center
+    display: flex
+    align-items: center
+    justify-content: center
+button
+    border: none
+
+input[type="date"]
+    box-sizing: border-box
+    border-radius: 5px
+    border: 2px solid $gray300
+    color: $gray700
+    padding: 5px 10px
+    &:focus
+        outline-color: $cyan700
+    &:required
+        color: $gray800
+input[type="date"]::-webkit-calendar-picker-indicator
+    background: url("/static/icon/icon_calendar.png") center/80% no-repeat
+    opacity: 0.6
+    &:hover
+        opacity: 1
+        cursor: pointer
+
+label
+    margin-left: 10px
+input[type="radio"]+label
+    vertical-align: middle
+    &:hover
+        cursor: pointer
+
+input[type="radio"]+label::before
+    +size(20px,20px)
+    box-sizing: border-box
+    content: " "
+    display: inline-block
+    vertical-align: middle
+    border: 2px solid #fff
+    background-color:#fff
+    border-radius: 50%
+    margin-right: 4px
+    
+input[type="radio"]:checked+label:before
+    background-color: #448899
+
+
 ////// container grid //////
 #signPOPUP
     display: none
 .container
   display: grid
   positon: relative
-  grid-template-rows: 54px 37px minmax(auto,406px) auto auto 224px
+  grid-template-rows:37px minmax(auto,406px) auto auto
   grid-template-columns: minmax(20px,auto) minmax(auto,540px) minmax(auto,600px) minmax(20px,auto)
-  grid-template-areas:  ". H H ." ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ." "F F F F"
+  grid-template-areas: ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ."
 
 #attImage
     grid-area: B2
@@ -61,7 +112,7 @@
         @extend %body
         margin-left: 20px
         margin-bottom: 20px
-    & .tourBox
+    & .tourForm
         background-color: $gray300
         padding-top: 15px
         padding-bottom: 41px
@@ -95,7 +146,6 @@
         & .tourCTA
             +CTA(154px,36px)
             margin-left: 20px
-            margin-top: 25px
             & .CTAtext
                 @extend %button
         & #selctedBTN
@@ -121,7 +171,16 @@ hr
         color: $gray800
         @extend %content
         margin-bottom: 20px
+.dateError
+    +getcenter
+    display: none
+    & .dateErrorImage
+        margin-left: 15px
+    & .dateErrorText
+        margin-left: 5px
+        color: $red
 
+    
 ////// RWD //////
 @media (max-width: 720px)
     .header

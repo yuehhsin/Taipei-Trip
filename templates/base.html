@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<script src="/static/javascript/base.js" defer></script>
+{% block js %}{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/base.css" rel="stylesheet">
+    {% block css %}{% endblock %}
+    <link rel="Shortcut Icon" type="image/x-icon" href="/static/icon/web_icon.png" />
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <!-- popup: signin&up -->
+    <session class="sign-popup">
+        <div class="grayBG"></div>
+        <!-- popup: signin -->
+        <form class="signinForm">
+            <div class="dec"></div>
+            <div class="closeBTN"></div>
+            <h2>登入會員帳號</h2>
+            <input type="text" placeholder="輸入電子信箱" class="signInput" name="email">
+            <input type="password" placeholder="輸入密碼" class="signInput" name="password">
+            <button class="signinCTA"><h4>登入帳戶</h4></button>
+            <h6>還沒有帳戶？<span class="signupBTN">點此註冊</span></h6>
+            <div class="signinError">
+                <img class="signinErrorImage" src="/static/icon/icon_dateError.png" width="20px" height="20px">
+                <h6 class="signinMessage">登入失敗</h6>
+            </div>
+            <div class="signinOk">
+                <img class="signinOkImage" src="/static/icon/icon_verified.png" width="20px" height="20px">
+                <h6 class="signinOkText">登入成功</h6>
+            </div>
+        </form>
+        <!-- popup: signup -->
+        <form class="signupForm">
+            <div class="dec"></div>
+            <div class="closeBTN"></div>
+            <h2>註冊會員帳號</h2>
+            <input type="text" placeholder="輸入姓名" class="signupInput" name="name" >
+            <input type="text" placeholder="輸入電子郵件" class="signupInput" name="email">
+            <input type="password" placeholder="輸入密碼" class="signupInput" name="password">
+            <button class="signupCTA">
+                <div class="CTAcontent"><h4>註冊帳戶</h4></div>
+            </button>
+            <h6>已經有帳戶了？<span class="signinBTN">點此登入</span></h6>
+            <div class="signupError">
+                <!-- <img class="signupOk" src="/static/icon/icon_verified.png" width="20px" height="20px"> -->
+                <img class="signupImage" src="/static/icon/icon_dateError.png" width="20px" height="20px">
+                <h6 class="signupErrorText">註冊失敗</h6>
+            </div>
+            <div class="signupOk">
+                <img class="signupOkImage" src="/static/icon/icon_verified.png" width="20px" height="20px">
+                <h6 class="signupOkText">註冊成功</h6>
+            </div>
+        </form>
+    </session>
+    <!-- navigation-bar -->
+    <div class="header">
+        <div class="navbar">
+            <a href="/"><h1>台北一日遊</h1></a>
+            <div class="menu">
+                <h6 class="tourBTN">預定行程</h5>
+                <h6 class="placeholder">資料載入</h5>
+                <h6 class="signBTN">登入/註冊</h6>
+                <h6 class="logoutBTN">登出</h6>
+            </div>
+        </div>
+    </div>
+    <!-- container -->
+    {% block banner %}{% endblock %}
+    <div class="container1200">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <h6>COPYRIGHT © 2021 台北一日遊</h6>
+    </div>
+</body>

@@ -14,9 +14,12 @@ app.secret_key = "hello"
 from route.page.page import page
 from route.api.user import user
 from route.api.attractions import att
+from route.api.booking import book
+
 app.register_blueprint(page)
 app.register_blueprint(user,url_prefix='/api')
 app.register_blueprint(att,url_prefix='/api')
+app.register_blueprint(book,url_prefix='/api')
 
 
 if __name__ == "__main__":

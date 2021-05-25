@@ -1,72 +1,39 @@
-<!DOCTYPE html>
-<head>
-    <link href="/static/css/indexs.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Taipei Trip台北一日遊</title>
-    <link rel="Shortcut Icon" type="image/x-icon" href="/static/icon/web_icon.png" />
-</head>
-<body>
-    <div id="signPOPUP">
-        <div id="grayBG" onclick=signPOPUP_view.closeSignPOPUP()></div>
-        <div id="signinDialog">
-            <div class="dec"></div>
-            <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
-            <div class="signTitle">登入會員帳號</div>
-            <form id="signinForm">
-                <input type="text" class="invisible" name="name" >
-                <input type="text" placeholder="輸入電子信箱" class="signInput" name="email">
-                <input type="password" placeholder="輸入密碼" class="signInput" name="password">
-                <button class="signinCTA">
-                    <div class="CTAcontent">登入帳戶</div>
-                </button>
-            </form>
-            <div class="note">還沒有帳戶？<span class="signupBTN" onclick=signPOPUP_view.signupPage()>點此註冊</span></div>
-        </div>
-        <div id="signupDialog">
-            <div class="dec"></div>
-            <div class="closeBTN" onclick=signPOPUP_view.closeSignPOPUP()></div>
-            <div class="signupTitle">註冊會員帳號</div>
-            <form id="signupForm">
-                <input type="text" placeholder="輸入姓名" class="signupInput" name="name" >
-                <input type="text" placeholder="輸入電子郵件" class="signupInput" name="email">
-                <input type="password" placeholder="輸入密碼" class="signupInput" name="password">
-                <button class="signupCTA">
-                    <div class="CTAcontent">註冊帳戶</div>
-                </button>
-            </form>
-            <div class="signupNote">已經有帳戶了？<span class="signinBTN" onclick=signPOPUP_view.signinPage()>點此登入</span></div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="line"></div>
-        <div class="header">
-            <a href="/" class="title">台北一日遊</a>
-            <div class="menu">
-                <div class="tourBTN">預定行程</div>
-                <div id="signBTN" onclick=signPOPUP_view.signPage()>登入/註冊</div>
-                <div id="logoutBTN">登出</div>
-            </div>
-        </div>
-        <div class="KV">
-            <div class="KV-image"></div>
-        </div>
-        <div class="KV-info">
-            <div class="slogan1">輕鬆享受台北一日悠閒</div>
-            <div class="slogan2">探索每個角落，體驗城市的深度旅遊行程</div>
-            <form id="keyword_form">
-                <input class="input" placeholder="輸入景點名稱查詢" name="keyword"></input>
+{% extends "base.html" %}
+{% block js %}
+<script src="/static/javascript/index.js" defer></script>
+{% endblock %}
+
+{% block css %}
+<link href="/static/css/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+Taipei Trip 台北一日遊
+{% endblock %}
+
+{% block banner %}
+<div class="KV">
+    <div class="KV-info">
+        <div class="KV-image"></div>
+        <form id="keywordForm">
+            <h2>輕鬆享受台北一日悠閒</h2>
+            <h6>探索每個角落，體驗城市的深度旅遊行程</h6>
+            <div class="keywordSearch">
+                <input placeholder="輸入景點名稱查詢" name="keyword"></input>
                 <button class="searchBTN">
                     <img src="/static/icon/icon_search.png" width="30px" height="30px">
                 </button>
-            </form>
-        </div>
-        <div id="content"></div>
-        <div id="target"></div>
-        <div class="footer">
-            <div class="copyright">COPYRIGHT © 2021 台北一日遊</div>
-        </div>
+            </div>
+        </form>
     </div>
-</body>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content"></div>
+<div id="target"></div>
+{% endblock %}
+
 <script src="static/javascript/index.js"></script>
 <script src="static/javascript/header.js"></script>
 

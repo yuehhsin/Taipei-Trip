@@ -5,7 +5,7 @@ let tourPrice = document.getElementById("tourPrice")
 let selectedAM = false;
 let selectedPM = false;
 let imageId = 0;
-
+  
 function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport){
     let ATTname = document.getElementById("attName"); //name
     let name = document.createTextNode(attName);
@@ -76,51 +76,63 @@ function nextImageBTN(){
 }
 
 
+//radio
+let timeRadio = Array.apply(null,document.querySelectorAll('[name="time"]'))
+timeRadio[0].addEventListener("change",(e)=>{
+    if(e.target.checked){
+        document.querySelector(".price").textContent=2000
+    }
+})
+timeRadio[1].addEventListener("change",(e)=>{
+    if(e.target.checked){
+        document.querySelector(".price").textContent=2500
+    }
+})
+
 //EVENT: 初始載入畫面
 addEventListener("load",(e)=>{
     getData()
-})
-
-//EVENT: 點擊早上/下午BTN
-function AMprice(){
-    let amPrice = document.createTextNode("新台幣2000元")
-    tourPrice.innerHTML=""
-    tourPrice.appendChild(amPrice)
-}
-function PMprice(){
-    let pmPrice = document.createTextNode("新台幣2500元")
-    tourPrice.innerHTML=""
-    tourPrice.appendChild(pmPrice)
-}
-selAM.addEventListener("click",(e)=>{  //sel AM
-    if (selectedAM===false & selectedPM===false){
-        selBTN(selAM);
-        selectedAM=true;
-        AMprice()
-    }
-    else if(selectedAM===false & selectedPM===true){
-        cancelBTN(selPM);
-        selectedPM=false;
-        selBTN(selAM);
-        selectedAM=true;
-        let amPrice = document.createTextNode("新台幣2000元")
-        tourPrice.appendChild(amPrice)
-        AMprice()
-    }
-})
-selPM.addEventListener("click",(e)=>{   //sel PM
-    if (selectedPM===false & selectedAM===false){
-        selBTN(selPM);
-        selectedPM=true;
-        PMprice()
-    }
-    else if(selectedPM===false & selectedAM===true){
-        cancelBTN(selAM);
-        selectedAM=false;
-        selBTN(selPM);
-        selectedPM=true;
-        PMprice()
-    }
+    console.log(document.cookie)
 })
 
 
+
+document.forms["tourForm"].addEventListener("submit",(event)=>{
+    event.preventDefault();
+    if(document.forms["tourForm"]["date"].value!=""){ 
+        fetch("/api/booking",{
+            method: "POST",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
+            body: JSON.stringify({
+                "attractionId": pathId,
+                "date": document.forms["tourForm"]["date"].value,
+                "time": document.forms["tourForm"]["time"].value,
+                "price": document.querySelector(".price").textContent
+            }) 
+        }).then(response=>{
+            return response.json()
+        }).then(data=>{
+            if (data["ok"]){
+                window.location.href="/booking"
+            }
+            else if(data["error"]){
+                if (data["message"]==="未登入系統，拒絕存取"){
+                    document.querySelector(".dateError").style.display= "flex"
+                    document.querySelector(".dateErrorText").textContent= data["message"]
+                    document.querySelector(".sign-popup").style.display="block"
+                    popup.signinPage()
+                }
+                else{
+                    document.querySelector(".dateError").style.display= "flex"
+                    document.querySelector(".dateErrorText").textContent= data["message"]
+                }
+            }
+        })
+    }
+    else if(document.forms["tourForm"]["date"].value==""){  //日期不可為空!
+        document.querySelector(".dateError").style.display= "flex"
+        document.querySelector(".dateInput").style.borderColor= "#EB5757"
+    }
+})
