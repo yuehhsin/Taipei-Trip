@@ -24,7 +24,7 @@ window.addEventListener("load",()=>{
             }
             tourContent[0].textContent=data["data"]["date"]
             tourContent[1].textContent=Time
-            tourContent[2].textContent="新台幣 "+data["data"]["price"]+" 元"
+            tourContent[2].textContent=data["data"]["price"]
             tourContent[3].textContent=data["data"]["attraction"]["address"]
             document.querySelector(".tourImage").style.backgroundImage='url('+data["data"]["attraction"]["image"]+')'
             document.querySelector(".totalPrice").textContent=data["data"]["price"]
