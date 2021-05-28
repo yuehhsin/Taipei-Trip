@@ -2,6 +2,7 @@
 
 //tour
 .tour
+    display: none
     padding: 40px 110px 45px 110px
     border-bottom: 1px solid $gray300
 .tourHL
@@ -24,6 +25,8 @@
         color: $cyan800
         & span
             font-weight: 700
+.noB
+    font-weight: 400
 .info
     width: 450px
 .noTour
@@ -49,6 +52,7 @@
 
 // contact
 .contact
+    display: none
     padding: 44px 110px 40px 110px
     border-bottom: 1px solid $gray300
     & h4
@@ -66,9 +70,15 @@
 .ps
     margin-top: 30px
     font-weight: 700
+    
+.errorMessage
+    font-weight: 700
+    color: $red
+    margin: 0px 0px 0px 10px !important
 
 // card
 .card
+    display: none
     padding: 44px 110px 40px 110px
     border-bottom: 1px solid $gray300
     & h4
@@ -92,18 +102,18 @@
     display: flex
     align-items: center
     margin-bottom: 15px
-.errorInfo
+.errorInfo,.errorContact
     display: none
     align-items: center
 .cardError
     font-weight: 700
     color: $red
-    margin-left: 10px
+    margin: 0px 0px 0px 10px
 
 // confirm
 .confirm
+    display: none
     padding: 44px 110px 40px 110px
-    display: flex
     flex-direction: column
     align-items: flex-end
     & h6

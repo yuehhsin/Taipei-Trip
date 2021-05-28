@@ -19,28 +19,61 @@ TPDirect.card.setup({
     }
 })
 
+function error_init(){
+    document.querySelector(".errorInfo").style.display="none"
+    document.querySelector(".errorContact").style.display="none"
+}
+
 //輸入成功取得prime編號
 document.querySelector("#cashForm").addEventListener("submit",(e)=>{
     e.preventDefault()
+    error_init()
     TPDirect.card.getPrime((result) => {
-        if (result.status !== 0) {
-            //錯誤提示
-            console.log("error")
-            document.querySelector(".errorInfo").style.display="flex"
-            let tpfield = document.querySelectorAll(".tpfield")
-            for(let i=0;i<tpfield.length;i++){
-                tpfield[i].style.border="2px solid #EB5757"
-            }
+        const name = document.querySelector("#name")
+        const email = document.querySelector("#email")
+        const phone = document.querySelector("#phone")
+        if (name.value==="" || email.value==="" || phone.value===""){
+            document.querySelector(".errorContact").style.display="flex"
+            document.querySelector(".errorMessage").textContent="聯絡資訊皆不可為空"
         }
         else{
-            //成功取得prime 連線到/thankyou
-            console.log("ok")
-            const tourContent = document.querySelectorAll(".tourContent")
-            const cardPrime = result.card.prime
-            const finName = document.querySelector(".tourtitle").textContent
-            const finDate = tourContent[0].textContent
-            const finPrice = tourContent[2].textContent
-            window.location.href="/thankyou?"+cardPrime+"&"+finName+"&"+finDate+"&"+finPrice
+            if (result.status !== 0) {
+                //錯誤提示
+                document.querySelector(".errorInfo").style.display="flex"
+                let tpfield = document.querySelectorAll(".tpfield")
+                for(let i=0;i<tpfield.length;i++){
+                    tpfield[i].style.border="2px solid #EB5757"
+                }
+            }
+            else{
+                //成功取得prime 將資料傳給後端
+                fetch("/api/orders",{
+                    method: "POST",
+                    headers: new Headers({
+                        "Content-Type": "application/json"
+                    }),
+                    body: JSON.stringify({
+                        "prime": result.card.prime,
+                        "orderInfo": ordering,
+                        "customer": {
+                            "name": name.value,
+                            "email": email.value,
+                            "phone": phone.value,
+                        }
+                    })
+                }).then(response=>{
+                    return response.json()
+                }).then(data=>{
+                    if(data["error"]){
+                    }
+                    else{
+                        const num = data["data"]["number"]
+                        window.location.href="/thankyou?name="+num
+                    }
+
+                })
+            }
         }
+
     })
 })

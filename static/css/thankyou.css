@@ -64,6 +64,7 @@ button {
   background-color: #448899;
   padding: 10px 20px 10px 20px;
   color: #fff;
+  letter-spacing: 1px;
   border-radius: 5px;
 }
 
@@ -86,17 +87,27 @@ h2 {
 
 .payedNum {
   padding: 15px;
-  text-align: center;
+  padding-left: 40px;
   background-color: #E8E8E8;
   border-radius: 5px 5px 0px 0px;
 }
 
-.cardPrime {
-  font-size: 14px;
+.number {
+  height: 17px;
+  margin-left: 10px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.finPrice {
+  font-weight: 700;
+  color: #448899;
 }
 
 .payedInfo {
-  width: 700px;
+  width: auto;
+  padding-right: 100px;
+  padding-left: 100px;
 }
 
 .infoBox {
@@ -145,5 +156,28 @@ h2 {
 
 .box button {
   margin-right: 20px;
+}
+
+@media screen and (max-width: 780px) {
+  .payedInfo {
+    padding: 0px;
+  }
+  .logo {
+    display: none;
+  }
+  .info {
+    margin: 0px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  .payedNum {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .infoBox {
+    margin-left: 0px;
+    padding: 0px;
+  }
 }
 /*# sourceMappingURL=thankyou.css.map */
