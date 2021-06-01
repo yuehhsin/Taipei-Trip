@@ -1,5 +1,6 @@
 const signinForm = document.querySelector(".signinForm")
 const signupForm = document.querySelector(".signupForm")
+
 let popup={
     signupInit:()=>{
         document.querySelector(".signupError").style.display="none"
@@ -38,12 +39,12 @@ window.addEventListener("load",()=>{
     }).then((data)=>{
         let dataID = data["data"]["id"]
         memberName=data["data"]["name"]
-        if (dataID===null){ //nav:註冊/登入
+        if (dataID===null){ 
             document.querySelector(".placeholder").style.display="none"
             document.querySelector(".logoutBTN").style.display="none"
             document.querySelector(".signBTN").style.display="block"
         }
-        else if(dataID!==null){ //nav:登出
+        else if(dataID!==null){   
             document.cookie = "memberName="+data["data"]["name"]
             document.querySelector(".placeholder").style.display="none"
             document.querySelector(".logoutBTN").style.display="block"

@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 34px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+h4 {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.17px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: #448899;
+  padding: 10px 20px 10px 20px;
+  color: #fff;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #2B798C;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  border: none;
+  color: #757575;
+}
+
+h2 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.payedNum {
+  padding: 15px;
+  padding-left: 40px;
+  background-color: #E8E8E8;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.number {
+  height: 17px;
+  margin-left: 10px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.finPrice {
+  font-weight: 700;
+  color: #448899;
+}
+
+.payedInfo {
+  width: auto;
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+.infoBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #E8E8E8;
+  border-radius: 0px 0px 5px 5px;
+  padding: 30px 40px 30px 40px;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  background-image: url("/static/icon/web_icon.png");
+  background-size: cover;
+}
+
+.webName {
+  color: #448899;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.info {
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.info h6 {
+  margin-top: 10px;
+}
+
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 40px;
+}
+
+.box button {
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 780px) {
+  .payedInfo {
+    padding: 0px;
+  }
+  .logo {
+    display: none;
+  }
+  .info {
+    margin: 0px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  .payedNum {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .infoBox {
+    margin-left: 0px;
+    padding: 0px;
+  }
+}
+/*# sourceMappingURL=thankyou.css.map */

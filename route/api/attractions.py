@@ -1,5 +1,4 @@
 ###### /api/attractions ######
-
 import json,ssl,mysql.connector
 from flask import Blueprint,jsonify,request
 att = Blueprint("attractions", __name__)

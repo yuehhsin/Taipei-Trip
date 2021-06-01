@@ -40,6 +40,7 @@ def getBookinfo():
                 }            
                 })
             else:
+                print(booking)
                 cursor.execute(f"SELECT name,address,images FROM taipei_attractions WHERE id={Id}")
                 data = cursor.fetchall()[0]
                 return jsonify({
@@ -113,7 +114,6 @@ def newBook():
             "message": "未登入系統，拒絕存取"
         }),403
     
-
 @book.route("/booking",methods=["DELETE"]) #刪除目前的預定行程
 def deleteBook():
     try:
