@@ -1,18 +1,10 @@
 ###### /api/user ######
 import json,ssl,mysql.connector
 from flask import Blueprint,jsonify,request
+from database.mySQL import *
 from flask import session
 user = Blueprint("user", __name__)
 
-mydb=mysql.connector.connect(
-	host="localhost",
-	user="root",
-	password="KElly7991",
-	database="gov_data",
-	charset="utf8",
-)
-
-cursor = mydb.cursor()
 @user.route("/user",methods=["POST"])  # 註冊
 def userSignup():
 	data = request.get_json()

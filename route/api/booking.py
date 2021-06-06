@@ -1,17 +1,9 @@
 ###### /api/booking ######
 import json,ssl,mysql.connector,datetime
+from database.mySQL import *
 from flask import Blueprint,jsonify,request,session
 
 book = Blueprint("booking", __name__)
-
-mydb=mysql.connector.connect(
-	host="localhost",
-	user="root",
-	password="KElly7991",
-	database="gov_data",
-	charset="utf8",
-)
-cursor = mydb.cursor()
 
 booking = {
     "attractionId": None,

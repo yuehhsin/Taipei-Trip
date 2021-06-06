@@ -1,4 +1,3 @@
-import json,ssl,mysql.connector
 from flask import * 
 from flask import session
 app=Flask(__name__)
@@ -6,7 +5,6 @@ app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.config["JSON_SORT_KEYS"] = False
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
-
 
 #### session ####
 app.secret_key = "hello"
