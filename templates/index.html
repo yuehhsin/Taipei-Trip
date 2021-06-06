@@ -19,18 +19,63 @@ Taipei Trip 台北一日遊
             <h2>輕鬆享受台北一日悠閒</h2>
             <h6>探索每個角落，體驗城市的深度旅遊行程</h6>
             <div class="keywordSearch">
-                <input placeholder="輸入景點名稱查詢" name="keyword"></input>
+                <input placeholder="輸入景點名稱查詢" name="keyword">
+                <div class="filterBTNoff"></div>
+                <div class="filterBTNon"></div>
                 <button class="searchBTN">
                     <img src="/static/icon/icon_search.png" width="30px" height="30px">
                 </button>
             </div>
         </form>
+        <!-- filterPOPUP -->
+        <div class="filterPOPUP">
+            <div class="fliterTitle">
+                <input id="theme" style="display:none" type="radio" name="fliter" checked="checked">
+                <label for="theme">主題景點</label>
+                <div class="vl"></div>
+                <input id="district" style="display:none" type="radio" name="fliter">
+                <label for="district">行政區域</label>
+                <div class="reset"></div>
+            </div>
+            <!-- themeBox -->
+            <div class="themeBox">
+                <h5>養生溫泉</h5>
+                <h5>單車遊蹤</h5>
+                <h5>歷史建築</h5>
+                <h5>宗教信仰</h5>
+                <h5>藝文館所</h5>
+                <h5>公共藝術</h5>
+                <h5>藍色公路</h5>
+                <h5>戶外踏青</h5>
+            </div>
+            <!-- districtBox -->
+            <div class="districtBox">
+                <h5>北投區</h5>
+                <h5>士林區</h5>
+                <h5>內湖區</h5>
+                <h5>松山區</h5>
+                <h5>中山區</h5>
+                <h5>大同區</h5>
+                <h5>南港區</h5>
+                <h5>北投區</h5>
+                <h5>信義區</h5>
+                <h5>大安區</h5>
+                <h5>中正區</h5>
+                <h5>萬華區</h5>
+                <h5>文山區</h5>
+            </div>
+        </div>
     </div>
 </div>
+
 {% endblock %}
 
 {% block content %}
-<div id="content"></div>
+<div id="content">
+    <div class="toTop">
+        <div class="topIcon"></div>
+    </div>
+</div>
 <div id="target"></div>
 {% endblock %}
 

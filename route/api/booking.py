@@ -7,7 +7,7 @@ book = Blueprint("booking", __name__)
 mydb=mysql.connector.connect(
 	host="localhost",
 	user="root",
-	password="KElly_7991",
+	password="KElly7991",
 	database="gov_data",
 	charset="utf8",
 )

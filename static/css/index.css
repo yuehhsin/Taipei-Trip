@@ -75,7 +75,8 @@ button:hover {
 
 input {
   outline: none;
-  border: none;
+  border: 2px solid #E8E8E8;
+  border-radius: 5px;
   color: #757575;
 }
 
@@ -128,6 +129,7 @@ input {
   color: #757575;
   text-indent: 15px;
   border-radius: 5px 0px 0px 5px;
+  border: none;
 }
 
 .KV .KV-info #keywordForm .keywordSearch .searchBTN {
@@ -155,13 +157,151 @@ input {
   right: 0px;
 }
 
+.filterBTNoff {
+  position: absolute;
+  width: 20px;
+  height: 14px;
+  background-image: url("/static/icon/icon_filter.png");
+  background-size: cover;
+  right: 75px;
+  margin-top: 15px;
+}
+
+.filterBTNoff:hover {
+  cursor: pointer;
+}
+
+.filterBTNon {
+  display: none;
+  position: absolute;
+  width: 20px;
+  height: 14px;
+  background-image: url("/static/icon/icon_filter(click).png");
+  background-size: cover;
+  right: 75px;
+  margin-top: 15px;
+}
+
+.filterBTNon:hover {
+  cursor: pointer;
+}
+
+.filterPOPUP {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+  margin-top: 230px;
+  border-radius: 5px;
+  border: 1px solid #F8F8F8;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #fff;
+  padding: 15px 15px 12px 15px;
+}
+
+.filterPOPUP label {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 23.17px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+.filterPOPUP input:checked + label {
+  color: #448899;
+}
+
+.filterPOPUP label:hover {
+  cursor: pointer;
+}
+
+.fliterTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.vl {
+  width: 0px;
+  height: 16px;
+  border-right: 2px solid #757575;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.reset {
+  width: 14px;
+  height: 16px;
+  margin-left: 8px;
+  background-image: url("/static/icon/icon_reset.png");
+  background-size: cover;
+}
+
+.reset:hover {
+  cursor: pointer;
+  background-image: url("/static/icon/icon_reset(click).png");
+}
+
+.themeBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 12px;
+}
+
+.themeBox h5 {
+  padding: 5px 8px 5px 8px;
+  border: 1px solid #E8E8E8;
+  margin-bottom: 8px;
+  border-radius: 5px;
+}
+
+.themeBox h5:hover {
+  cursor: pointer;
+  border: 1px solid #AADDEE;
+  color: #AADDEE;
+}
+
+.districtBox {
+  display: none;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 12px;
+}
+
+.districtBox h5 {
+  padding: 5px 8px 5px 8px;
+  border: 1px solid #E8E8E8;
+  margin-bottom: 8px;
+  border-radius: 5px;
+}
+
+.districtBox h5:hover {
+  cursor: pointer;
+  border: 1px solid #AADDEE;
+  color: #AADDEE;
+}
+
 #content {
-  margin-top: 55px;
+  margin-top: 45px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(270px, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-gap: 30px;
+  position: relative;
 }
 
 #content .attraction {
@@ -228,6 +368,36 @@ input {
   text-align: right;
   margin-right: 10px;
   margin-top: 16px;
+}
+
+.toTop {
+  display: none;
+  width: 50px;
+  height: 50px;
+  z-index: 500;
+  position: fixed;
+  background-color: #448899;
+  border-radius: 50%;
+  right: 16%;
+  top: 90%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.toTop:hover {
+  cursor: pointer;
+  background-color: #2B798C;
+}
+
+.topIcon {
+  width: 16px;
+  height: 9px;
+  background-image: url("/static/icon/icon_top.png");
+  background-size: cover;
 }
 
 #target {

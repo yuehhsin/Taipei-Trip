@@ -1,33 +1,44 @@
-let pathId = decodeURIComponent(location.pathname).split("/")[2];
-let selAM = document.getElementById("selAM")
-let selPM = document.getElementById("selPM")
-let tourPrice = document.getElementById("tourPrice")
-let selectedAM = false;
-let selectedPM = false;
-let imageId = 0;
-  
-function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport){
-    let ATTname = document.getElementById("attName"); //name
-    let name = document.createTextNode(attName);
-    ATTname.appendChild(name);
+let pathId = decodeURIComponent(location.pathname).split("/")[2]; //擷取要求字串
+let imageId = 0
 
-    let ATTtype = document.getElementById("attType"); //type = actegory + mrt
-    let type = document.createTextNode(attCategory+" at "+attMrt);
-    ATTtype.appendChild(type);
-
-    let ATTdes = document.getElementById("attDes"); //description
-    let des = document.createTextNode(attDescription);
-    ATTdes.appendChild(des);
-
-    let ATTaddress = document.getElementById("attAddress"); //address
-    let address = document.createTextNode(attAddress);
-    ATTaddress.appendChild(address);
-
-    let ATTtransport = document.getElementById("attTransport"); //transport
-    let transport = document.createTextNode(attTransport);
-    ATTtransport.appendChild(transport);
+//render資料
+function renderDots(){
+    for(let i=0;1<attImage.length;i++){
+        document.querySelectorAll(".dot")[i].style.backgroundColor="#FFFFFF"
+        document.querySelectorAll(".dot")[imageId].style.backgroundColor="#448899"
+    }
+    
 }
-function getData(){
+function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport,attImage){
+    document.querySelector(".attName").textContent=attName //name
+    document.querySelector(".attType").textContent=attCategory+" at "+attMrt  //type
+    document.querySelectorAll(".content")[0].textContent=attDescription  //description
+    document.querySelectorAll(".content")[1].textContent=attAddress  //address
+    document.querySelectorAll(".content")[2].textContent=attTransport  //attTransport
+    document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+    for (let i=0;i<attImage.length;i++){
+        let dot = document.createElement("div")
+        dot.className="dot"
+        dot.id=[i]
+        dot.onclick=()=>{
+            imageId=Number(dot.id)
+            console.log(Number(dot.id)+1===attImage.length)
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            if(Number(dot.id)+1===attImage.length){
+                document.querySelector(".nextImageBTN").style.display="none"
+            }
+            else if(Number(dot.id)===0){
+                document.querySelector(".backImageBTN").style.display="none"
+            }
+            renderDots()
+        }
+        document.querySelector(".imageDot").appendChild(dot)
+    }
+    renderDots()
+}
+
+//初始載入畫面
+addEventListener("load",(e)=>{
     fetch("/api/attraction/"+pathId)
     .then((response=>{
         return response.json()
@@ -40,41 +51,42 @@ function getData(){
         let attDescription = data["data"]["description"]
         let attAddress = data["data"]["address"]
         let attTransport = data["data"]["transport"]
-        randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport)
-        renderImage(attImage)
+        randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport,attImage)
     })
-}
+})
 
-function renderImage(attImage){
-    let ATTimage = document.getElementById("attImage");
-    let image = attImage[imageId];
-    ATTimage.style.backgroundImage="url"+"("+image+")";
-    ATTimage.style.backgroundSize="cover";
-}
-function selBTN(selBTN){
-    let selcted = document.createElement("div")
-    selcted.id="selctedBTN"
-    selBTN.appendChild(selcted)
-}
-function cancelBTN(selBTN){
-    let selected = document.getElementById("selctedBTN")
-    selBTN.removeChild(selected)
-}
-
-function backImageBTN(){
+//圖片切換
+document.querySelector(".backImageBTN").addEventListener("click",()=>{
+    document.querySelector(".nextImageBTN").style.display="block"
     if (imageId-1>=0){
+        if(imageId-1===0){
+            document.querySelector(".backImageBTN").style.display="none"
+            imageId+=-1;
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
         imageId+=-1;
+        document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+        renderDots()
     }
-    renderImage(attImage)
-}
-function nextImageBTN(){
-    console.log(imageId)
-    if (imageId+1<attImage.length){
-        imageId+=1;
-    }
-    renderImage(attImage)
-}
+})
 
+document.querySelector(".nextImageBTN").addEventListener("click",()=>{
+    document.querySelector(".backImageBTN").style.display="block"
+    if (imageId+1<=attImage.length){
+        if(imageId+2===attImage.length){
+            document.querySelector(".nextImageBTN").style.display="none"
+            imageId+=1
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
+        else{
+            imageId+=1
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
+    }
+})
 
 //radio
 let timeRadio = Array.apply(null,document.querySelectorAll('[name="time"]'))
@@ -89,14 +101,7 @@ timeRadio[1].addEventListener("change",(e)=>{
     }
 })
 
-//EVENT: 初始載入畫面
-addEventListener("load",(e)=>{
-    getData()
-    console.log(document.cookie)
-})
-
-
-
+//tourForm
 document.forms["tourForm"].addEventListener("submit",(event)=>{
     event.preventDefault();
     if(document.forms["tourForm"]["date"].value!=""){ 
@@ -136,3 +141,9 @@ document.forms["tourForm"].addEventListener("submit",(event)=>{
         document.querySelector(".dateInput").style.borderColor= "#EB5757"
     }
 })
+
+//weather
+const url = "https://opendata.cwb.gov.tw/fileapi/v1/rest/datastore/F-D0047-091?Authorization=CWB-8DB604AF-C47C-470D-897C-C3D4BF236A07"
+fetch(url)
+    .then((response) => response.json())
+    .then((data) => console.log('data', data));

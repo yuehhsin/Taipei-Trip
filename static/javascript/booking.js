@@ -81,3 +81,10 @@ document.querySelector(".tourDel").addEventListener("click",()=>{
         }
     })
 })
+
+//test card
+document.querySelector(".testcardBTN").addEventListener("click",()=>{
+    console.log(document.querySelectorAll(".tpfield")[1].querySelector("#cc-exp"))
+    document.querySelectorAll(".tpfield")[1].value="4242"
+    // console.log(document.querySelector("#card-number-form"))
+})

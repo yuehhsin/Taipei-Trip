@@ -27,20 +27,20 @@ import json,mysql.connector
 
 # #建立訂單編號(table:bookedInfo)
 # CREATE table bookedInfo( 
-#     id BIGINT NOT NULL auto_increment PRIMARY KEY, 0
-#     userId INT, 1
-#     number TEXT NOT NULL, 2
-#     price INT NOT NULL, 3
-#     attId INT NOT NULL, 4
-#     attName VARCHAR(50) NOT NULL, 5
-#     attAddress VARCHAR(50) NOT NULL, 6
-#     attImage TEXT NOT NULL, 7
-#     tripDate VARCHAR(50) NOT NULL, 8
-#     tripTime VARCHAR(50) NOT NULL, 9
-#     contactName VARCHAR(50) NOT NULL, 10
-#     contactEmail VARCHAR(50) NOT NULL, 11
-#     contactPhone VARCHAR(50) NOT NULL, 12
-#     status INT NOT NULL) 13
+#     id BIGINT NOT NULL auto_increment PRIMARY KEY,
+#     userId INT,
+#     number TEXT NOT NULL,
+#     price INT NOT NULL,
+#     attId INT NOT NULL,
+#     attName VARCHAR(50) NOT NULL,
+#     attAddress VARCHAR(50) NOT NULL,
+#     attImage TEXT NOT NULL,
+#     tripDate VARCHAR(50) NOT NULL,
+#     tripTime VARCHAR(50) NOT NULL,
+#     contactName VARCHAR(50) NOT NULL,
+#     contactEmail VARCHAR(50) NOT NULL,
+#     contactPhone VARCHAR(50) NOT NULL,
+#     status INT NOT NULL)
 
 
 mydb=mysql.connector.connect(

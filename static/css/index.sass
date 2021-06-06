@@ -20,11 +20,12 @@
             & .keywordSearch
                 display: flex
                 & input
-                    +size(400px,46px)
+                    +size(400px,46px)                    
                     background-color: #FFFFFF
                     color: $gray700
                     text-indent: 15px
                     border-radius: 5px 0px 0px 5px
+                    border: none
                 & .searchBTN
                     +size(60px,46px)
                     +getcenter
@@ -36,13 +37,107 @@
             background-size: cover
             overflow: hidden
             right: 0px
+.filterBTNoff
+    // display: none
+    position: absolute
+    +size(20px,14px)
+    background-image: url("/static/icon/icon_filter.png")
+    background-size: cover
+    right: 75px
+    margin-top: 15px
+    &:hover
+        cursor: pointer
+
+.filterBTNon
+    display: none
+    position: absolute
+    +size(20px,14px)
+    background-image: url("/static/icon/icon_filter(click).png")
+    background-size: cover
+    right: 75px
+    margin-top: 15px
+    &:hover
+        cursor: pointer
+
+
+
+.filterPOPUP
+    display: none
+    position: absolute
+    z-index: 100
+    width: 400px
+    margin-top: 230px
+    border-radius: 5px
+    border: 1px solid $gray50
+    box-sizing: border-box
+    background-color: #fff
+    padding: 15px 15px 12px 15px 
+    & label
+        font-size: 16px //h5
+        font-weight: 700
+        line-height: 23.17px
+        letter-spacing: 1px
+        color: $gray800
+    & input:checked +label
+        color: $cyan800
+    & label:hover
+        cursor: pointer
+
+.fliterTitle
+    display: flex
+    align-items: center
+
+.vl
+    +size(0px,16px)
+    border-right: 2px solid #757575
+    margin-right: 10px
+    margin-left: 10px
+.reset
+    +size(14px,16px)
+    // position: absolute
+    margin-left: 8px
+    background-image: url("/static/icon/icon_reset.png")
+    background-size: cover
+    &:hover
+        cursor: pointer
+        background-image: url("/static/icon/icon_reset(click).png")
+.themeBox
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin-top: 12px
+    & h5
+        padding: 5px 8px 5px 8px
+        border: 1px solid $gray300
+        margin-bottom: 8px
+        border-radius: 5px
+        &:hover
+            cursor: pointer
+            border: 1px solid $cyan100
+            color: $cyan100
+.districtBox
+    display: none
+    flex-wrap: wrap
+    justify-content: space-between
+    margin-top: 12px
+    & h5
+        padding: 5px 8px 5px 8px
+        border: 1px solid $gray300
+        margin-bottom: 8px
+        border-radius: 5px
+        &:hover
+            cursor: pointer
+            border: 1px solid $cyan100
+            color: $cyan100
 
 //content
+
 #content
-    margin-top: 55px
+    margin-top: 45px
     display: grid
     grid-template-columns: repeat(auto-fill,minmax(270px,1fr))
     grid-gap: 30px 
+    position: relative
     & .attraction
         width: 100%
         aspect-ratio: 270/242
@@ -79,8 +174,24 @@
         text-align: right
         margin-right: 10px
         margin-top: 16px
-
-
+.toTop
+    display: none
+    +size(50px,50px)
+    z-index: 500
+    position: fixed
+    background-color: $cyan800
+    border-radius: 50%
+    right: 16%
+    top: 90%
+    align-items: center
+    justify-content: center
+    &:hover
+        cursor: pointer
+        background-color: $cyan900
+.topIcon
+    +size(16px,9px)
+    background-image: url("/static/icon/icon_top.png")
+    background-size: cover
 #target
     +size(100%,55px)
 

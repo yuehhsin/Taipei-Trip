@@ -7,6 +7,7 @@ app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.config["JSON_SORT_KEYS"] = False
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
+
 #### session ####
 app.secret_key = "hello"
 
@@ -17,14 +18,11 @@ from route.api.attractions import att
 from route.api.booking import book
 from route.api.orders import orders
 
-
 app.register_blueprint(page)
 app.register_blueprint(user,url_prefix='/api')
 app.register_blueprint(att,url_prefix='/api')
 app.register_blueprint(book,url_prefix='/api')
 app.register_blueprint(orders,url_prefix='/api')
-
-
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0",port=3000,debug=True)

@@ -1,28 +1,98 @@
 @import "general"
-@import "shareElement"
+@import "animation"
 
-//共用class
-.V-Center
+// tourSelect
+.tourSelect
+    display: flex
+    padding-top: 40px
+    padding-bottom: 40px
+    border-bottom: 1px solid $gray300
+.attImage
+    width: 50%
+    height: 389px
+    border-radius: 5px
+    margin-right: 30px
     display: flex
     align-items: center
+    justify-content: space-between
+    background-color: $gray300
+    position: relative
+    background-size: cover
+.backImageBTN
+    +size(30px,30px)
+    background-image: url("/static/icon/btn_leftArrow.png")
+    background-size: cover
+    margin-left: 15px
+    &:hover
+        cursor: pointer
+        transform: translateX(-4px)
 
-.ALL-Center
+.nextImageBTN
+    +size(30px,30px)
+    background-image: url("/static/icon/btn_rightArrow.png")
+    background-size: cover
+    margin-right: 15px
+    &:hover
+        cursor: pointer
+        transform: translateX(4px)
+
+.imageDot
+    position: absolute
+    bottom: 15px
+    left: 50%
+    transform: translateX(-50%)
+    display: flex
+.dot
+    +size(8px,8px)
+    margin-right: 4px
+    margin-left: 4px
+    border: 2px solid #fff
+    background-color: #fff
+    border-radius: 50% 
+    &:hover
+        cursor: pointer
+
+.attInfo
+    width: 50%
+    & h1
+        margin-bottom: 15px
+    & label
+        font-size: 16px
+        font-weight: 400
+        line-height: 25px
+        letter-spacing: 1px
+        color: $gray800
+    & .inline
+        margin-bottom: 15px
+    & .subTitle
+        margin-bottom: 15px
+
+.attType
+    margin-bottom: 20px
+
+.inline
     display: flex
     align-items: center
-    justify-content: center
-button
-    border: none
+    & h6
+        margin-right: 10px
+
+.bookingBox
+    padding: 20px
+    border-radius: 5px
+    background-color: $gray300
+
+.bookingTitle
+    margin-bottom: 15px
 
 input[type="date"]
     box-sizing: border-box
-    border-radius: 5px
-    border: 2px solid $gray300
     color: $gray700
     padding: 5px 10px
     &:focus
         outline-color: $cyan700
     &:required
         color: $gray800
+
 input[type="date"]::-webkit-calendar-picker-indicator
     background: url("/static/icon/icon_calendar.png") center/80% no-repeat
     opacity: 0.6
@@ -30,20 +100,19 @@ input[type="date"]::-webkit-calendar-picker-indicator
         opacity: 1
         cursor: pointer
 
-label
-    margin-left: 10px
 input[type="radio"]+label
     vertical-align: middle
     &:hover
         cursor: pointer
-
+label
+    margin-right: 10px
 input[type="radio"]+label::before
     +size(20px,20px)
     box-sizing: border-box
+    border: 2px solid #fff
     content: " "
     display: inline-block
     vertical-align: middle
-    border: 2px solid #fff
     background-color:#fff
     border-radius: 50%
     margin-right: 4px
@@ -51,151 +120,60 @@ input[type="radio"]+label::before
 input[type="radio"]:checked+label:before
     background-color: #448899
 
-
-////// container grid //////
-#signPOPUP
-    display: none
-.container
-  display: grid
-  positon: relative
-  grid-template-rows:37px minmax(auto,406px) auto auto
-  grid-template-columns: minmax(20px,auto) minmax(auto,540px) minmax(auto,600px) minmax(20px,auto)
-  grid-template-areas: ". . . ." ". B2 B3 ." ". hr hr ." ". B4 B4 ."
-
-#attImage
-    grid-area: B2
-    position: relative
-    height: 100%
-    width: 100%
-    border-radius: 5px
-    & #backImageBTN
-        +size(36px,36px)
-        position: absolute
-        top: 185px
-        left: 10px
-        background-image: url("/static/icon/btn_leftArrow.png")
-        &:hover
-            cursor: pointer
-    & #nextImageBTN
-        +size(36px,36px)
-        position: absolute
-        top: 185px
-        right: 10px
-        background-image: url("/static/icon/btn_rightArrow.png")
-        &:hover
-            cursor: pointer
-    & .imageDot
-        +getcenter
-        position: absolute
-        width: 100%
-        bottom: 8px
-        // & .dot
-        //     background-color: $gray300
-        //     border-radius: 10px
-        //     +size(8px,8px)
-        //     margin-left: 4px
-        //     margin-right: 4px
-        //     &:hover
-        //         cursor: pointer
-
-.attInfo
-    grid-area: B3
-    color: $gray800
-    & .infoBox
-        position: relative
-        padding-left: 30px
-    & #attName
-        @extend %header
-        margin-left: 20px
-        margin-bottom: 20px
-    & #attType
-        @extend %body
-        margin-left: 20px
-        margin-bottom: 20px
-    & .tourForm
-        background-color: $gray300
-        padding-top: 15px
-        padding-bottom: 41px
-        border-radius: 5px
-        & .tourTitle
-            margin: 15px auto 15px 20px 
-            @extend %body_B
-        & .tourContent
-            margin: 0px auto 15px 20px
-        & .selTitle
-            margin-right: 3px
-            margin-left: 20px
-            @extend %body_B
-        & .date
-            height: 35px
-        & .flexBox
-            display: flex
-            align-items: center
-            margin-top: 15px
-            margin-bottom: 15px
-            & .am ,.pm
-                display: flex
-                align-items: center
-            & .selBTN
-                +size(22px,22px)
-                +getcenter
-                background-color: #FFFFFF
-                border-radius: 100%
-                margin-right: 5px
-                margin-left: 10px
-        & .tourCTA
-            +CTA(154px,36px)
-            margin-left: 20px
-            & .CTAtext
-                @extend %button
-        & #selctedBTN
-            // margin-left: 18px
-            // margin-right: 4px
-            +size(18px,18px)
-            border-radius: 100%
-            background-color: $cyan800
-hr
-    grid-area: hr
-    margin-top: 41px
-    margin-bottom: 50px
-    border: 1px solid $gray300
-
-.contents
-    grid-area: B4
-    & .item
-        @extend %body_B
-        color: $gray800
-        padding-top: 6px
-        padding-bottom: 6px
-    & .content
-        color: $gray800
-        @extend %content
-        margin-bottom: 20px
+.tourCTA
+    margin-right: 10px
 .dateError
-    +getcenter
     display: none
-    & .dateErrorImage
-        margin-left: 15px
-    & .dateErrorText
-        margin-left: 5px
-        color: $red
+    align-items: center
 
-    
-////// RWD //////
-@media (max-width: 720px)
-    .header
-        padding-left: 10px
-        padding-right: 10px
-    #attImage
-        border-radius: 0px
-    .container
-        grid-template-rows: 54px 37px minmax(auto,350px) auto 90px auto 224px
-        grid-template-columns: 15px auto 15px
-        grid-template-areas:  "H H H" ". . ." "B2 B2 B2" ". B3 ." ". hr ." ". B4 ." "F F F"
-    .infoBox
-        padding: 0px !important
-        margin-top: 20px
+.dateErrorImage
+    margin-right: 6px
+.dateErrorText
+    color: $red
+.btnBox
+    display: flex
+    align-items: center
+// content
+.contents
+    padding-top: 40px
+    padding-bottom: 40px
+    border-bottom: 1px solid $gray300
+.content
+    margin-bottom: 15px
 
-@media (max-width: 360px)
-    .container
-        grid-template-columns: 5px auto 5px
+
+// weather
+.weather
+    padding-top: 40px
+    padding-bottom: 40px
+    & h6
+        margin-bottom: 15px
+.weatherBox
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+.day
+    // +size(12%,200px)
+    padding: 20px 30px 20px 30px
+    background-color: $gray300
+    border-radius: 5px
+    margin-bottom: 20px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+.weather_image
+    +size(50px,50px)
+    background-image: url("/static/icon/icon_weather_sunny.png")
+    background-size: cover
+.weather_image
+    margin-bottom: 15px
+.humidity
+    +getcenter()
+    & h6
+        margin: 0
+.humidity_icon
+    background-image: url("/static/icon/icon_humidity.png")
+    background-size: cover
+    +size(10px,13px)
+    margin-right: 10px
