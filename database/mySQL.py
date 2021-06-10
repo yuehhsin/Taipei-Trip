@@ -4,11 +4,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# dbconfig = { 
+#     "host":"localhost",
+#     "user":"root",
+#     "password": os.getenv("password"),
+#     "database": os.getenv("database"),
+#     "buffered":True
+#     }
 dbconfig = { 
     "host":"localhost",
     "user":"root",
-    "password": os.getenv("password"),
-    "database": os.getenv("database"),
+    "password": "KElly_7991",
+    "database": "gov_data",
     "buffered":True
     }
 
