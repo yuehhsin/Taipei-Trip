@@ -3,7 +3,6 @@
   padding: 0px;
   margin: 0px;
   font-family: 'Noto Sans TC', sans-serif;
-  font-size: 16px;
 }
 
 h1 {
@@ -367,7 +366,7 @@ input[type="radio"]:checked + label:before {
 }
 
 .weather h6 {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .weatherBox {
@@ -382,10 +381,25 @@ input[type="radio"]:checked + label:before {
 }
 
 .day {
-  padding: 20px 30px 20px 30px;
-  background-color: #E8E8E8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.day-up {
+  width: 160px;
+  height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #448899;
   border-radius: 5px;
-  margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -401,10 +415,27 @@ input[type="radio"]:checked + label:before {
           justify-content: space-between;
 }
 
+.day-up h4 {
+  margin: 0px;
+  color: #fff;
+}
+
+.day-down {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #E8E8E8;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.day-down h6 {
+  margin: 0px;
+  font-weight: 700;
+}
+
 .weather_image {
-  width: 50px;
-  height: 50px;
-  background-image: url("/static/icon/icon_weather_sunny.png");
+  width: 80px;
+  height: 80px;
   background-size: cover;
 }
 
@@ -416,12 +447,11 @@ input[type="radio"]:checked + label:before {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 20px;
+  margin-bottom: 5px;
 }
 
 .humidity h6 {
@@ -431,8 +461,34 @@ input[type="radio"]:checked + label:before {
 .humidity_icon {
   background-image: url("/static/icon/icon_humidity.png");
   background-size: cover;
-  width: 10px;
-  height: 13px;
   margin-right: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+.temperature {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 20px;
+}
+
+.temperature h6 {
+  margin: 0;
+}
+
+.temperature_icon {
+  width: 16px;
+  height: 16px;
+  background-image: url("/static/icon/icon_thermostat.png");
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.weatherInfo {
+  dispaly: flex;
 }
 /*# sourceMappingURL=attraction.css.map */

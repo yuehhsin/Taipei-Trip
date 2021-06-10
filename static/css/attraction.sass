@@ -147,33 +147,70 @@ input[type="radio"]:checked+label:before
     padding-top: 40px
     padding-bottom: 40px
     & h6
-        margin-bottom: 15px
+        margin-bottom: 10px
 .weatherBox
     display: flex
     justify-content: space-between
     flex-wrap: wrap
+    
 .day
-    // +size(12%,200px)
-    padding: 20px 30px 20px 30px
-    background-color: $gray300
+    display: flex
+    flex-direction: column
+    align-items: center
+
+.day-up
+    +size(160px,100px)
+    padding-top: 20px
+    padding-bottom: 20px
+    background-color: $cyan800
     border-radius: 5px
-    margin-bottom: 20px
     display: flex
     flex-direction: column
     align-items: center
     justify-content: space-between
+    & h4
+        margin: 0px
+        color: #fff
+
+.day-down
+    width: 100%
+    padding-top: 15px
+    padding-bottom: 15px
+    background-color: $gray300
+    border-radius: 0px 0px 5px 5px
+    // display: flex
+    // flex-direction: column
+    & h6
+        margin: 0px
+        font-weight: 700
+
 .weather_image
-    +size(50px,50px)
-    background-image: url("/static/icon/icon_weather_sunny.png")
+    +size(80px,80px)
     background-size: cover
 .weather_image
     margin-bottom: 15px
 .humidity
-    +getcenter()
+    display: flex
+    align-items: center
+    margin-left: 20px
+    margin-bottom: 5px
     & h6
         margin: 0
 .humidity_icon
     background-image: url("/static/icon/icon_humidity.png")
     background-size: cover
-    +size(10px,13px)
     margin-right: 10px
+    +size(16px,16px)
+.temperature
+    display: flex
+    align-items: center
+    margin-left: 20px
+    & h6
+        margin: 0
+.temperature_icon
+    +size(16px,16px)
+    background-image: url("/static/icon/icon_thermostat.png")
+    background-size: cover
+    margin-right: 10px
+.weatherInfo
+    dispaly: flex

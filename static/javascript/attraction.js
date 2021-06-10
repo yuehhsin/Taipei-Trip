@@ -1,14 +1,14 @@
 let pathId = decodeURIComponent(location.pathname).split("/")[2]; //擷取要求字串
 let imageId = 0
-
 //render資料
-function renderDots(){
-    for(let i=0;1<attImage.length;i++){
-        document.querySelectorAll(".dot")[i].style.backgroundColor="#FFFFFF"
-        document.querySelectorAll(".dot")[imageId].style.backgroundColor="#448899"
-    }
+// function renderDots(){
+//     for(let i=0;1<attImage.length;i++){
+//         document.querySelectorAll(".dot")[i].style.backgroundColor="#FFFFFF"
+//         document.querySelectorAll(".dot")[imageId].style.backgroundColor="#448899"
+//     }
     
-}
+// }
+
 function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport,attImage){
     document.querySelector(".attName").textContent=attName //name
     document.querySelector(".attType").textContent=attCategory+" at "+attMrt  //type
@@ -16,26 +16,77 @@ function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTran
     document.querySelectorAll(".content")[1].textContent=attAddress  //address
     document.querySelectorAll(".content")[2].textContent=attTransport  //attTransport
     document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-    for (let i=0;i<attImage.length;i++){
-        let dot = document.createElement("div")
-        dot.className="dot"
-        dot.id=[i]
-        dot.onclick=()=>{
-            imageId=Number(dot.id)
-            console.log(Number(dot.id)+1===attImage.length)
-            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-            if(Number(dot.id)+1===attImage.length){
-                document.querySelector(".nextImageBTN").style.display="none"
-            }
-            else if(Number(dot.id)===0){
-                document.querySelector(".backImageBTN").style.display="none"
-            }
-            renderDots()
-        }
-        document.querySelector(".imageDot").appendChild(dot)
-    }
-    renderDots()
+    // for (let i=0;i<attImage.length;i++){
+    //     let dot = document.createElement("div")
+    //     dot.className="dot"
+    //     dot.id=[i]
+    //     dot.onclick=()=>{
+    //         imageId=Number(dot.id)
+    //         document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+    //         if(Number(dot.id)+1===attImage.length){
+    //             document.querySelector(".nextImageBTN").style.display="none"
+    //         }
+    //         else if(Number(dot.id)===0){
+    //             document.querySelector(".backImageBTN").style.display="none"
+    //         }
+    //         renderDots()
+    //     }
+    //     document.querySelector(".imageDot").appendChild(dot)
+    // }
+    // renderDots()
 }
+
+let render={
+    getWeather:(attAddress)=>{  //weather
+        let district = attAddress.slice(3,6)
+        const url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-8DB604AF-C47C-470D-897C-C3D4BF236A07&locationName="+district
+        document.querySelector(".district").textContent=district
+        fetch(url)
+            .then(response=>{
+                return response.json()
+            })
+            .then(data=>{
+                for(let i=0;i<7;i++){
+                    //天氣現象編號
+                    let WxNum = Number(data["records"]["locations"][0]["location"][0]["weatherElement"][6]["time"][i*2]["elementValue"][1]["value"])
+                    //最低溫度
+                    let minT = data["records"]["locations"][0]["location"][0]["weatherElement"][8]["time"][i*2]["elementValue"][0]["value"]+"°"
+                    //最高溫度
+                    let maxT = data["records"]["locations"][0]["location"][0]["weatherElement"][12]["time"][i*2]["elementValue"][0]["value"]+"°"
+                    //日期
+                    let date = data["records"]["locations"][0]["location"][0]["weatherElement"][12]["time"][i*2]["startTime"].slice(5,10)
+                    //濕度
+                    let RH = data["records"]["locations"][0]["location"][0]["weatherElement"][2]["time"][i*2]["elementValue"][0]["value"]+"%"
+
+                    document.querySelectorAll(".date")[i].textContent=date 
+                    document.querySelectorAll(".RH")[i].textContent=RH
+                    document.querySelectorAll(".T")[i].textContent=minT+" - "+maxT
+                    console.log(WxNum)
+                    if(WxNum===1){ //sunny
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_1.png")'
+                    }
+                    else if(1<WxNum && WxNum<4){  //sun&cloud
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_2.png")'
+                    }  
+                    else if(3<WxNum && WxNum<6){  //sun&cloud
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_2.5.png")'
+                    }  
+                    else if(19<WxNum && WxNum<23){  //午後陣雨
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_3.png")'
+                    }
+                    else if(24<WxNum && WxNum<29){  //fog
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_4.png")'
+                    }
+                    else{  //rain
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_5.png")'
+                    }
+
+
+                }
+            })
+    }
+}
+
 
 //初始載入畫面
 addEventListener("load",(e)=>{
@@ -52,41 +103,42 @@ addEventListener("load",(e)=>{
         let attAddress = data["data"]["address"]
         let attTransport = data["data"]["transport"]
         randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport,attImage)
+        render.getWeather(attAddress)
     })
 })
 
 //圖片切換
-document.querySelector(".backImageBTN").addEventListener("click",()=>{
-    document.querySelector(".nextImageBTN").style.display="block"
-    if (imageId-1>=0){
-        if(imageId-1===0){
-            document.querySelector(".backImageBTN").style.display="none"
-            imageId+=-1;
-            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-            renderDots()
-        }
-        imageId+=-1;
-        document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-        renderDots()
-    }
-})
+// document.querySelector(".backImageBTN").addEventListener("click",()=>{
+//     document.querySelector(".nextImageBTN").style.display="block"
+//     if (imageId-1>=0){
+//         if(imageId-1===0){
+//             document.querySelector(".backImageBTN").style.display="none"
+//             imageId+=-1;
+//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+//             renderDots()
+//         }
+//         imageId+=-1;
+//         document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+//         renderDots()
+//     }
+// })
 
-document.querySelector(".nextImageBTN").addEventListener("click",()=>{
-    document.querySelector(".backImageBTN").style.display="block"
-    if (imageId+1<=attImage.length){
-        if(imageId+2===attImage.length){
-            document.querySelector(".nextImageBTN").style.display="none"
-            imageId+=1
-            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-            renderDots()
-        }
-        else{
-            imageId+=1
-            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-            renderDots()
-        }
-    }
-})
+// document.querySelector(".nextImageBTN").addEventListener("click",()=>{
+//     document.querySelector(".backImageBTN").style.display="block"
+//     if (imageId+1<=attImage.length){
+//         if(imageId+2===attImage.length){
+//             document.querySelector(".nextImageBTN").style.display="none"
+//             imageId+=1
+//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+//             renderDots()
+//         }
+//         else{
+//             imageId+=1
+//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+//             renderDots()
+//         }
+//     }
+// })
 
 //radio
 let timeRadio = Array.apply(null,document.querySelectorAll('[name="time"]'))
@@ -141,9 +193,3 @@ document.forms["tourForm"].addEventListener("submit",(event)=>{
         document.querySelector(".dateInput").style.borderColor= "#EB5757"
     }
 })
-
-//weather
-const url = "https://opendata.cwb.gov.tw/fileapi/v1/rest/datastore/F-D0047-091?Authorization=CWB-8DB604AF-C47C-470D-897C-C3D4BF236A07"
-fetch(url)
-    .then((response) => response.json())
-    .then((data) => console.log('data', data));
