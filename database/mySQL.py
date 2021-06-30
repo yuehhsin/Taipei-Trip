@@ -14,9 +14,9 @@ load_dotenv()
 dbconfig = { 
     "host":"localhost",
     "user":"root",
-    "password": "KElly_7991",
+    "password": "KElly7991",
     "database": "gov_data",
-    "buffered":True
+    "buffered": True
     }
 
 dbpool=mysql.connector.pooling.MySQLConnectionPool(pool_name = "pool", pool_size = 10, **dbconfig)

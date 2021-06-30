@@ -61,7 +61,6 @@ let render={
                     document.querySelectorAll(".date")[i].textContent=date 
                     document.querySelectorAll(".RH")[i].textContent=RH
                     document.querySelectorAll(".T")[i].textContent=minT+" - "+maxT
-                    console.log(WxNum)
                     if(WxNum===1){ //sunny
                         document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_1.png")'
                     }
@@ -193,3 +192,17 @@ document.forms["tourForm"].addEventListener("submit",(event)=>{
         document.querySelector(".dateInput").style.borderColor= "#EB5757"
     }
 })
+
+
+// 建立 Leaflet 地圖
+//map
+let map = L.map('mapid');
+// 設定經緯度座標
+map.setView(new L.LatLng(22.992, 120.239), 12);
+
+// 設定圖資來源
+var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 16});
+map.addLayer(osm);
+var marker = L.marker([22.992, 120.239]).addTo(map);
+marker.bindPopup("<b>22.992°<br>120.239°</b>").openPopup();
