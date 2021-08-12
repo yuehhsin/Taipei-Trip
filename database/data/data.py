@@ -53,7 +53,7 @@ mydb=mysql.connector.connect(
 )
 cursor = mydb.cursor()
 
-with open("/database/data/taipei-attractions.json",mode="r",encoding="utf-8") as file:
+with open("database/data/taipei-attractions.json",mode="r",encoding="utf-8") as file:
     json_data = json.load(file)
     data_list = json_data["result"]["results"]
 
