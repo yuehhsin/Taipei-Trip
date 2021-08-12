@@ -2,6 +2,7 @@ import json,mysql.connector
 
 # MYSQL:建立database:gov_data table:taipei_attractions
 
+# CREATE dateabase gov_data;
 # 建立會員資訊(table:members)
 # CREATE table members(
 #     id BIGINT NOT NULL auto_increment,
@@ -10,7 +11,7 @@ import json,mysql.connector
 #     password VARCHAR(255) NOT NULL,
 #     time DATETIME NOT NULL DEFAULT NOW(),
 #     PRIMARY KEY ( id )
-#     )
+# )
 
 # #建立風景資訊(table:taipei_attractions)
 # CREATE table taipei_attractions( 
@@ -52,7 +53,7 @@ mydb=mysql.connector.connect(
 )
 cursor = mydb.cursor()
 
-with open("database/data/taipei-attractions.json",mode="r",encoding="utf-8") as file:
+with open("/database/data/taipei-attractions.json",mode="r",encoding="utf-8") as file:
     json_data = json.load(file)
     data_list = json_data["result"]["results"]
 
