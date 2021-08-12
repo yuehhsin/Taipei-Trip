@@ -3,7 +3,6 @@
   padding: 0px;
   margin: 0px;
   font-family: 'Noto Sans TC', sans-serif;
-  font-size: 16px;
 }
 
 h1 {
@@ -61,8 +60,9 @@ a {
 button {
   outline: none;
   border: none;
+  font-size: 15px;
   background-color: #448899;
-  padding: 10px 20px 10px 20px;
+  padding: 8px 18px 8px 18px;
   color: #fff;
   letter-spacing: 1px;
   border-radius: 5px;
@@ -75,7 +75,8 @@ button:hover {
 
 input {
   outline: none;
-  border: none;
+  border: 2px solid #E8E8E8;
+  border-radius: 5px;
   color: #757575;
 }
 
@@ -201,7 +202,6 @@ input {
 
 .card h4 {
   font-weight: 700;
-  margin-bottom: 24px;
 }
 
 .card h6 span {
@@ -245,6 +245,38 @@ input {
   font-weight: 700;
   color: #EB5757;
   margin: 0px 0px 0px 10px;
+}
+
+.cardBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 24px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.testcardBTN {
+  background-image: url("/static/icon/icon_cardtest.png");
+  background-size: cover;
+  width: 20px;
+  height: 16px;
+  margin-left: 8px;
+}
+
+.testcardBTN:hover {
+  background-image: url("/static/icon/icon_testcard(hover).png");
+  cursor: pointer;
+}
+
+.testcardInfo {
+  font-size: 8px;
+  color: #fff;
+  padding: 1px 3px 1px 3px;
+  border-radius: 2px;
+  background-color: #448899;
+  margin-left: 4px;
 }
 
 .confirm {

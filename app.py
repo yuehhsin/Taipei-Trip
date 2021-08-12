@@ -1,4 +1,3 @@
-import json,ssl,mysql.connector
 from flask import * 
 from flask import session
 app=Flask(__name__)
@@ -17,14 +16,11 @@ from route.api.attractions import att
 from route.api.booking import book
 from route.api.orders import orders
 
-
 app.register_blueprint(page)
 app.register_blueprint(user,url_prefix='/api')
 app.register_blueprint(att,url_prefix='/api')
 app.register_blueprint(book,url_prefix='/api')
 app.register_blueprint(orders,url_prefix='/api')
-
-
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0",port=3000,debug=True)

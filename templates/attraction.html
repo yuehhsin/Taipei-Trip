@@ -12,55 +12,188 @@ Taipei Trip 台北一日遊：旅遊景點
 {% endblock %}
 
 {% block content %}
-<div id="attImage">
-    <div id="backImageBTN" onclick=backImageBTN()></div>
-    <div id="nextImageBTN" onclick=nextImageBTN()></div>
-    <div class="imageDot">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+<!-- tourSelect -->
+<div class="tourSelect">
+    <div class="attImage">
+        <div class="backImageBTN"></div>
+        <div class="loading-ani"><div></div><div></div></div>
+        <div class="nextImageBTN"></div>
+        <div class="imageDot"></div>
     </div>
-</div>
-<div class="attInfo">
-    <div class="infoBox">
+    <div class="attInfo">
         <form class="tourForm" id="tourForm">
-            <div id="attName"></div>
-            <div id="attType"></div>
-            <div class="tourTitle">訂購導覽行程</div>
-            <div class="tourContent">以此景點為中心的一日行程，帶您探索城市角落故事</div>
-            <div class="flexBox">
-                <div class="selTitle">選擇日期：</div>
-                <input type="date" class="dateInput" name="date" min=2021-05-20>
-            </div>
-            <div class="flexBox">
-                <div class="selTitle">選擇時間：</div>
-                <input id="amRadio" type="radio" name="time" value="morning" checked="checked" hidden></input>
-                <label for="amRadio" class="timeLabel">上半天</label>
-                <input id="pmRadio" type="radio" name="time" value="afternoon" hidden></input>
-                <label for="pmRadio" class="timeLabel">下半天</label>
-            </div>
-            <div class="flexBox">
-                <div class="selTitle" name=value>導覽費用：</div>
-                <div class="content" id="tourPrice">新台幣<span class="price">2000</span>元</div>
-            </div>
-            <div class="V-Center">
-                <button class="tourCTA">開始預定行程</button> 
-                <div class="dateError">
-                    <img class="dateErrorImage" src="/static/icon/icon_dateError.png" width="20px" height="20px">
-                    <div class="dateErrorText">請選擇日期</div>
+            <h1 class="attName">...</h1>
+            <h6 class="attType">公共藝術 at 忠孝復興</h6>
+            <div class="bookingBox">
+                <h6 class="bookingTitle"><b>訂購導覽行程</b></h6>
+                <h6 class="subTitle">以此景點為中心的一日行程，帶您探索城市角落故事</h6>
+                <div class="inline">
+                    <h6><b>選擇日期：</b></h6>
+                    <input type="date" class="dateInput" name="date" min=2021-05-20>
+                </div>
+                <div class="inline">
+                    <h6><b>選擇時間：</b></h6>
+                    <input id="amRadio" type="radio" name="time" value="morning" checked="checked" hidden></input>
+                    <label for="amRadio" class="timeLabel">上半天</label>
+                    <input id="pmRadio" type="radio" name="time" value="afternoon" hidden></input>
+                    <label for="pmRadio" class="timeLabel">下半天</label>
+                </div>
+                <div class="inline">
+                    <h6 name=value><b>導覽費用：</b></h6>
+                    <h6 id="tourPrice">新台幣<span class="price">2000</span>元</h6>
+                </div>
+                <div class="btnBox">
+                    <button class="tourCTA">開始預定行程</button> 
+                    <div class="dateError">
+                        <img class="dateErrorImage" src="/static/icon/icon_dateError.png" width="20px" height="20px">
+                        <h6 class="dateErrorText">請選擇日期</h6>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<hr>
+<!-- contents -->
 <div class="contents">
-    <div class="content" id="attDes"></div>
-    <div class="item">景點地址：</div>
-    <div class="content" id="attAddress"></div>
-    <div class="item">交通方式：</div>
-    <div class="content" id="attTransport"></div>
+    <h6><b>景點簡介：</b></h6>
+    <h6 class="content">...</h6>
+    <h6><b>景點地址：</b></h6>
+    <h6 class="content"></h6>
+    <h6><b>交通方式：</b></h6>
+    <h6 class="content"></h6>
 </div>
+<!-- weather -->
+<div class="weather">
+    <h6><b><span class="district"></span>一週天氣：</b></h6>
+    <div class="weatherBox">
+        <div class="day">
+            <div class="day-up">
+                <div class="weather_image"></div>
+                <h4><b class="date"></b></h4>
+            </div>
+            <div class="day-down">
+                <div class="humidity">
+                    <div class="humidity_icon"></div>
+                    <h6 class="RH"></h6>
+                </div>
+                <div class="temperature">
+                    <div class="temperature_icon"></div>
+                    <h6 class="T"></h6>
+                </div>
+            </div>
+        </div>
+        <div class="day">
+            <div class="day-up">
+                <div class="weather_image"></div>
+                <h4><b class="date"></b></h4>
+            </div>
+            <div class="day-down">
+                <div class="weatherInfo">
+                    <div class="humidity">
+                        <div class="humidity_icon"></div>
+                        <h6 class="RH"></h6>
+                    </div>
+                    <div class="temperature">
+                        <div class="temperature_icon"></div>
+                        <h6 class="T"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="day">
+            <div class="day-up">
+                <div class="weather_image"></div>
+                <h4><b class="date"></b></h4>
+            </div>
+            <div class="day-down">
+                <div class="weatherInfo">
+                    <div class="humidity">
+                        <div class="humidity_icon"></div>
+                        <h6 class="RH"></h6>
+                    </div>
+                    <div class="temperature">
+                        <div class="temperature_icon"></div>
+                        <h6 class="T"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="day">
+            <div class="day-up">
+                <div class="weather_image"></div>
+                <h4><b class="date"></b></h4>
+            </div>
+            <div class="day-down">
+                <div class="weatherInfo">
+                    <div class="humidity">
+                        <div class="humidity_icon"></div>
+                        <h6 class="RH"></h6>
+                    </div>
+                    <div class="temperature">
+                        <div class="temperature_icon"></div>
+                        <h6 class="T"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="day">
+            <div class="day-up">
+                <div class="weather_image"></div>
+                <h4><b class="date"></b></h4>
+            </div>
+            <div class="day-down">
+                <div class="weatherInfo">
+                    <div class="humidity">
+                        <div class="humidity_icon"></div>
+                        <h6 class="RH"></h6>
+                    </div>
+                    <div class="temperature">
+                        <div class="temperature_icon"></div>
+                        <h6 class="T"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="day">
+            <div class="day-up">
+                <div class="weather_image"></div>
+                <h4><b class="date"></b></h4>
+            </div>
+            <div class="day-down">
+                <div class="weatherInfo">
+                    <div class="humidity">
+                        <div class="humidity_icon"></div>
+                        <h6 class="RH"></h6>
+                    </div>
+                    <div class="temperature">
+                        <div class="temperature_icon"></div>
+                        <h6 class="T"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="day">
+            <div class="day-up">
+                <div class="weather_image"></div>
+                <h4><b class="date"></b></h4>
+            </div>
+            <div class="day-down">
+                <div class="weatherInfo">
+                    <div class="humidity">
+                        <div class="humidity_icon"></div>
+                        <h6 class="RH"></h6>
+                    </div>
+                    <div class="temperature">
+                        <div class="temperature_icon"></div>
+                        <h6 class="T"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mapid"></div>
+
 {% endblock %}
    
 

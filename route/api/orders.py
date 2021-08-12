@@ -1,17 +1,9 @@
 ###### /api/orders ######
 import json,ssl,mysql.connector,requests
+from database.mySQL import *
 from flask import Blueprint,jsonify,request
 from flask import session
 orders = Blueprint("orders", __name__)
-
-mydb=mysql.connector.connect(
-	host="localhost",
-	user="root",
-	password="KElly_7991",
-	database="gov_data",
-	charset="utf8",
-)
-cursor = mydb.cursor()
 
 #建立新的訂單，並完成付款程序
 @orders.route("/orders",methods=["POST"])

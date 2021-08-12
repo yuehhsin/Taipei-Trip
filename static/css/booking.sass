@@ -83,7 +83,6 @@
     border-bottom: 1px solid $gray300
     & h4
         font-weight: 700
-        margin-bottom: 24px
     & h6
         & span
             font-weight: 400
@@ -102,6 +101,7 @@
     display: flex
     align-items: center
     margin-bottom: 15px
+    
 .errorInfo,.errorContact
     display: none
     align-items: center
@@ -109,6 +109,27 @@
     font-weight: 700
     color: $red
     margin: 0px 0px 0px 10px
+
+.cardBox
+    display: flex
+    margin-bottom: 24px
+    align-items: center
+.testcardBTN
+    background-image: url("/static/icon/icon_cardtest.png")
+    background-size: cover
+    +size(20px,16px)
+    margin-left: 8px
+    &:hover
+        background-image: url("/static/icon/icon_testcard(hover).png")
+        cursor: pointer
+.testcardInfo
+    font-size: 8px
+    color: #fff
+    padding: 1px 3px 1px 3px 
+    border-radius: 2px
+    background-color: $cyan800
+    margin-left: 4px
+
 
 // confirm
 .confirm

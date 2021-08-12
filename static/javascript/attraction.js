@@ -1,33 +1,94 @@
-let pathId = decodeURIComponent(location.pathname).split("/")[2];
-let selAM = document.getElementById("selAM")
-let selPM = document.getElementById("selPM")
-let tourPrice = document.getElementById("tourPrice")
-let selectedAM = false;
-let selectedPM = false;
-let imageId = 0;
-  
-function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport){
-    let ATTname = document.getElementById("attName"); //name
-    let name = document.createTextNode(attName);
-    ATTname.appendChild(name);
+let pathId = decodeURIComponent(location.pathname).split("/")[2]; //擷取要求字串
+let imageId = 0
+//render資料
+// function renderDots(){
+//     for(let i=0;1<attImage.length;i++){
+//         document.querySelectorAll(".dot")[i].style.backgroundColor="#FFFFFF"
+//         document.querySelectorAll(".dot")[imageId].style.backgroundColor="#448899"
+//     }
+    
+// }
 
-    let ATTtype = document.getElementById("attType"); //type = actegory + mrt
-    let type = document.createTextNode(attCategory+" at "+attMrt);
-    ATTtype.appendChild(type);
-
-    let ATTdes = document.getElementById("attDes"); //description
-    let des = document.createTextNode(attDescription);
-    ATTdes.appendChild(des);
-
-    let ATTaddress = document.getElementById("attAddress"); //address
-    let address = document.createTextNode(attAddress);
-    ATTaddress.appendChild(address);
-
-    let ATTtransport = document.getElementById("attTransport"); //transport
-    let transport = document.createTextNode(attTransport);
-    ATTtransport.appendChild(transport);
+function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport,attImage){
+    document.querySelector(".attName").textContent=attName //name
+    document.querySelector(".attType").textContent=attCategory+" at "+attMrt  //type
+    document.querySelectorAll(".content")[0].textContent=attDescription  //description
+    document.querySelectorAll(".content")[1].textContent=attAddress  //address
+    document.querySelectorAll(".content")[2].textContent=attTransport  //attTransport
+    document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+    // for (let i=0;i<attImage.length;i++){
+    //     let dot = document.createElement("div")
+    //     dot.className="dot"
+    //     dot.id=[i]
+    //     dot.onclick=()=>{
+    //         imageId=Number(dot.id)
+    //         document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+    //         if(Number(dot.id)+1===attImage.length){
+    //             document.querySelector(".nextImageBTN").style.display="none"
+    //         }
+    //         else if(Number(dot.id)===0){
+    //             document.querySelector(".backImageBTN").style.display="none"
+    //         }
+    //         renderDots()
+    //     }
+    //     document.querySelector(".imageDot").appendChild(dot)
+    // }
+    // renderDots()
 }
-function getData(){
+
+let render={
+    getWeather:(attAddress)=>{  //weather
+        let district = attAddress.slice(3,6)
+        const url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-8DB604AF-C47C-470D-897C-C3D4BF236A07&locationName="+district
+        document.querySelector(".district").textContent=district
+        fetch(url)
+            .then(response=>{
+                return response.json()
+            })
+            .then(data=>{
+                for(let i=0;i<7;i++){
+                    //天氣現象編號
+                    let WxNum = Number(data["records"]["locations"][0]["location"][0]["weatherElement"][6]["time"][i*2]["elementValue"][1]["value"])
+                    //最低溫度
+                    let minT = data["records"]["locations"][0]["location"][0]["weatherElement"][8]["time"][i*2]["elementValue"][0]["value"]+"°"
+                    //最高溫度
+                    let maxT = data["records"]["locations"][0]["location"][0]["weatherElement"][12]["time"][i*2]["elementValue"][0]["value"]+"°"
+                    //日期
+                    let date = data["records"]["locations"][0]["location"][0]["weatherElement"][12]["time"][i*2]["startTime"].slice(5,10)
+                    //濕度
+                    let RH = data["records"]["locations"][0]["location"][0]["weatherElement"][2]["time"][i*2]["elementValue"][0]["value"]+"%"
+
+                    document.querySelectorAll(".date")[i].textContent=date 
+                    document.querySelectorAll(".RH")[i].textContent=RH
+                    document.querySelectorAll(".T")[i].textContent=minT+" - "+maxT
+                    if(WxNum===1){ //sunny
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_1.png")'
+                    }
+                    else if(1<WxNum && WxNum<4){  //sun&cloud
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_2.png")'
+                    }  
+                    else if(3<WxNum && WxNum<6){  //sun&cloud
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_2.5.png")'
+                    }  
+                    else if(19<WxNum && WxNum<23){  //午後陣雨
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_3.png")'
+                    }
+                    else if(24<WxNum && WxNum<29){  //fog
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_4.png")'
+                    }
+                    else{  //rain
+                        document.querySelectorAll(".weather_image")[i].style.backgroundImage='url("/static/icon/icon_weather_5.png")'
+                    }
+
+
+                }
+            })
+    }
+}
+
+
+//初始載入畫面
+addEventListener("load",(e)=>{
     fetch("/api/attraction/"+pathId)
     .then((response=>{
         return response.json()
@@ -40,41 +101,43 @@ function getData(){
         let attDescription = data["data"]["description"]
         let attAddress = data["data"]["address"]
         let attTransport = data["data"]["transport"]
-        randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport)
-        renderImage(attImage)
+        randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport,attImage)
+        render.getWeather(attAddress)
     })
-}
+})
 
-function renderImage(attImage){
-    let ATTimage = document.getElementById("attImage");
-    let image = attImage[imageId];
-    ATTimage.style.backgroundImage="url"+"("+image+")";
-    ATTimage.style.backgroundSize="cover";
-}
-function selBTN(selBTN){
-    let selcted = document.createElement("div")
-    selcted.id="selctedBTN"
-    selBTN.appendChild(selcted)
-}
-function cancelBTN(selBTN){
-    let selected = document.getElementById("selctedBTN")
-    selBTN.removeChild(selected)
-}
+//圖片切換
+// document.querySelector(".backImageBTN").addEventListener("click",()=>{
+//     document.querySelector(".nextImageBTN").style.display="block"
+//     if (imageId-1>=0){
+//         if(imageId-1===0){
+//             document.querySelector(".backImageBTN").style.display="none"
+//             imageId+=-1;
+//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+//             renderDots()
+//         }
+//         imageId+=-1;
+//         document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+//         renderDots()
+//     }
+// })
 
-function backImageBTN(){
-    if (imageId-1>=0){
-        imageId+=-1;
-    }
-    renderImage(attImage)
-}
-function nextImageBTN(){
-    console.log(imageId)
-    if (imageId+1<attImage.length){
-        imageId+=1;
-    }
-    renderImage(attImage)
-}
-
+// document.querySelector(".nextImageBTN").addEventListener("click",()=>{
+//     document.querySelector(".backImageBTN").style.display="block"
+//     if (imageId+1<=attImage.length){
+//         if(imageId+2===attImage.length){
+//             document.querySelector(".nextImageBTN").style.display="none"
+//             imageId+=1
+//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+//             renderDots()
+//         }
+//         else{
+//             imageId+=1
+//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+//             renderDots()
+//         }
+//     }
+// })
 
 //radio
 let timeRadio = Array.apply(null,document.querySelectorAll('[name="time"]'))
@@ -89,14 +152,7 @@ timeRadio[1].addEventListener("change",(e)=>{
     }
 })
 
-//EVENT: 初始載入畫面
-addEventListener("load",(e)=>{
-    getData()
-    console.log(document.cookie)
-})
-
-
-
+//tourForm
 document.forms["tourForm"].addEventListener("submit",(event)=>{
     event.preventDefault();
     if(document.forms["tourForm"]["date"].value!=""){ 
@@ -136,3 +192,17 @@ document.forms["tourForm"].addEventListener("submit",(event)=>{
         document.querySelector(".dateInput").style.borderColor= "#EB5757"
     }
 })
+
+
+// 建立 Leaflet 地圖
+//map
+let map = L.map('mapid');
+// 設定經緯度座標
+map.setView(new L.LatLng(22.992, 120.239), 12);
+
+// 設定圖資來源
+var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 16});
+map.addLayer(osm);
+var marker = L.marker([22.992, 120.239]).addTo(map);
+marker.bindPopup("<b>22.992°<br>120.239°</b>").openPopup();
