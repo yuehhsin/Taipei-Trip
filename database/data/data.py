@@ -3,6 +3,7 @@ import json,mysql.connector
 # MYSQL:建立database:gov_data table:taipei_attractions
 
 # CREATE dateabase gov_data;
+
 # 建立會員資訊(table:members)
 # CREATE table members(
 #     id BIGINT NOT NULL auto_increment,

@@ -14,7 +14,7 @@ load_dotenv()
 dbconfig = { 
     "host":"localhost",
     "user":"root",
-    "password": "KElly_7991",
+    "password": "KElly7991",
     "database": "gov_data",
     "buffered": True
     }

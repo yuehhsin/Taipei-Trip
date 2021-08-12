@@ -38,7 +38,7 @@ function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTran
 
 let render={
     getWeather:(attAddress)=>{  //weather
-        let district = attAddress.slice(3,6)
+        let district = attAddress.slice(5,8)
         const url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-8DB604AF-C47C-470D-897C-C3D4BF236A07&locationName="+district
         document.querySelector(".district").textContent=district
         fetch(url)
@@ -83,6 +83,9 @@ let render={
 
                 }
             })
+            .catch(e=>{
+                console.log("weather error",e)
+            })
     }
 }
 
@@ -107,37 +110,37 @@ addEventListener("load",(e)=>{
 })
 
 //圖片切換
-// document.querySelector(".backImageBTN").addEventListener("click",()=>{
-//     document.querySelector(".nextImageBTN").style.display="block"
-//     if (imageId-1>=0){
-//         if(imageId-1===0){
-//             document.querySelector(".backImageBTN").style.display="none"
-//             imageId+=-1;
-//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-//             renderDots()
-//         }
-//         imageId+=-1;
-//         document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-//         renderDots()
-//     }
-// })
+document.querySelector(".backImageBTN").addEventListener("click",()=>{
+    document.querySelector(".nextImageBTN").style.display="block"
+    if (imageId-1>=0){
+        if(imageId-1===0){
+            document.querySelector(".backImageBTN").style.display="none"
+            imageId+=-1;
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
+        imageId+=-1;
+        document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+        renderDots()
+    }
+})
 
-// document.querySelector(".nextImageBTN").addEventListener("click",()=>{
-//     document.querySelector(".backImageBTN").style.display="block"
-//     if (imageId+1<=attImage.length){
-//         if(imageId+2===attImage.length){
-//             document.querySelector(".nextImageBTN").style.display="none"
-//             imageId+=1
-//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-//             renderDots()
-//         }
-//         else{
-//             imageId+=1
-//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-//             renderDots()
-//         }
-//     }
-// })
+document.querySelector(".nextImageBTN").addEventListener("click",()=>{
+    document.querySelector(".backImageBTN").style.display="block"
+    if (imageId+1<=attImage.length){
+        if(imageId+2===attImage.length){
+            document.querySelector(".nextImageBTN").style.display="none"
+            imageId+=1
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
+        else{
+            imageId+=1
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
+    }
+})
 
 //radio
 let timeRadio = Array.apply(null,document.querySelectorAll('[name="time"]'))
