@@ -3,6 +3,7 @@
 
 ## Live Demo
 http://3.129.202.152:3000/
+
 #### Test Account
 | - | - |
 | -------- | -------- |
@@ -58,9 +59,14 @@ Click on the pictures of attraction on the homepage to see more information.
 ![Webp net-gifmaker](https://user-images.githubusercontent.com/75563062/132563234-e3b01592-19ff-42bf-b594-1642566e4195.gif)
 
 ### 5️⃣ Scheduled Route
+Use `TapPay` to connect to a third-party cash flow system. After the credit card is successfully authenticated, the user completes the payment.
+
+使用 `TapPay` 串接第三方金流系統，信用卡認證成功後，使用者完成付款。
+
+![Webp net-gifmaker](https://user-images.githubusercontent.com/75563062/132576098-d22d022f-5784-48c6-9328-078186d2b703.gif)
 
 
-### 6️⃣ Responsive Web Design(RWD)
+### 6️⃣ Responsive Web Design (RWD)
 ![Webp net-gifmaker](https://user-images.githubusercontent.com/75563062/132567529-a7c5d10e-f7b1-4804-a102-7605b93fa721.gif)
 
 
