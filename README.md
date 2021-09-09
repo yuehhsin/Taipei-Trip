@@ -1,4 +1,4 @@
-# taipei-day-trip-website
+# Taipei Trip 台北一日遊
 台北一日遊是一個旅遊電商網站。透過台北市政府公開的 API，取得超過300個景點資訊，
 
 ## Live Demo
