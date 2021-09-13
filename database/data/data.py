@@ -14,7 +14,7 @@ import os,json,mysql.connector
 #     PRIMARY KEY ( id )
 # )
 
-# #建立風景資訊(table:taipei_attractions)
+#建立風景資訊(table:taipei_attractions)
 # CREATE table taipei_attractions( 
 #     id INT AUTO_INCREMENT PRIMARY KEY,
 #     name VARCHAR(255),
@@ -27,7 +27,7 @@ import os,json,mysql.connector
 #     longitude VARCHAR(50),
 #     images TEXT)
 
-# #建立訂單編號(table:bookedInfo)
+#建立訂單編號(table:bookedInfo)
 # CREATE table bookedInfo( 
 #     id BIGINT NOT NULL auto_increment PRIMARY KEY,
 #     userId INT,
@@ -48,8 +48,8 @@ import os,json,mysql.connector
 mydb=mysql.connector.connect(
 	host="localhost",
 	user="root",
-	password=os.getenv("password"),
-	database=os.getenv("database"),
+	password="KElly_1234",
+	database="gov_data",
 	charset="utf8",
 )
 cursor = mydb.cursor()
