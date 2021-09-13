@@ -1,8 +1,8 @@
 import os,mysql.connector
 from mysql.connector import pooling
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 dbconfig = { 
     "host":"127.0.0.1",
