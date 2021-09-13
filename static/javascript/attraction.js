@@ -1,13 +1,5 @@
 let pathId = decodeURIComponent(location.pathname).split("/")[2]; //擷取要求字串
 let imageId = 0
-//render資料
-// function renderDots(){
-//     for(let i=0;1<attImage.length;i++){
-//         document.querySelectorAll(".dot")[i].style.backgroundColor="#FFFFFF"
-//         document.querySelectorAll(".dot")[imageId].style.backgroundColor="#448899"
-//     }
-    
-// }
 
 function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport,attImage){
     document.querySelector(".attName").textContent=attName //name
@@ -16,24 +8,6 @@ function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTran
     document.querySelectorAll(".content")[1].textContent=attAddress  //address
     document.querySelectorAll(".content")[2].textContent=attTransport  //attTransport
     document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-    // for (let i=0;i<attImage.length;i++){
-    //     let dot = document.createElement("div")
-    //     dot.className="dot"
-    //     dot.id=[i]
-    //     dot.onclick=()=>{
-    //         imageId=Number(dot.id)
-    //         document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-    //         if(Number(dot.id)+1===attImage.length){
-    //             document.querySelector(".nextImageBTN").style.display="none"
-    //         }
-    //         else if(Number(dot.id)===0){
-    //             document.querySelector(".backImageBTN").style.display="none"
-    //         }
-    //         renderDots()
-    //     }
-    //     document.querySelector(".imageDot").appendChild(dot)
-    // }
-    // renderDots()
 }
 
 let render={
@@ -114,7 +88,6 @@ document.querySelector(".backImageBTN").addEventListener("click",()=>{
     document.querySelector(".nextImageBTN").style.display="block"
     if (imageId-1>=0){
         if(imageId-1===0){
-            document.querySelector(".backImageBTN").style.display="none"
             imageId+=-1;
             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
             renderDots()
@@ -129,8 +102,6 @@ document.querySelector(".nextImageBTN").addEventListener("click",()=>{
     document.querySelector(".backImageBTN").style.display="block"
     if (imageId+1<=attImage.length){
         if(imageId+2===attImage.length){
-            document.querySelector(".nextImageBTN").style.display="none"
-            imageId+=1
             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
             renderDots()
         }

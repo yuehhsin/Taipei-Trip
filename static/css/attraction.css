@@ -366,32 +366,16 @@ input[type="radio"]:checked + label:before {
   padding-bottom: 40px;
 }
 
-.weather h6 {
-  margin-bottom: 10px;
-}
-
-.weatherBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
 .day {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: inline-block;
+  margin-right: 8px;
+  margin-top: 10px;
 }
 
 .day-up {
@@ -422,7 +406,7 @@ input[type="radio"]:checked + label:before {
 }
 
 .day-down {
-  width: 100%;
+  width: 160px;
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #E8E8E8;
@@ -497,5 +481,9 @@ input[type="radio"]:checked + label:before {
   height: 300px;
   margin-bottom: 40px;
   border-radius: 5px;
+}
+
+.map h6 {
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=attraction.css.map */

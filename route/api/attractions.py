@@ -1,18 +1,17 @@
-###### /api/attractions ######
 from flask import Blueprint,jsonify,request
 from database.mySQL import *
 
 att = Blueprint("attractions", __name__)
-lengthData = int(cursor.fetchone()[0]) #資料總長度:lengthData
+lengthData = int(cursor.fetchone()[0])
 
 @att.route("/attractions")
 def getAttBYPageKeyword():
-	page_args = request.args.get("page") #取得前端參數:page
-	keyword = request.args.get("keyword") #取得前端參數:keyword
+	page_args = request.args.get("page")
+	keyword = request.args.get("keyword")
 	### function:處理資料查詢 ###
 	def result(resultData):
 		image_list = resultData[9].split(",")
-		image_list.pop(-1) #刪掉多餘的物件
+		image_list.pop(-1)
 		data = {
 			"id": resultData[0],
 			"name": resultData[1],

@@ -4,20 +4,21 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+dbconfig = { 
+    "host":"127.0.0.1",
+    "user":"root",
+    "password": os.getenv("password"),
+    "database": os.getenv("database"),
+    "buffered": True
+    }
+
 # dbconfig = { 
 #     "host":"localhost",
 #     "user":"root",
-#     "password": os.getenv("password"),
-#     "database": os.getenv("database"),
-#     "buffered":True
+#     "password": "KElly7991",
+#     "database": "gov_data",
+#     "buffered": True
 #     }
-dbconfig = { 
-    "host":"localhost",
-    "user":"root",
-    "password": "KElly_7991",
-    "database": "gov_data",
-    "buffered": True
-    }
 
 dbpool=mysql.connector.pooling.MySQLConnectionPool(pool_name = "pool", pool_size = 10, **dbconfig)
 
