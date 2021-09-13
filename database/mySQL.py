@@ -7,8 +7,8 @@ load_dotenv()
 dbconfig = { 
     "host":"127.0.0.1",
     "user":"root",
-    "password": os.getenv("password"),
-    "database": os.getenv("database"),
+    "password": "KElly_1234",
+    "database": "gov_data",
     "buffered": True
     }
 
