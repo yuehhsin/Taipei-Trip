@@ -1,4 +1,3 @@
-###### /api/orders ######
 import json,ssl,mysql.connector,requests
 from database.mySQL import *
 from flask import Blueprint,jsonify,request

@@ -1,4 +1,3 @@
-###### /api/user ######
 import json,ssl,mysql.connector
 from flask import Blueprint,jsonify,request
 from database.mySQL import *

@@ -1,13 +1,5 @@
 let pathId = decodeURIComponent(location.pathname).split("/")[2]; //擷取要求字串
 let imageId = 0
-//render資料
-// function renderDots(){
-//     for(let i=0;1<attImage.length;i++){
-//         document.querySelectorAll(".dot")[i].style.backgroundColor="#FFFFFF"
-//         document.querySelectorAll(".dot")[imageId].style.backgroundColor="#448899"
-//     }
-    
-// }
 
 function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTransport,attImage){
     document.querySelector(".attName").textContent=attName //name
@@ -16,29 +8,11 @@ function randerData(attName,attCategory,attMrt,attDescription,attAddress,attTran
     document.querySelectorAll(".content")[1].textContent=attAddress  //address
     document.querySelectorAll(".content")[2].textContent=attTransport  //attTransport
     document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-    // for (let i=0;i<attImage.length;i++){
-    //     let dot = document.createElement("div")
-    //     dot.className="dot"
-    //     dot.id=[i]
-    //     dot.onclick=()=>{
-    //         imageId=Number(dot.id)
-    //         document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-    //         if(Number(dot.id)+1===attImage.length){
-    //             document.querySelector(".nextImageBTN").style.display="none"
-    //         }
-    //         else if(Number(dot.id)===0){
-    //             document.querySelector(".backImageBTN").style.display="none"
-    //         }
-    //         renderDots()
-    //     }
-    //     document.querySelector(".imageDot").appendChild(dot)
-    // }
-    // renderDots()
 }
 
 let render={
     getWeather:(attAddress)=>{  //weather
-        let district = attAddress.slice(3,6)
+        let district = attAddress.slice(5,8)
         const url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-8DB604AF-C47C-470D-897C-C3D4BF236A07&locationName="+district
         document.querySelector(".district").textContent=district
         fetch(url)
@@ -83,6 +57,9 @@ let render={
 
                 }
             })
+            .catch(e=>{
+                console.log("weather error",e)
+            })
     }
 }
 
@@ -107,37 +84,34 @@ addEventListener("load",(e)=>{
 })
 
 //圖片切換
-// document.querySelector(".backImageBTN").addEventListener("click",()=>{
-//     document.querySelector(".nextImageBTN").style.display="block"
-//     if (imageId-1>=0){
-//         if(imageId-1===0){
-//             document.querySelector(".backImageBTN").style.display="none"
-//             imageId+=-1;
-//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-//             renderDots()
-//         }
-//         imageId+=-1;
-//         document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-//         renderDots()
-//     }
-// })
+document.querySelector(".backImageBTN").addEventListener("click",()=>{
+    document.querySelector(".nextImageBTN").style.display="block"
+    if (imageId-1>=0){
+        if(imageId-1===0){
+            imageId+=-1;
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
+        imageId+=-1;
+        document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+        renderDots()
+    }
+})
 
-// document.querySelector(".nextImageBTN").addEventListener("click",()=>{
-//     document.querySelector(".backImageBTN").style.display="block"
-//     if (imageId+1<=attImage.length){
-//         if(imageId+2===attImage.length){
-//             document.querySelector(".nextImageBTN").style.display="none"
-//             imageId+=1
-//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-//             renderDots()
-//         }
-//         else{
-//             imageId+=1
-//             document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
-//             renderDots()
-//         }
-//     }
-// })
+document.querySelector(".nextImageBTN").addEventListener("click",()=>{
+    document.querySelector(".backImageBTN").style.display="block"
+    if (imageId+1<=attImage.length){
+        if(imageId+2===attImage.length){
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
+        else{
+            imageId+=1
+            document.querySelector(".attImage").style.backgroundImage="url"+"("+attImage[imageId]+")"
+            renderDots()
+        }
+    }
+})
 
 //radio
 let timeRadio = Array.apply(null,document.querySelectorAll('[name="time"]'))

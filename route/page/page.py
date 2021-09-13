@@ -1,16 +1,7 @@
 import json,ssl,mysql.connector
 from flask import Blueprint,jsonify,request,render_template,session
+from database.mySQL import *
 page = Blueprint("page", __name__)
-
-mydb=mysql.connector.connect(
-	host="localhost",
-	user="root",
-	password="KElly_7991",
-	database="gov_data",
-	charset="utf8",
-)
-cursor = mydb.cursor()
-cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
 
 @page.route("/")
 def index():

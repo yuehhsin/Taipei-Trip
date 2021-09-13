@@ -48,7 +48,7 @@
     margin-left: 4px
     border: 2px solid #fff
     background-color: #fff
-    border-radius: 50% 
+    border-radius: 50%
     &:hover
         cursor: pointer
 
@@ -113,10 +113,10 @@ input[type="radio"]+label::before
     content: " "
     display: inline-block
     vertical-align: middle
-    background-color:#fff
+    background-color: #fff
     border-radius: 50%
     margin-right: 4px
-    
+
 input[type="radio"]:checked+label:before
     background-color: #448899
 
@@ -141,29 +141,24 @@ input[type="radio"]:checked+label:before
 .content
     margin-bottom: 15px
 
-
 // weather
 .weather
     padding-top: 40px
     padding-bottom: 40px
-    & h6
-        margin-bottom: 10px
-.weatherBox
-    display: flex
-    justify-content: space-between
-    flex-wrap: wrap
-    
+
 .day
     display: flex
-    flex-direction: column
     align-items: center
+    display: inline-block
+    margin-right: 8px
+    margin-top: 10px
 
 .day-up
     +size(160px,100px)
     padding-top: 20px
     padding-bottom: 20px
     background-color: $cyan800
-    border-radius: 5px
+    border-radius: 5px 5px 0px 0px
     display: flex
     flex-direction: column
     align-items: center
@@ -173,13 +168,11 @@ input[type="radio"]:checked+label:before
         color: #fff
 
 .day-down
-    width: 100%
+    width: 160px
     padding-top: 15px
     padding-bottom: 15px
     background-color: $gray300
     border-radius: 0px 0px 5px 5px
-    // display: flex
-    // flex-direction: column
     & h6
         margin: 0px
         font-weight: 700
@@ -218,3 +211,7 @@ input[type="radio"]:checked+label:before
     height: 300px
     margin-bottom: 40px
     border-radius: 5px
+
+.map
+    & h6
+        margin-bottom: 10px

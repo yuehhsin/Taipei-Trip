@@ -4,64 +4,58 @@ let fetching = false;
 let keyword = document.getElementsByName("keyword")[0].value;
 let argsKeyword = decodeURIComponent(location.search).split("=")[1];
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("DOM fully loaded and parsed");
-})
-
-////// function: 連線取得資料並顯示在畫面 //////
-window.addEventListener("load",()=>{
-    function Fetch(url){
-        if (fetching===false){
-            fetching=true;
-    
-            fetch(url)
-            .then((response)=>{ 
-                return response.json();
-            })
-            .then((jsonData)=>{
-                for (let i=0;i<12;i++){
-                    let newAtt = document.createElement("div"); //new div(attraction)
-                    newAtt.className="attraction";
-                    newAtt.onclick=()=>{
-                        window.location.href="/attraction/"+jsonData["data"][i]["id"];
-                    }
-    
-                    let attName = document.createElement("h6"); //name
-                    attName.className="attName";
-                    let name = document.createTextNode(jsonData["data"][i]["name"]);
-                    attName.appendChild(name);
-    
-                    let attMrt = document.createElement("h6");  //mrt
-                    attMrt.className="attMrt";   
-                    let mrt = document.createTextNode(jsonData["data"][i]["mrt"]);
-                    attMrt.appendChild(mrt);  
-    
-                    let attCategory = document.createElement("h6");  //category
-                    attCategory.className="attCategory";      
-                    let category = document.createTextNode(jsonData["data"][i]["category"]);
-                    attCategory.appendChild(category);
-    
-                    let attImage = document.createElement("div");  //image
-                    attImage.className="attImage";  
-                    let image = jsonData["data"][i]["images"][0];
-                    attImage.style.backgroundImage="url"+"("+image+")";
-                    attImage.style.backgroundSize="cover";
-    
-                    nextPage=jsonData["nextPage"]   //nextPage
-                    
-                    newAtt.appendChild(attName);
-                    newAtt.appendChild(attMrt);
-                    newAtt.appendChild(attCategory);
-                    newAtt.appendChild(attImage);
-                    document.getElementById("content").appendChild(newAtt);
-                    
-                    fetching=false;
-                    Page=nextPage;
+function Fetch(url){
+    if (fetching===false){
+        fetching=true;
+        fetch(url)
+        .then((response)=>{ 
+            return response.json();
+        })
+        .then((jsonData)=>{
+            for (let i=0;i<12;i++){
+                let newAtt = document.createElement("div"); //new div(attraction)
+                newAtt.className="attraction";
+                newAtt.onclick=()=>{
+                    window.location.href="/attraction/"+jsonData["data"][i]["id"];
                 }
-            })
-        }
+
+                let attName = document.createElement("h6"); //name
+                attName.className="attName";
+                let name = document.createTextNode(jsonData["data"][i]["name"]);
+                attName.appendChild(name);
+
+                let attMrt = document.createElement("h6");  //mrt
+                attMrt.className="attMrt";   
+                let mrt = document.createTextNode(jsonData["data"][i]["mrt"]);
+                attMrt.appendChild(mrt);  
+
+                let attCategory = document.createElement("h6");  //category
+                attCategory.className="attCategory";      
+                let category = document.createTextNode(jsonData["data"][i]["category"]);
+                attCategory.appendChild(category);
+
+                let attImage = document.createElement("div");  //image
+                attImage.className="attImage";  
+                let image = jsonData["data"][i]["images"][0];
+                attImage.style.backgroundImage="url"+"("+image+")";
+                attImage.style.backgroundSize="cover";
+
+                nextPage=jsonData["nextPage"]   //nextPage
+                
+                newAtt.appendChild(attName);
+                newAtt.appendChild(attMrt);
+                newAtt.appendChild(attCategory);
+                newAtt.appendChild(attImage);
+                document.getElementById("content").appendChild(newAtt);
+                
+                fetching=false;
+                Page=nextPage;
+            }
+        })
     }
-    
+}
+
+window.addEventListener("load",()=>{
     if (argsKeyword==undefined){
         //一般載入畫面
         const options = {
@@ -105,9 +99,6 @@ window.addEventListener("load",()=>{
 })
 
 
-
-
-
 // filter.BTN
 document.querySelector(".filterBTNoff").addEventListener("click",()=>{
     document.querySelector(".filterBTNoff").style.display="none"
@@ -143,3 +134,15 @@ window.onscroll = ()=>{  //每捲動一次觸發一次
         document.querySelector(".toTop").style.display="none"
     }
 }
+
+document.querySelector(".themeBox").addEventListener("click",(e)=>{
+    if(e.target.dataset.tag){
+        window.location.href='/?keyword='+e.target.dataset.tag;
+    }
+})
+
+document.querySelector(".districtBox").addEventListener("click",(e)=>{
+    if(e.target.dataset.tag){
+        window.location.href='/?keyword='+e.target.dataset.tag;
+    }
+})

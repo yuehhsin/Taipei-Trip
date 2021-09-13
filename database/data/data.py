@@ -1,8 +1,9 @@
-import json,mysql.connector
+import os,json,mysql.connector
 
 # MYSQL:建立database:gov_data table:taipei_attractions
 
 # CREATE dateabase gov_data;
+
 # 建立會員資訊(table:members)
 # CREATE table members(
 #     id BIGINT NOT NULL auto_increment,
@@ -47,8 +48,8 @@ import json,mysql.connector
 mydb=mysql.connector.connect(
 	host="localhost",
 	user="root",
-	password="KElly_7991",
-	database="gov_data",
+	password=os.getenv("password"),
+	database=os.getenv("database"),
 	charset="utf8",
 )
 cursor = mydb.cursor()
@@ -72,11 +73,9 @@ for data in data_list:
 
     for image in files:
         if image[-3:].lower()=="jpg" or image[-3:].lower()=="png":
-            images+="http"+image+","
+            images+="https"+image+","
 
     insert = "INSERT INTO taipei_attractions (name,category,description,address,transport,mrt,latitude,longitude,images) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     value = (name, category, description, address, transport, mrt, latitude, longitude, images)
     cursor.execute(insert, value)
     mydb.commit()
-
-

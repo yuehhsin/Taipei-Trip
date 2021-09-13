@@ -1,4 +1,3 @@
-###### /api/booking ######
 import json,ssl,mysql.connector,datetime
 from database.mySQL import *
 from flask import Blueprint,jsonify,request,session
