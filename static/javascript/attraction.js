@@ -83,7 +83,6 @@ addEventListener("load",(e)=>{
     })
 })
 
-//圖片切換
 document.querySelector(".backImageBTN").addEventListener("click",()=>{
     document.querySelector(".nextImageBTN").style.display="block"
     if (imageId-1>=0){
@@ -168,7 +167,6 @@ document.forms["tourForm"].addEventListener("submit",(event)=>{
 })
 
 
-// 建立 Leaflet 地圖
 //map
 let map = L.map('mapid');
 // 設定經緯度座標
