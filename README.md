@@ -1,5 +1,20 @@
 # Taipei Trip 台北一日遊
-台北一日遊是一個旅遊電商網站。
+![Screen Shot 2021-09-14 at 11 29 1](https://user-images.githubusercontent.com/75563062/133190530-79acb69a-811a-48f0-97f0-ec8879d4c2b1.png)
+
+Taipei One Day Tour is a travel e-commerce website. With more than 300 attractions information, click on the photos of the attractions to view more information, and make reservations and payment.
+
+台北一日遊是一個旅遊電商網站。擁有超過 300 筆的景點資料，點擊景點資照片可以訊查看看更多資訊，並預約行程、付款。
+## Catalog
+- [Live Demo](#live-demo)
+- [Skills Structure](#skills-structure)
+- [RESTful API](#restful-api)
+- [Features](#features)
+  - [#1 Lazy Loading & Infinite Scroll](#1%EF%B8%8F⃣-lazy-loading--infinite-scroll)
+  - [#2 Keyword Search & Filter](#2%EF%B8%8F⃣-keyword-search--filter)
+  - [#3 Member System](#3%EF%B8%8F⃣-member-system)
+  - [#4 View Attractions](#4%EF%B8%8F⃣-view-attractions)
+  - [#5 Scheduled Route](#5%EF%B8%8F⃣-scheduled-route)
+  - [#6 Responsive Web Design](#6%EF%B8%8F⃣-responsive-web-design-rwd)
 
 ## Live Demo
 http://3.129.202.152:3000/
@@ -18,12 +33,22 @@ http://3.129.202.152:3000/
 | CVV	 | 123 |
 
 ## Skills Structure
+![台北一日遊-技術架構](https://user-images.githubusercontent.com/75563062/133192590-4eb4a1bd-8b64-436f-8c07-e8c1a2cede1d.png)
 
-<img src="https://user-images.githubusercontent.com/75563062/132506367-6fbdb868-0225-4b1d-a46a-989d5a60e560.png" width="600px"></img>
+After the weekly development is completed, will sent `Pull Request` to the Reviewer, and after obtaining consent, the develop branch will be `merged` into the main branch, and the code will be synchronized to the EC2 computer update website.
+
+每週開發完成後，會向 Reviewer 發送 Pull Request，取得同意後將 develop 分支合併到 main 分支，並將程式碼同步到 EC2 的電腦更新網站。
+
 
 ## RESTful API
 
 ![RESTful-API](https://user-images.githubusercontent.com/75563062/132503738-f72395fd-fa6c-4e72-bcda-62cf26673d63.png)
+
+The project adopts a development method that separation of front-end and back-end. Through the RESTful API, different data is obtained from the back-end according to the Request method sent by the front-end.
+
+專案採用前後端分離的開發方式，透過 RESTful API，根據前端發送的 Request 方法，向後端取得不同的資料。
+
+⚠️ Developed according to the specification of RESTful API（Not involved in planning） 根據 RESTful API 的規格書開發(非規劃）
 
 ## Features
 ### 1️⃣ Lazy Loading & Infinite Scroll
