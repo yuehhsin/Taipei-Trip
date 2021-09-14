@@ -48,7 +48,7 @@ The project adopts a development method that separation of front-end and back-en
 
 專案採用前後端分離的開發方式，透過 RESTful API，根據前端發送的 Request 方法，向後端取得不同的資料。
 
-⚠️ Developed according to the specification of RESTful API（Not involved in planning） 根據 RESTful API 的規格書開發(非規劃）
+⚠️ Developed according to the specification of RESTful API（Not involved in planning)
 
 ## Features
 ### 1️⃣ Lazy Loading & Infinite Scroll
