@@ -5,7 +5,7 @@ from mysql.connector import pooling
 # load_dotenv()
 
 dbconfig = { 
-    "host":"127.0.0.1",
+    "host":"localhost",
     "user":"root",
     "password": "KElly_1234",
     "database": "gov_data",
