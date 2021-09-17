@@ -1,0 +1,75 @@
+@import "general"
+
+h2
+    padding-top: 40px
+    padding-bottom: 40px
+    text-align: center
+
+.payedNum
+    padding: 15px 
+    padding-left: 40px
+    background-color: $gray300
+    border-radius: 5px 5px 0px 0px
+
+.number
+    height: 17px
+    margin-left: 10px
+    font-weight: 700
+    font-size: 17px
+
+.finPrice
+    font-weight: 700
+    color: $cyan800
+
+.payedInfo
+    width: auto
+    padding-right: 100px
+    padding-left: 100px
+
+.infoBox
+    display: flex
+    border: 1px solid $gray300
+    border-radius: 0px 0px 5px 5px
+    padding: 30px 40px 30px 40px
+
+.icon
+    +size(100px,100px)
+    background-image: url("/static/icon/web_icon.png")
+    background-size: cover
+
+.webName
+    color: $cyan800
+    font-size: 20px
+    font-weight: 700
+
+.info
+    margin-left: 50px
+    margin-top: 10px
+    & h6
+        margin-top: 10px
+
+.box
+    +getcenter()
+    margin-bottom: 40px
+    & button
+        margin-right: 20px
+
+@media screen and ( max-width: 780px )
+    .payedInfo
+        padding: 0px
+    .logo
+        display: none
+    .info
+        margin: 0px
+        padding-left: 30px
+        padding-top: 10px
+        padding-bottom: 20px
+    .payedNum
+        padding-left: 30px
+        padding-right: 30px
+    .infoBox
+        margin-left: 0px
+        padding: 0px
+
+    
+    

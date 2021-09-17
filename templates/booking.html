@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block js %}
+<script src="https://js.tappaysdk.com/tpdirect/v5.7.0"></script>
+<script src="/static/javascript/booking.js" defer></script>
+<script src="/static/javascript/tappay.js" defer></script>
+{% endblock %}
+
+{% block css %}
+<link href="/static/css/booking.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+Taipei Trip 台北一日遊：預定行程
+{% endblock %}
+
+{% block content %}
+<div class="tour">
+    <h4 class="tourHL">您好，<span class="memberName"></span>，待預定的行程如下:</h4>
+    <h6 class="noTour">目前沒有任何待預訂的行程</h6>
+    <session class="tourInfo">
+        <div class="tourImage"></div>
+        <div class="info">
+            <h6 class="tourName">台北一日遊：<span class="tourtitle"></span></h6>
+            <h6>日期：<span class="tourContent"></span></h6>
+            <h6>時間：<span class="tourContent"></span></h6>
+            <h6>費用：<span class="noB">新台幣 <span class="tourContent"></span> 元</span></h6>
+            <h6>地點：<span class="tourContent"></span></h6>
+            <div class="tourDel"></div>
+        </div>
+    </session>
+</div>
+<div class="contact">
+    <h4 >您的聯絡資訊</h4>
+    <form id="cashForm">
+    <h6>聯絡姓名：<span><input type="text" id="name" name="name"></span></h6>
+    <h6>連絡信箱：<span><input type="text" id="email" name="email"></span></h6>
+    <h6>手機號碼：<span><input type="text" id="phone" name="phone"></span></h6>
+    <h6 class="ps">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</h6>
+    <div class="errorContact">
+        <img src="/static/icon/icon_dateError.png" width="20px" height="20px">
+        <h6 class="errorMessage"></h6>
+    </div>
+</div>
+<div class="card">
+    <div class="cardBox">
+        <h4 class="cardHL">信用卡付款資訊</h4>
+    </div>
+    <div class="cardInfo">
+        <h6>卡片號碼：</h6>
+        <div class="tpfield" id="card-number"></div>
+    </div>
+    <div class="cardInfo">
+        <h6>過期時間：</h6>
+        <div class="tpfield" id="card-expiration-date"></div>
+    </div>
+    <div class="cardInfo">
+        <h6>驗證號碼：</h6>
+        <div class="tpfield" id="card-ccv"></div>
+    </div>
+    <div class="errorInfo">
+        <img src="/static/icon/icon_dateError.png" width="20px" height="20px">
+        <h6 class="cardError">信用卡資訊錯誤</h6>
+    </div>
+    
+</div>
+<div class="confirm">
+    <h6 class="confirmTitle">總價：新台幣 <span class="totalPrice">2000</span> 元</h6>
+    <button class="confirmCAT" id="submit-button">確認訂購並付款</button>
+    </form>
+</div>
+</div>
+{% endblock %}
+
+

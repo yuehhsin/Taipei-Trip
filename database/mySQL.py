@@ -1,0 +1,21 @@
+import os
+import mysql.connector
+from mysql.connector import pooling
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+dbconfig = {
+    "host": "localhost",
+    "user": "root",
+    "password": "KElly_1234",
+    "database": "gov_data",
+    "buffered": True
+}
+
+dbpool = mysql.connector.pooling.MySQLConnectionPool(
+    pool_name="pool", pool_size=10, **dbconfig)
+
+mydb = dbpool.get_connection()
+cursor = mydb.cursor()
+cursor.execute("SELECT COUNT(id) FROM taipei_attractions")

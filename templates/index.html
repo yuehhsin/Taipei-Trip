@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block js %}
+<script src="/static/javascript/index.js" defer></script>
+{% endblock %}
+
+{% block css %}
+<link href="/static/css/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+Taipei Trip 台北一日遊
+{% endblock %}
+
+{% block banner %}
+<div class="KV">
+    <div class="KV-info">
+        <div class="KV-image"></div>
+        <form id="keywordForm">
+            <h2>輕鬆享受台北一日悠閒</h2>
+            <h6>探索每個角落，體驗城市的深度旅遊行程</h6>
+            <div class="keywordSearch">
+                <input placeholder="輸入景點名稱查詢" name="keyword">
+                <div class="filterBTNoff"></div>
+                <div class="filterBTNon"></div>
+                <button class="searchBTN">
+                    <img src="/static/icon/icon_search.png" width="30px" height="30px">
+                </button>
+            </div>
+        </form>
+        <!-- filterPOPUP -->
+        <div class="filterPOPUP">
+            <div class="fliterTitle">
+                <input id="theme" style="display:none" type="radio" name="fliter" checked="checked">
+                <label for="theme">主題景點</label>
+                <div class="vl"></div>
+                <input id="district" style="display:none" type="radio" name="fliter">
+                <label for="district">行政區域</label>
+            </div>
+            <!-- themeBox -->
+            <div class="themeBox">
+                <h5 data-tag="養生溫泉">養生溫泉</h5>
+                <h5 data-tag="單車遊蹤">單車遊蹤</h5>
+                <h5 data-tag="歷史建築">歷史建築</h5>
+                <h5 data-tag="宗教信仰">宗教信仰</h5>
+                <h5 data-tag="藝文館所">藝文館所</h5>
+                <h5 data-tag="公共藝術">公共藝術</h5>
+                <h5 data-tag="藍色公路">藍色公路</h5>
+                <h5 data-tag="戶外踏青">戶外踏青</h5>
+            </div>
+            <!-- districtBox -->
+            <div class="districtBox">
+                <h5 data-tag="北投區">北投區</h5>
+                <h5 data-tag="士林區">士林區</h5>
+                <h5 data-tag="內湖區">內湖區</h5>
+                <h5 data-tag="松山區">松山區</h5>
+                <h5 data-tag="中山區">中山區</h5>
+                <h5 data-tag="大同區">大同區</h5>
+                <h5 data-tag="南港區">南港區</h5>
+                <h5 data-tag="信義區">信義區</h5>
+                <h5 data-tag="大安區">大安區</h5>
+                <h5 data-tag="中正區">中正區</h5>
+                <h5 data-tag="萬華區">萬華區</h5>
+                <h5 data-tag="文山區">文山區</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div id="content">
+    <div class="toTop">
+        <div class="topIcon"></div>
+    </div>
+</div>
+<div id="target"></div>
+{% endblock %}
+
+<script src="static/javascript/index.js"></script>
+<script src="static/javascript/header.js"></script>
+
