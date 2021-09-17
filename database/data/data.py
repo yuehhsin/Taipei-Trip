@@ -1,4 +1,6 @@
-import os,json,mysql.connector
+import os
+import json
+import mysql.connector
 
 # MYSQL:建立database:gov_data table:taipei_attractions
 
@@ -14,8 +16,8 @@ import os,json,mysql.connector
 #     PRIMARY KEY ( id )
 # )
 
-#建立風景資訊(table:taipei_attractions)
-# CREATE table taipei_attractions( 
+# 建立風景資訊(table:taipei_attractions)
+# CREATE table taipei_attractions(
 #     id INT AUTO_INCREMENT PRIMARY KEY,
 #     name VARCHAR(255),
 #     category VARCHAR(255),
@@ -27,8 +29,8 @@ import os,json,mysql.connector
 #     longitude VARCHAR(50),
 #     images TEXT)
 
-#建立訂單編號(table:bookedInfo)
-# CREATE table bookedInfo( 
+# 建立訂單編號(table:bookedInfo)
+# CREATE table bookedInfo(
 #     id BIGINT NOT NULL auto_increment PRIMARY KEY,
 #     userId INT,
 #     number TEXT NOT NULL,
@@ -45,16 +47,16 @@ import os,json,mysql.connector
 #     status INT NOT NULL)
 
 
-mydb=mysql.connector.connect(
-	host="localhost",
-	user="root",
-	password="KElly_1234",
-	database="gov_data",
-	charset="utf8",
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="kelly7991",
+    database="gov_data",
+    charset="utf8",
 )
 cursor = mydb.cursor()
 
-with open("taipei-attractions.json",mode="r",encoding="utf-8") as file:
+with open("/database/data/taipei-attractions.json", mode="r", encoding="utf-8") as file:
     json_data = json.load(file)
     data_list = json_data["result"]["results"]
 
@@ -72,10 +74,11 @@ for data in data_list:
     images = ""
 
     for image in files:
-        if image[-3:].lower()=="jpg" or image[-3:].lower()=="png":
-            images+="https"+image+","
+        if image[-3:].lower() == "jpg" or image[-3:].lower() == "png":
+            images += "https"+image+","
 
     insert = "INSERT INTO taipei_attractions (name,category,description,address,transport,mrt,latitude,longitude,images) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    value = (name, category, description, address, transport, mrt, latitude, longitude, images)
+    value = (name, category, description, address,
+             transport, mrt, latitude, longitude, images)
     cursor.execute(insert, value)
     mydb.commit()

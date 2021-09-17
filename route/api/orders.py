@@ -1,11 +1,16 @@
-import json,ssl,mysql.connector,requests
+import json
+import ssl
+import mysql.connector
+import requests
 from database.mySQL import *
-from flask import Blueprint,jsonify,request
+from flask import Blueprint, jsonify, request
 from flask import session
 orders = Blueprint("orders", __name__)
 
-#建立新的訂單，並完成付款程序
-@orders.route("/orders",methods=["POST"])
+# 建立新的訂單，並完成付款程序
+
+
+@orders.route("/orders", methods=["POST"])
 def newOrder():
     try:
         if("id" in session):
@@ -28,10 +33,11 @@ def newOrder():
                 "Content-Type": "application/json",
                 "x-api-key": "partner_oQcae5ByXIn3kNCRlSOGhYIhP2h4Ja5TSvYTuFTY9Ekj6liAGKYVQ1VZ"
             }
-            response = requests.post('https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime',data=myData,headers=headers)
-            #付款成功
-            if (response.json()["status"]==0): 
-                orderedInfo={ #成功下訂的資料
+            response = requests.post(
+                'https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime', data=myData, headers=headers)
+            # 付款成功
+            if (response.json()["status"] == 0):
+                orderedInfo = {  # 成功下訂的資料
                     "userId": session["id"],
                     "number": response.json()["rec_trade_id"],
                     "price": response.json()["amount"],
@@ -46,77 +52,80 @@ def newOrder():
                     "contactPhone": frontData["customer"]["phone"],
                     "status": 0
                 }
-                #將訂單資料加進資料庫(bookedInfo)
-                value = (orderedInfo["userId"],orderedInfo["number"],orderedInfo["price"],orderedInfo["attId"],orderedInfo["attName"],orderedInfo["attAddress"],orderedInfo["attImage"],
-                orderedInfo["tripDate"],orderedInfo["tripTime"],orderedInfo["contactName"],orderedInfo["contactEmail"],orderedInfo["contactPhone"],0
-                )
-                insert = "INSERT INTO bookedInfo (userId,number,price,attId,attName,attAddress,attImage,tripDate,tripTime,contactName,contactEmail,contactPhone,status) VALUES {}".format(value)
+                # 將訂單資料加進資料庫(bookedInfo)
+                value = (orderedInfo["userId"], orderedInfo["number"], orderedInfo["price"], orderedInfo["attId"], orderedInfo["attName"], orderedInfo["attAddress"], orderedInfo["attImage"],
+                         orderedInfo["tripDate"], orderedInfo["tripTime"], orderedInfo[
+                             "contactName"], orderedInfo["contactEmail"], orderedInfo["contactPhone"], 0
+                         )
+                insert = "INSERT INTO bookedInfo (userId,number,price,attId,attName,attAddress,attImage,tripDate,tripTime,contactName,contactEmail,contactPhone,status) VALUES {}".format(
+                    value)
                 cursor.execute(insert)
                 mydb.commit()
                 return jsonify({
-                        "data": {
-                            "number": orderedInfo["number"],
-                            "payment": {
-                                "status": 0,
-                                "message": "付款成功"
-                            }
+                    "data": {
+                        "number": orderedInfo["number"],
+                        "payment": {
+                            "status": 0,
+                            "message": "付款成功"
                         }
                     }
-                ),200
+                }
+                ), 200
             else:
-                print(response.json()["status"],response.json()["msg"])
+                print(response.json()["status"], response.json()["msg"])
                 return jsonify({
                     "error": True,
                     "message": response.json()["msg"]
-                }),400
+                }), 400
         else:
             return jsonify({
                 "error": True,
                 "message": "未登入系統，拒絕存取"
-            }),403
+            }), 403
     except mysql.connector.Error as err:
         return jsonify({
             "error": True,
             "message": "伺服器內部錯誤"
-            }), 500	
+        }), 500
 
-#根據訂單編號取得訂單資訊
-@orders.route("/orders/<path:number>",methods=["GET"])
+# 根據訂單編號取得訂單資訊
+
+
+@orders.route("/orders/<path:number>", methods=["GET"])
 def searchOrder(number):
-    try: 
+    try:
         if "id" in session:
             cursor.execute(f"SELECT * FROM bookedInfo WHERE number='{number}'")
-            bookedInfo=cursor.fetchone()
+            bookedInfo = cursor.fetchone()
             return jsonify({
                 "data": {
                     "number": bookedInfo[2],
                     "price": bookedInfo[3],
                     "trip": {
-                    "attraction": {
-                        "id": bookedInfo[4],
-                        "name": bookedInfo[5],
-                        "address": bookedInfo[6],
-                        "image": bookedInfo[7]
-                    },
-                    "date": bookedInfo[8],
-                    "time": bookedInfo[9]
+                        "attraction": {
+                            "id": bookedInfo[4],
+                            "name": bookedInfo[5],
+                            "address": bookedInfo[6],
+                            "image": bookedInfo[7]
+                        },
+                        "date": bookedInfo[8],
+                        "time": bookedInfo[9]
                     },
                     "contact": {
-                    "name": bookedInfo[10],
-                    "email": bookedInfo[11],
-                    "phone": bookedInfo[12]
+                        "name": bookedInfo[10],
+                        "email": bookedInfo[11],
+                        "phone": bookedInfo[12]
                     },
                     "status": 0
                 }
-            }),200
+            }), 200
         else:
             return jsonify({
                 "error": True,
                 "message": "未登入系統，拒絕存取"
-            }),403
+            }), 403
     except mysql.connector.Error as err:
-            return jsonify({
-                "error": True,
-                "message": "伺服器內部錯誤"
-                }), 500	
-
+        return jsonify({
+            "error": True,
+            "message": "伺服器內部錯誤"
+        }), 500

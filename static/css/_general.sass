@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap')
 *
   padding: 0px
   margin: 0px
@@ -21,8 +21,8 @@ $green: #27AE60
 
 ////// mixin: size //////
 @mixin size($width,$height)
-	width: $width
-	height: $height
+  width: $width
+  height: $height
 ////// mixin: center //////
 @mixin getcenter()
   display: flex
@@ -43,11 +43,16 @@ $green: #27AE60
 ////// tags //////
 h1
   //Header
-  font-size: 30px
-  font-weight: 700
-  line-height: 34px 
-  letter-spacing: 1px
-  color: $gray800
+  @media (min-width: 100px)
+    font-size: 20px
+  @media (min-width: 350px)
+    font-size: 25px
+  @media (min-width: 400px)
+    font-size: 30px
+    font-weight: 700
+    line-height: 34px
+    letter-spacing: 1px
+    color: $gray800
 
 h2
   //Slogan Title
@@ -83,11 +88,14 @@ h5
 
 h6
   //Body
-  font-size: 16px
-  font-weight: 400
-  line-height: 25px
-  letter-spacing: 1px
-  color: $gray800
+  @media (min-width: 100px)
+    font-size: 14px
+    font-weight: 400
+    line-height: 25px
+    letter-spacing: 1px
+    color: $gray800
+  @media (min-width: 400px)
+    font-size: 16px
 
 a
   text-decoration: none

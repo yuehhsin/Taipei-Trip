@@ -27,12 +27,10 @@ window.addEventListener("load",()=>{
     })
     .then(data=>{
         if (data["data"]["attraction"]["id"]===null){
-            document.querySelector(".tour").style.display="block"
             document.querySelector(".tourInfo").style.display="none"
             document.querySelector(".noTour").style.display="block"
         }
         else{ 
-            document.querySelector(".tour").style.display="block"
             document.querySelector(".contact").style.display="block"
             document.querySelector(".card").style.display="block"
             document.querySelector(".confirm").style.display="flex"

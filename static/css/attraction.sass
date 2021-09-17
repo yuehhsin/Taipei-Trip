@@ -3,21 +3,30 @@
 
 // tourSelect
 .tourSelect
-    display: flex
-    padding-top: 40px
-    padding-bottom: 40px
-    border-bottom: 1px solid $gray300
+    @media (min-width: 100px)
+        padding-top: 20px
+        padding-bottom: 40px
+        border-bottom: 1px solid $gray300
+    @media (min-width: 660px)
+        padding-top: 40px
+        display: flex
 .attImage
-    width: 50%
-    height: 389px
-    border-radius: 5px
-    margin-right: 30px
-    display: flex
-    align-items: center
-    justify-content: space-between
-    background-color: $gray300
-    position: relative
-    background-size: cover
+    @media (min-width: 100px)
+        width: 100%
+        height: 389px
+        border-radius: 5px
+        margin-right: 30px
+        margin-bottom: 10px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        background-color: $gray300
+        position: relative
+        background-size: cover
+    @media (min-width: 660px)
+        width: 50%
+        margin-bottom: 0px
+
 .backImageBTN
     +size(30px,30px)
     background-image: url("/static/icon/btn_leftArrow.png")
@@ -53,22 +62,31 @@
         cursor: pointer
 
 .attInfo
-    width: 50%
-    & h1
-        margin-bottom: 15px
-    & label
-        font-size: 16px
-        font-weight: 400
-        line-height: 25px
-        letter-spacing: 1px
-        color: $gray800
-    & .inline
-        margin-bottom: 15px
-    & .subTitle
-        margin-bottom: 15px
+    @media (min-width: 100px)
+        width: 100%
+        & h6
+            margin-top: 5px
+            margin-bottom: 5px
+        & h1
+            margin-bottom: 15px
+            & label
+                font-size: 16px
+                font-weight: 400
+                line-height: 25px
+                letter-spacing: 1px
+                color: $gray800
+            & .inline
+                margin-bottom: 15px
+            & .subTitle
+                margin-bottom: 15px
+    @media (min-width: 660px)
+        width: 50%
 
 .attType
-    margin-bottom: 20px
+    @media (min-width: 100px)
+        margin-bottom: 10px
+    @media (min-width: 660px)
+        margin-bottom: 20px
 
 .inline
     display: flex
@@ -77,21 +95,29 @@
         margin-right: 10px
 
 .bookingBox
+    margin-top: 10px
     padding: 20px
     border-radius: 5px
     background-color: $gray300
-
 .bookingTitle
-    margin-bottom: 15px
+    @media (min-width: 100px)
+        margin-bottom: 0px
+    @media (min-width: 660px)
+        margin-bottom: 15px
 
 input[type="date"]
-    box-sizing: border-box
-    color: $gray700
-    padding: 5px 10px
-    &:focus
-        outline-color: $cyan700
-    &:required
-        color: $gray800
+    @media (min-width: 100px)
+        box-sizing: border-box
+        color: $gray700
+        width: 140px
+        padding: 2px
+        &:focus
+            outline-color: $cyan700
+        &:required
+            color: $gray800
+    @media (min-width: 660px)
+        width: 160px
+        padding: 5px 10px
 
 input[type="date"]::-webkit-calendar-picker-indicator
     background: url("/static/icon/icon_calendar.png") center/80% no-repeat
@@ -102,6 +128,8 @@ input[type="date"]::-webkit-calendar-picker-indicator
 
 input[type="radio"]+label
     vertical-align: middle
+    font-size: 14px
+    color: #666666
     &:hover
         cursor: pointer
 label
@@ -121,7 +149,8 @@ input[type="radio"]:checked+label:before
     background-color: #448899
 
 .tourCTA
-    margin-right: 10px
+    margin: 10px 10px 10px 0px
+
 .dateError
     display: none
     align-items: center
