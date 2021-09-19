@@ -16,6 +16,6 @@ dbconfig = {
 dbpool = mysql.connector.pooling.MySQLConnectionPool(
     pool_name="pool", pool_size=10, **dbconfig)
 
-mydb = dbpool.get_connection()
-cursor = mydb.cursor()
-cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
+# mydb = dbpool.get_connection()
+# cursor = mydb.cursor()
+# cursor.execute("SELECT COUNT(id) FROM taipei_attractions")

@@ -7,7 +7,9 @@ from flask import Blueprint, jsonify, request
 from flask import session
 orders = Blueprint("orders", __name__)
 
-# 建立新的訂單，並完成付款程序
+mydb = dbpool.get_connection()
+cursor = mydb.cursor()
+cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
 
 
 @orders.route("/orders", methods=["POST"])
