@@ -8,7 +8,7 @@ from mysql.connector import pooling
 dbconfig = {
     "host": "localhost",
     "user": "root",
-    "password": "KElly7991",
+    "password": "KElly_1234",
     "database": "gov_data",
     "buffered": True
 }
