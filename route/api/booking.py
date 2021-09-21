@@ -23,6 +23,7 @@ def getBookinfo():
         if(session["id"]):
             Id = booking["attractionId"]
             if (Id == None):
+                mydb.close()
                 return jsonify({
                     "data": {
                         "attraction": {
@@ -41,6 +42,7 @@ def getBookinfo():
                 cursor.execute(
                     f"SELECT name,address,images FROM taipei_attractions WHERE id={Id}")
                 data = cursor.fetchall()[0]
+                mydb.close()
                 return jsonify({
                     "data": {
                         "attraction": {
@@ -64,7 +66,6 @@ def getBookinfo():
 @book.route("/booking", methods=["POST"])  # 建立新的預定行程
 def newBook():
     mydb = dbpool.get_connection()
-    cursor = mydb.cursor()
     data = request.get_json()
     today = datetime.date.today()
     date = data["date"].split("-")
@@ -105,6 +106,7 @@ def newBook():
                         "ok": True
                     }), 200
             except mysql.connector.Error as err:
+                mydb.close()
                 return jsonify({
                     "error": True,
                     "message": "伺服器內部錯誤"
@@ -119,7 +121,6 @@ def newBook():
 @book.route("/booking", methods=["DELETE"])  # 刪除目前的預定行程
 def deleteBook():
     mydb = dbpool.get_connection()
-    cursor = mydb.cursor()
     try:
         if(session["id"]):
             try:
@@ -134,6 +135,7 @@ def deleteBook():
                     "ok": True
                 })
             except mysql.connector.Error as err:
+                mydb.close()
                 return jsonify({
                     "error": True,
                     "message": "伺服器內部錯誤"

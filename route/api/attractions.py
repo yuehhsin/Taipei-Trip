@@ -60,13 +60,13 @@ def getAttBYPageKeyword():
                 for resultData in resultall:
                     result(resultData)
                 nextPage(page)
+                mydb.close()
             # 使用keyword查詢!
             else:
                 cursor.execute(
                     f'SELECT COUNT(*) FROM taipei_attractions WHERE name LIKE "%{keyword}%" OR category LIKE "%{keyword}%" OR description LIKE "%{keyword}%" OR address LIKE "%{keyword}%" OR mrt LIKE "%{keyword}%"')
                 search_length = cursor.fetchone()
                 searches = search_length[0]
-                # lengthData = int(cursor.fetchone()[0]) #資料總長度:lengthData
                 search_page = searches//12-1
                 begin = page*12
                 if searches % 12 != 0 and page == search_page+1:  # 最後一頁
@@ -84,6 +84,7 @@ def getAttBYPageKeyword():
                 resultall = cursor.fetchall()
                 for resultData in resultall:
                     result(resultData)
+                mydb.close()
                 # nextPage(page)
                 if page == searches//12:
                     nextpage.append(None)
@@ -137,18 +138,21 @@ def getAttBYid(attractionId):
             result = {
                 "data": data
             }
+            mydb.close()
             return jsonify(result), 200
         else:  # ERROR_400:id超過有效範圍
             error = {
                 "error": True,
                 "message": "請輸入有效數值"
             }
+            mydb.close()
             return jsonify(error), 400
     else:  # ERROR_400:id非數字
         error = {
             "error": True,
             "message": "請輸入有效數值"
         }
+        mydb.close()
         return jsonify(error), 400
 
 

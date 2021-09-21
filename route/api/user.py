@@ -25,13 +25,16 @@ def userSignup():
                         name, email, password)
                 )
                 mydb.commit()
+                mydb.close()
                 return jsonify({"ok": True}), 200
             else:
+                mydb.close()
                 return jsonify({
                     "error": True,
                     "message": "信箱已被使用"
                 }), 400
         except mysql.connector.Error as err:
+            mydb.close()
             return jsonify({
                 "error": True,
                 "message": "伺服器內部錯誤"
@@ -48,6 +51,7 @@ def userSignin():
     cursor.execute(
         "SELECT COUNT(*) FROM members WHERE email=%s AND password=%s", (email, password))
     checkSQL = cursor.fetchone()[0]
+    mydb.close()
     try:
         if checkSQL == 1:
             # 在memberList紀錄會員資訊
@@ -66,6 +70,7 @@ def userSignin():
                 "message": "密碼或帳號錯誤"
             }), 400
     except mysql.connector.Error as err:
+        mydb.close()
         return jsonify({
             "error": True,
             "message": "伺服器內部錯誤"

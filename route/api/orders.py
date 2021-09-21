@@ -60,6 +60,7 @@ def newOrder():
                     value)
                 cursor.execute(insert)
                 mydb.commit()
+                mydb.close()
                 return jsonify({
                     "data": {
                         "number": orderedInfo["number"],
@@ -71,6 +72,7 @@ def newOrder():
                 }
                 ), 200
             else:
+                mydb.close()
                 print(response.json()["status"], response.json()["msg"])
                 return jsonify({
                     "error": True,
@@ -82,6 +84,7 @@ def newOrder():
                 "message": "未登入系統，拒絕存取"
             }), 403
     except mysql.connector.Error as err:
+        mydb.close()
         return jsonify({
             "error": True,
             "message": "伺服器內部錯誤"
@@ -96,6 +99,7 @@ def searchOrder(number):
         if "id" in session:
             cursor.execute(f"SELECT * FROM bookedInfo WHERE number='{number}'")
             bookedInfo = cursor.fetchone()
+            mydb.close()
             return jsonify({
                 "data": {
                     "number": bookedInfo[2],
@@ -119,11 +123,13 @@ def searchOrder(number):
                 }
             }), 200
         else:
+            mydb.close()
             return jsonify({
                 "error": True,
                 "message": "未登入系統，拒絕存取"
             }), 403
     except mysql.connector.Error as err:
+        mydb.close()
         return jsonify({
             "error": True,
             "message": "伺服器內部錯誤"
