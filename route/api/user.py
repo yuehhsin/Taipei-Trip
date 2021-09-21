@@ -6,13 +6,10 @@ from database.mySQL import *
 from flask import session
 user = Blueprint("user", __name__)
 
-mydb = dbpool.get_connection()
-cursor = mydb.cursor()
-cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
-
-
 @user.route("/user", methods=["POST"])  # 註冊
 def userSignup():
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
     data = request.get_json()
     name = data["name"]
     email = data["email"]
@@ -43,6 +40,8 @@ def userSignup():
 
 @user.route("/user", methods=["PATCH"])  # 登入
 def userSignin():
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
     data = request.get_json()
     email = data["email"]
     password = data["password"]

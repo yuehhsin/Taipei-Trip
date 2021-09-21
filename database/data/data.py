@@ -50,13 +50,13 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="kelly7991",
+    password="kelly_1234",
     database="gov_data",
     charset="utf8",
 )
 cursor = mydb.cursor()
 
-with open("/database/data/taipei-attractions.json", mode="r", encoding="utf-8") as file:
+with open("taipei-attractions.json", mode="r", encoding="utf-8") as file:
     json_data = json.load(file)
     data_list = json_data["result"]["results"]
 

@@ -7,13 +7,10 @@ from flask import Blueprint, jsonify, request
 from flask import session
 orders = Blueprint("orders", __name__)
 
-mydb = dbpool.get_connection()
-cursor = mydb.cursor()
-cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
-
-
 @orders.route("/orders", methods=["POST"])
 def newOrder():
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
     try:
         if("id" in session):
             frontData = request.get_json()
@@ -91,10 +88,10 @@ def newOrder():
         }), 500
 
 # 根據訂單編號取得訂單資訊
-
-
 @orders.route("/orders/<path:number>", methods=["GET"])
 def searchOrder(number):
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
     try:
         if "id" in session:
             cursor.execute(f"SELECT * FROM bookedInfo WHERE number='{number}'")

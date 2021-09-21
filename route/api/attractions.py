@@ -1,16 +1,18 @@
 from flask import Blueprint, jsonify, request
 from database.mySQL import *
 
-mydb = dbpool.get_connection()
-cursor = mydb.cursor()
-cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
+
 att = Blueprint("attractions", __name__)
 
-lengthData = int(cursor.fetchone()[0])
-
+lengthData = 0
 
 @att.route("/attractions")
 def getAttBYPageKeyword():
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
+    cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
+    global lengthData
+    lengthData = int(cursor.fetchone()[0])
     page_args = request.args.get("page")
     keyword = request.args.get("keyword")
     ### function:處理資料查詢 ###
@@ -109,6 +111,9 @@ def getAttBYPageKeyword():
 
 @att.route("/attraction/<path:attractionId>")  # 使用id查詢!
 def getAttBYid(attractionId):
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
+    cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
     if attractionId.isdigit() == True:  # 判定id是否為數字
         serchId = int(attractionId)
         if serchId > 0 and serchId <= lengthData:  # id介於有效範圍

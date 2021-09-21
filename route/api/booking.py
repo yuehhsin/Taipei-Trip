@@ -5,10 +5,6 @@ import datetime
 from database.mySQL import *
 from flask import Blueprint, jsonify, request, session
 
-mydb = dbpool.get_connection()
-cursor = mydb.cursor()
-cursor.execute("SELECT COUNT(id) FROM taipei_attractions")
-
 book = Blueprint("booking", __name__)
 
 booking = {
@@ -21,6 +17,8 @@ booking = {
 
 @book.route("/booking", methods=["GET"])  # 取得尚未確認下單的預定行程
 def getBookinfo():
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
     try:
         if(session["id"]):
             Id = booking["attractionId"]
@@ -65,6 +63,8 @@ def getBookinfo():
 
 @book.route("/booking", methods=["POST"])  # 建立新的預定行程
 def newBook():
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
     data = request.get_json()
     today = datetime.date.today()
     date = data["date"].split("-")
@@ -118,6 +118,8 @@ def newBook():
 
 @book.route("/booking", methods=["DELETE"])  # 刪除目前的預定行程
 def deleteBook():
+    mydb = dbpool.get_connection()
+    cursor = mydb.cursor()
     try:
         if(session["id"]):
             try:
