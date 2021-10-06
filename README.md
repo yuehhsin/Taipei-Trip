@@ -1,7 +1,7 @@
 # Taipei Trip 台北一日遊
 ![Screen Shot 2021-09-14 at 11 29 1](https://user-images.githubusercontent.com/75563062/133190530-79acb69a-811a-48f0-97f0-ec8879d4c2b1.png)
 
-Taipei One Day Tour is a travel e-commerce website. With more than 300 attractions information, click on the photos of the attractions to view more information, and make reservations and payment.
+Taipei Trip is a travel e-commerce website. With more than 300 attractions information, click on the photos of the attractions to view more information, and make reservations and payment.
 
 台北一日遊是一個旅遊電商網站。擁有超過 300 筆的景點資料，點擊景點資照片可以訊查看看更多資訊，並預約行程、付款。
 ## Catalog
