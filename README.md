@@ -17,7 +17,9 @@ Taipei Trip is a travel e-commerce website. With more than 300 attractions infor
   - [#6 Responsive Web Design](#6%EF%B8%8F⃣-responsive-web-design-rwd)
 
 ## Live Demo
-http://3.129.202.152:3000/
+Due to high AWS fees, the website is currently closed 🥲 . 
+
+~~http://3.129.202.152:3000/~~
 
 #### Test Account
 | - | - |
